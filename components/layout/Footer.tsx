@@ -133,18 +133,42 @@ export function Footer() {
           <p className="text-[0.8rem] text-white/40">
             © {new Date().getFullYear()} {company.legalName} — SIREN {company.siren}
           </p>
-          <ul className="flex flex-wrap items-center gap-x-7 gap-y-2">
-            {legal.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className="link-t inline-block py-0.5 text-[0.8rem] text-white/40 hover:text-white/80"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {/* Les liens légaux ET la signature de conception tiennent dans UN
+              SEUL enfant du bandeau. Posée en troisième enfant, la signature
+              aurait fait basculer `justify-between` en trois colonnes et
+              déplacé les liens légaux au centre — le bandeau bas serait à
+              refaire pour une ligne de huit mots. */}
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-2">
+            <ul className="flex flex-wrap items-center gap-x-7 gap-y-2">
+              {legal.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="link-t inline-block py-0.5 text-[0.8rem] text-white/40 hover:text-white/80"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* La signature de conception. Le filet vertical est le seul
+                ornement, et il sépare deux natures d'information : à gauche
+                ce que le site DOIT afficher, à droite qui l'a dessiné.
+
+                « Astra Studio » se détache par la CASSE TYPOGRAPHIQUE et par
+                un cran de contraste — famille display, blanc à 70 % contre
+                40 % — jamais par une couleur. Le cyan et le rouge de ce site
+                portent un sens métier ; les employer ici les diluerait.
+
+                Le filet disparaît sous 640 px : le bandeau bas y passe en
+                colonne, la signature tombe sur sa propre ligne, et un trait
+                qui ne sépare plus rien n'est plus qu'un trait. */}
+            <p className="flex items-center gap-x-2.5 text-[0.8rem] text-white/40">
+              <span aria-hidden className="hidden h-3 w-px bg-white/15 sm:block" />
+              Designed by <span className="heading text-white/70">Astra Studio</span>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
