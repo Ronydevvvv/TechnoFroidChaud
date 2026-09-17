@@ -3,10 +3,13 @@ node_modules/
 out/
 build/
 
-# Secrets — ne jamais versionner
+# Secrets — ne jamais versionner.
+# Motifs EXACTS et non `.env*` : ce dernier avalerait `.env.example`, qui
+# doit rester versionné puisqu'il documente les variables attendues sans
+# contenir aucune valeur.
 .env
 .env.local
-.env*.local
+.env.*.local
 
 # Captures et fichiers de travail
 .shots*/
@@ -16,3 +19,6 @@ build/
 .plates/
 tsconfig.tsbuildinfo
 .DS_Store
+
+# Vercel — jetons de liaison du projet, propres à la machine
+.vercel/
