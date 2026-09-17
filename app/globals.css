@@ -1,0 +1,513 @@
+@import 'tailwindcss';
+
+/* ——————————————————————————————————————————————————————
+   TECHNO FROID CHAUD — Design system corporate
+
+   Philosophie reprise du site TERRALEC, validée par le client :
+   sol clair porté par la photographie, un seul accent, très peu de
+   corps typographiques, sections à respiration constante.
+
+   Ce qui a été retiré par rapport à la version précédente, et
+   pourquoi : halos radiaux, dégradés plein écran, shader de fond,
+   couture lumineuse, grain généralisé. Aucun ne portait
+   d'information — c'étaient des effets, et un effet gratuit est
+   exactement ce qui fait « site généré ». Le contraste vient
+   désormais de la photographie et de la hiérarchie, pas de la
+   lumière artificielle.
+   —————————————————————————————————————————————————————— */
+
+@theme {
+  /* ————— Sols ————— */
+  --color-ink: #151a20;
+  --color-paper: #ffffff;
+  --color-stone: #f4f3f0;
+  --color-line: #e3e1dc;
+  --color-slate: #61656c;
+
+  /* Bandes sombres — ponctuation, jamais base */
+  --color-carbon: #131820;
+  --color-line-dark: #2b2d33;
+  --color-mist: #9a9ea6;
+
+  /* ————— Accent unique — bleu du logo —————
+     Emplois exhaustifs : sur-titres, puce de liste, bouton
+     principal, filet de tête de carte au survol, sélection,
+     anneau de focus. Nulle part ailleurs. */
+  --color-brand: #14657f;
+  --color-brand-deep: #0f4d63;
+
+  /* ————— Signal d'urgence — rouge du logo —————
+     Un seul emploi sur tout le site : la page Dépannage. */
+  --color-alert: #c0392b;
+
+  /* ————— Famille acier —————
+     Ajoutée à la refonte anthracite. Le site reposait sur un sol blanc
+     porté par la photographie ; sans photographie, ce sol restait vide.
+     Le sombre devient donc un vrai matériau de composition, et l'acier
+     fait la transition entre les deux — ni blanc de galerie, ni noir. */
+  --color-steel-900: #141a21;
+  --color-steel-800: #1b222b;
+  --color-steel-700: #232b35;
+  --color-steel-600: #2a323c;
+  --color-steel-400: #55606e;
+  --color-steel-200: #8d97a4;
+  --color-steel-100: #c3cad3;
+
+  --font-display: var(--font-inter-tight);
+  --font-sans: var(--font-inter);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Une seule courbe, une seule durée pour tout le site. Deux
+     accompagnements différents, cela s'entend au survol. */
+  --default-transition-timing-function: var(--ease-out-soft);
+  --default-transition-duration: 300ms;
+}
+
+html {
+  background: var(--color-paper);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Chiffres alignés : températures, puissances et tarifs restent en colonne */
+  font-variant-numeric: tabular-nums;
+  overflow-x: clip;
+}
+
+/* Le texte courant reprend des chiffres proportionnels, plus lisibles */
+p,
+li {
+  font-variant-numeric: normal;
+}
+
+@layer components {
+  /* ————— Typographie ————— */
+
+  .heading {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.08;
+    text-wrap: balance;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  }
+  .heading:where(h1) {
+    letter-spacing: -0.03em;
+  }
+
+  /**
+   * Deux corps de titre, pas vingt.
+   *
+   * Multiplier les valeurs proches — 2,7 rem ici, 2,8 rem là — ne
+   * crée aucune information, seulement du flottement. Le hero garde
+   * son propre corps parce qu'il joue un autre rôle.
+   */
+  .t-h1 {
+    font-size: clamp(2.3rem, 4.6vw, 3.9rem);
+  }
+  .t-h2 {
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+  }
+  .t-h3 {
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  }
+
+  /**
+   * Sur-titre.
+   *
+   * Il était en capitales espacées — le tic le plus reconnaissable des
+   * maquettes générées, et il apparaissait vingt fois sur le site. Il
+   * redevient une simple ligne d'annonce en casse normale, portée par la
+   * couleur et non par la déformation des lettres.
+   */
+  .overline {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
+  /* Étiquette de donnée. Même correction que l'overline : plus de
+     capitales espacées, un simple petit corps discret. */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .lede {
+    max-width: 42ch;
+    text-wrap: pretty;
+    hyphens: none;
+  }
+
+  .container-t {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 82rem;
+    padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
+  }
+
+  /* ————— Boutons ————— */
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    border-radius: 0.375rem;
+    padding: 0.9rem 1.7rem;
+    font-size: 0.93rem;
+    font-weight: 550;
+    line-height: 1;
+    letter-spacing: -0.005em;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      background-color 0.35s var(--ease-out-soft),
+      border-color 0.35s var(--ease-out-soft),
+      color 0.35s var(--ease-out-soft),
+      box-shadow 0.35s var(--ease-out-soft),
+      transform 0.35s var(--ease-out-soft);
+  }
+  .btn:active {
+    transform: translateY(0) scale(0.985);
+  }
+  .btn-sm {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  /* Flèche : glisse à l'entrée du curseur */
+  .btn-arrow::after {
+    content: '→';
+    display: inline-block;
+    font-size: 1.05em;
+    line-height: 1;
+    transition: transform 0.4s var(--ease-out-soft);
+  }
+  .btn-arrow:hover::after {
+    transform: translateX(3px);
+  }
+
+  .btn-primary {
+    background: var(--color-brand);
+    color: #fff;
+    box-shadow:
+      0 1px 2px rgba(20, 22, 26, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  }
+  .btn-primary:hover {
+    background: var(--color-brand-deep);
+    box-shadow:
+      0 8px 22px -8px rgba(20, 101, 127, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-1.5px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-ink);
+    box-shadow: 0 6px 18px -10px rgba(20, 22, 26, 0.35);
+    transform: translateY(-1.5px);
+  }
+
+  /* Sur bande sombre uniquement */
+  .btn-onDark {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    color: #fff;
+  }
+  .btn-onDark:hover {
+    background: rgba(255, 255, 255, 0.13);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1.5px);
+  }
+
+  /* ————— Cartes ————— */
+
+  /**
+   * Ombre en deux plans : un contact rapproché et une diffusion
+   * large. La carte se pose sur le papier au lieu de flotter.
+   */
+  .card {
+    position: relative;
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(20, 22, 26, 0.03);
+    transition:
+      box-shadow 0.45s var(--ease-out-soft),
+      transform 0.45s var(--ease-out-soft),
+      border-color 0.45s var(--ease-out-soft);
+  }
+  .card:hover {
+    box-shadow:
+      0 2px 4px rgba(20, 22, 26, 0.05),
+      0 22px 48px -20px rgba(20, 22, 26, 0.22);
+    border-color: #d6d5cf;
+    transform: translateY(-4px);
+  }
+  /* Filet d'accent qui se déploie en tête de carte au survol */
+  .card::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 2px;
+    background: var(--color-brand);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.55s var(--ease-out-soft);
+    z-index: 2;
+  }
+  .card:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Voile photo, pour la lisibilité du texte posé dessus */
+  .scrim {
+    background: linear-gradient(
+      to top,
+      rgba(15, 16, 18, 0.82) 0%,
+      rgba(15, 16, 18, 0.35) 45%,
+      rgba(15, 16, 18, 0.12) 100%
+    );
+  }
+
+  /* ————— Lien texte ————— */
+  .link-t {
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s var(--ease-out-soft);
+  }
+  .link-t::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--ease-out-soft);
+  }
+  .link-t:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* ————— Champs ————— */
+  .field {
+    width: 100%;
+    border-radius: 0.375rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-paper);
+    padding: 0.8rem 0.95rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    transition:
+      border-color 0.3s var(--ease-out-soft),
+      box-shadow 0.3s var(--ease-out-soft);
+  }
+  .field::placeholder {
+    color: #9a9ea6;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px rgba(20, 101, 127, 0.12);
+  }
+  textarea.field {
+    resize: vertical;
+    line-height: 1.6;
+  }
+  select.field {
+    appearance: none;
+    cursor: pointer;
+  }
+}
+
+/* ————— Traitement photographique ————— */
+
+/**
+ * Étalonnage commun à toutes les photographies : léger gain de
+ * contraste et de densité, saturation contenue. Objectif : une
+ * chaîne d'images cohérente, sans virage de couleur visible.
+ */
+.photo {
+  filter: contrast(1.06) saturate(0.94) brightness(0.99);
+}
+
+/* Zoom très doux au survol */
+.img-zoom {
+  transition: transform 1.1s var(--ease-out-soft);
+}
+.card:hover .img-zoom,
+a:hover .img-zoom {
+  transform: scale(1.045);
+}
+
+/* ————— Cibles tactiles : téléphone et e-mail —————
+   Ce sont les actions les plus utiles pour quelqu'un qui consulte
+   depuis un chantier. La zone est étendue, la mise en page ne
+   bouge pas d'un pixel. */
+@media (pointer: coarse) {
+  a[href^='tel:']:not(.btn),
+  a[href^='mailto:']:not(.btn) {
+    padding-block: 0.6rem;
+    margin-block: -0.6rem;
+  }
+}
+
+/* ————— Apparitions au défilement —————
+   L'état de départ est porté par une classe : sans JavaScript, ou
+   en mouvement réduit, le contenu reste visible. */
+.reveal {
+  opacity: 0;
+}
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+  }
+}
+
+/* ————— Détails ————— */
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PLANCHES TECHNIQUES — mouvements de la couche graphique métier
+   ───────────────────────────────────────────────────────────────────────
+   Quatre animations pour tout le vocabulaire froid/thermodynamique, et
+   chacune décrit un phénomène réel : l'air soufflé dérive, le fluide
+   parcourt la liaison, l'hélice tourne, le motif pivote.
+
+   Aucune n'est décorative, aucune n'attire l'œil : ce sont des mouvements
+   lents (7 à 90 s) et de faible amplitude. Le bloc
+   `prefers-reduced-motion` défini plus haut les neutralise toutes — il
+   force `animation-duration: 0.01ms` sur `*`, donc rien à répéter ici.
+
+   Préfixe `tfc-` : ces classes n'appartiennent pas au système de mise en
+   page, elles ne doivent jamais servir à autre chose qu'une planche.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes tfc-flux {
+  to {
+    stroke-dashoffset: -52;
+  }
+}
+
+@keyframes tfc-circule {
+  to {
+    stroke-dashoffset: -646;
+  }
+}
+
+@keyframes tfc-helice {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tfc-pivot {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* L'air soufflé : les tirets avancent le long de leur arc. */
+.tfc-flux {
+  animation: tfc-flux 7s linear infinite;
+}
+
+/* Le fluide : un segment unique fait le tour de la liaison. Lent, parce
+   qu'un fluide frigorigène n'est pas un curseur de chargement. */
+.tfc-circule {
+  animation: tfc-circule 11s linear infinite;
+}
+
+/* L'hélice du groupe. Lente au point d'être presque immobile : une hélice
+   qui tourne vite ferait clignoter la planche.
+
+   ⚠ `transform-origin: center` ne se résout PAS au centre de l'élément sur
+   un nœud SVG : `transform-box` y vaut `view-box` par défaut, donc l'origine
+   tombe au centre de la FENÊTRE du dessin et les pales partent en orbite.
+   La coupe de l'accueil corrige ce point CHEZ ELLE, par un style local
+   (`components/thermo/SystemeThermique.tsx`). La correction n'est pas posée
+   ici pour ne pas modifier le rendu de /chambres-froides ni de
+   /refrigeration, qui utilisent la même classe. */
+.tfc-helice {
+  animation: tfc-helice 24s linear infinite;
+  transform-origin: center;
+}
+
+/* Le motif de fond. Une révolution par minute et demie, sous 6 %
+   d'opacité : on ne le voit pas bouger, on le sent. */
+.tfc-pivot {
+  animation: tfc-pivot 90s linear infinite;
+  transform-origin: center;
+}
+
+/* Le fluide chaud circule en sens INVERSE du fluide froid. Ce n'est pas un
+   effet : sur la planche de l'accueil, le circuit de chauffage part de la
+   chaudière et le circuit frigorifique y revient. Deux sens opposés, deux
+   animations. */
+@keyframes tfc-circule-inverse {
+  to {
+    stroke-dashoffset: 646;
+  }
+}
+
+.tfc-circule-inverse {
+  animation: tfc-circule-inverse 14s linear infinite;
+}

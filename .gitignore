@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+build/
+
+# Secrets — ne jamais versionner
+.env
+.env.local
+.env*.local
+
+# Captures et fichiers de travail
+.shots*/
+.scene*/
+.audit/
+.verif/
+.plates/
+tsconfig.tsbuildinfo
+.DS_Store

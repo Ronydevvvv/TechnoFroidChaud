@@ -1,0 +1,3954 @@
+{
+ "source": "C:\\Users\\rbk57\\Downloads\\techno-froid-chaud\\public\\3d\\originals\\refrig.skp",
+ "source_size_bytes": 846511,
+ "blender": "5.1.2",
+ "totals": {
+  "objects": 67,
+  "meshes": 41,
+  "vertices": 5475,
+  "triangles": 10215,
+  "materials": 15
+ },
+ "extent_meters": [
+  1.105,
+  0.991,
+  0.75
+ ],
+ "materials": [
+  "*10",
+  "*15",
+  "*3",
+  "*4",
+  "*5",
+  "*7",
+  "<Gray>",
+  "DefaultMaterial",
+  "[Color_005]",
+  "[Color_H06]",
+  "[Metal_Aluminum_Anodized]",
+  "[Metal_Aluminum_Anodized] copy",
+  "[Metal_Aluminum_Anodized]2",
+  "[Metal_Rough] copy",
+  "[Metal_Rough] copy1"
+ ],
+ "collections": [
+  {
+   "name": "Belt Driven Fan_*3",
+   "objects": [
+    "G-",
+    "G-.001",
+    "G-.002",
+    "G-Allen Slug",
+    "Group#2",
+    "G-Allen Slug.001",
+    "G-.003",
+    "G-.004",
+    "Group#2.001",
+    "G-Allen Slug.002",
+    "G-.005",
+    "G-.006",
+    "Group#2.002",
+    "G-Allen Slug.003",
+    "G-.007",
+    "G-.008"
+   ]
+  },
+  {
+   "name": "Belt Driven Fan_*3.001",
+   "objects": []
+  },
+  {
+   "name": "SKP Components",
+   "objects": [
+    "G-",
+    "G-.001",
+    "G-.002",
+    "G-Allen Slug",
+    "Group#2",
+    "G-Allen Slug.001",
+    "G-.003",
+    "G-.004",
+    "Group#2.001",
+    "G-Allen Slug.002",
+    "G-.005",
+    "G-.006",
+    "Group#2.002",
+    "G-Allen Slug.003",
+    "G-.007",
+    "G-.008"
+   ]
+  },
+  {
+   "name": "SKP Imported Data",
+   "objects": []
+  },
+  {
+   "name": "SKP Mesh Objects",
+   "objects": [
+    "_(Loose Entity)",
+    "_G-Object (Loose Mesh)",
+    "G-Object",
+    "C-Belt Driven Fan",
+    "G-Object.001",
+    "_G-Object.002 (Loose Mesh)",
+    "G-Object.002",
+    "G-Allen Slug.004",
+    "_C-Group#2 (Loose Mesh)",
+    "C-Group#2",
+    "G-Object.003",
+    "G-Object.004",
+    "_C-Group#2 (Loose Mesh).001",
+    "C-Group#2.001",
+    "G-Object.005",
+    "G-Object.006",
+    "_C-Group#2 (Loose Mesh).002",
+    "C-Group#2.002",
+    "G-Object.007",
+    "G-Object.008",
+    "G-Object.009",
+    "G-Object.010",
+    "G-Object.011",
+    "G-Object.012",
+    "G-Object.013",
+    "G-Object.014",
+    "G-Object.015",
+    "G-Object.016",
+    "G-Object.017",
+    "G-Object.018",
+    "C-Copeland Scroll Compressor"
+   ]
+  },
+  {
+   "name": "SKP Scenes (as Cameras)",
+   "objects": []
+  }
+ ],
+ "geometry_clusters": [
+  {
+   "count": 10,
+   "vertices_each": 61,
+   "polygons_each": 95,
+   "dimensions": [
+    0.0,
+    0.02,
+    0.02
+   ],
+   "members": [
+    "G-Object.009",
+    "G-Object.010",
+    "G-Object.011",
+    "G-Object.012",
+    "G-Object.013",
+    "G-Object.014",
+    "G-Object.015",
+    "G-Object.016",
+    "G-Object.017",
+    "G-Object.018"
+   ]
+  },
+  {
+   "count": 4,
+   "vertices_each": 96,
+   "polygons_each": 144,
+   "dimensions": [
+    0.06,
+    0.04,
+    0.06
+   ],
+   "members": [
+    "_C-Group#2 (Loose Mesh)",
+    "_C-Group#2 (Loose Mesh).001",
+    "_C-Group#2 (Loose Mesh).002",
+    "_G-Object.002 (Loose Mesh)"
+   ]
+  },
+  {
+   "count": 4,
+   "vertices_each": 96,
+   "polygons_each": 144,
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "members": [
+    "G-.002",
+    "Group#2",
+    "Group#2.001",
+    "Group#2.002"
+   ]
+  },
+  {
+   "count": 4,
+   "vertices_each": 60,
+   "polygons_each": 116,
+   "dimensions": [
+    0.01,
+    0.01,
+    0.03
+   ],
+   "members": [
+    "G-Allen Slug",
+    "G-Allen Slug.001",
+    "G-Allen Slug.002",
+    "G-Allen Slug.003"
+   ]
+  },
+  {
+   "count": 3,
+   "vertices_each": 96,
+   "polygons_each": 144,
+   "dimensions": [
+    0.02,
+    0.02,
+    0.02
+   ],
+   "members": [
+    "G-.003",
+    "G-.005",
+    "G-.007"
+   ]
+  },
+  {
+   "count": 3,
+   "vertices_each": 96,
+   "polygons_each": 144,
+   "dimensions": [
+    0.02,
+    0.01,
+    0.02
+   ],
+   "members": [
+    "G-.004",
+    "G-.006",
+    "G-.008"
+   ]
+  },
+  {
+   "count": 3,
+   "vertices_each": 372,
+   "polygons_each": 884,
+   "dimensions": [
+    0.04,
+    0.08,
+    0.0
+   ],
+   "members": [
+    "G-Object.003",
+    "G-Object.005",
+    "G-Object.007"
+   ]
+  },
+  {
+   "count": 3,
+   "vertices_each": 25,
+   "polygons_each": 33,
+   "dimensions": [
+    0.17,
+    0.18,
+    0.0
+   ],
+   "members": [
+    "G-Object.004",
+    "G-Object.006",
+    "G-Object.008"
+   ]
+  }
+ ],
+ "fan_candidates": [
+  {
+   "name": "G-Object.004",
+   "score": 6,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.1719,
+    0.1831,
+    0.0012
+   ],
+   "location": [
+    0.0077,
+    -0.0326,
+    0.0982
+   ],
+   "triangles": 33
+  },
+  {
+   "name": "G-Object.006",
+   "score": 6,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.1719,
+    0.1831,
+    0.0012
+   ],
+   "location": [
+    -0.0889,
+    -0.0326,
+    -0.0425
+   ],
+   "triangles": 33
+  },
+  {
+   "name": "G-Object.008",
+   "score": 6,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.1719,
+    0.1831,
+    0.0012
+   ],
+   "location": [
+    0.0812,
+    -0.0326,
+    -0.0558
+   ],
+   "triangles": 33
+  },
+  {
+   "name": "_C-Group#2 (Loose Mesh)",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0556,
+    0.0361,
+    0.0556
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "_C-Group#2 (Loose Mesh).001",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0556,
+    0.0361,
+    0.0556
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "_C-Group#2 (Loose Mesh).002",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0556,
+    0.0361,
+    0.0556
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "_G-Object.002 (Loose Mesh)",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0556,
+    0.0361,
+    0.0556
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "G-.002",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "location": [
+    1.883,
+    1.0597,
+    0.578
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "G-.003",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0215,
+    0.0215,
+    0.0215
+   ],
+   "location": [
+    1.8917,
+    1.0871,
+    0.5728
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "G-.005",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0215,
+    0.0215,
+    0.0215
+   ],
+   "location": [
+    1.9571,
+    1.0871,
+    0.5508
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "G-.007",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0215,
+    0.0215,
+    0.0215
+   ],
+   "location": [
+    1.9053,
+    1.0871,
+    0.5052
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "Group#2",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "location": [
+    1.8837,
+    1.0597,
+    0.5073
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "Group#2.001",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "location": [
+    1.9043,
+    1.0597,
+    0.5905
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "Group#2.002",
+   "score": 5,
+   "reasons": [
+    "section quasi circulaire",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "location": [
+    1.9661,
+    1.0597,
+    0.531
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "G-.004",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0215,
+    0.009,
+    0.0157
+   ],
+   "location": [
+    1.874,
+    1.1229,
+    0.631
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "G-.006",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0215,
+    0.009,
+    0.0157
+   ],
+   "location": [
+    2.0163,
+    1.1229,
+    0.537
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "G-.008",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0215,
+    0.009,
+    0.0157
+   ],
+   "location": [
+    1.8638,
+    1.1229,
+    0.4608
+   ],
+   "triangles": 144
+  },
+  {
+   "name": "G-Allen Slug",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0081,
+    0.0081,
+    0.0302
+   ],
+   "location": [
+    1.9344,
+    1.0988,
+    0.5742
+   ],
+   "triangles": 116
+  },
+  {
+   "name": "G-Allen Slug.001",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0081,
+    0.0081,
+    0.0302
+   ],
+   "location": [
+    1.8875,
+    1.0988,
+    0.5586
+   ],
+   "triangles": 116
+  },
+  {
+   "name": "G-Allen Slug.002",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0081,
+    0.0081,
+    0.0302
+   ],
+   "location": [
+    1.9469,
+    1.0988,
+    0.5616
+   ],
+   "triangles": 116
+  },
+  {
+   "name": "G-Allen Slug.003",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0081,
+    0.0081,
+    0.0302
+   ],
+   "location": [
+    1.9198,
+    1.0988,
+    0.5087
+   ],
+   "triangles": 116
+  },
+  {
+   "name": "G-Object.003",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0414,
+    0.0769,
+    0.0048
+   ],
+   "location": [
+    -0.0063,
+    -0.0141,
+    0.0521
+   ],
+   "triangles": 884
+  },
+  {
+   "name": "G-Object.005",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0414,
+    0.0769,
+    0.0048
+   ],
+   "location": [
+    -0.0419,
+    -0.0141,
+    -0.0315
+   ],
+   "triangles": 884
+  },
+  {
+   "name": "G-Object.007",
+   "score": 4,
+   "reasons": [
+    "profil aplati",
+    "exemplaires identiques multiples"
+   ],
+   "dimensions": [
+    0.0414,
+    0.0769,
+    0.0048
+   ],
+   "location": [
+    0.0483,
+    -0.0141,
+    -0.0205
+   ],
+   "triangles": 884
+  },
+  {
+   "name": "G-.001",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.8084,
+    0.0578,
+    0.7505
+   ],
+   "location": [
+    1.3462,
+    1.016,
+    0.0
+   ],
+   "triangles": 84
+  },
+  {
+   "name": "G-Object.009",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.0497,
+    0.3573,
+    0.5584
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.010",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.0497,
+    0.9158,
+    0.5577
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.011",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.0649,
+    0.9386,
+    0.5578
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.012",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.9736,
+    0.9386,
+    0.5562
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.013",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.9974,
+    0.9285,
+    0.5562
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.014",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.9974,
+    0.244,
+    0.5562
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.015",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.8905,
+    0.2116,
+    0.5112
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.016",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.8921,
+    0.2116,
+    0.0542
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.017",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.2683,
+    0.2116,
+    0.0511
+   ],
+   "triangles": 95
+  },
+  {
+   "name": "G-Object.018",
+   "score": 3,
+   "reasons": [
+    "section quasi circulaire",
+    "profil aplati"
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "location": [
+    1.2695,
+    0.2116,
+    0.5113
+   ],
+   "triangles": 95
+  }
+ ],
+ "objects": [
+  {
+   "name": "_(Loose Entity)",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.9382,
+    0.7223,
+    0.5747
+   ],
+   "vertices": 754,
+   "polygons": 1303,
+   "triangles": 1303,
+   "materials": [
+    "DefaultMaterial",
+    "[Metal_Rough] copy",
+    "[Metal_Rough] copy1",
+    "*15"
+   ],
+   "bbox_world": {
+    "min": [
+     1.0544,
+     0.2116,
+     0.0
+    ],
+    "max": [
+     1.9926,
+     0.9339,
+     0.5747
+    ],
+    "size": [
+     0.9382,
+     0.7223,
+     0.5747
+    ]
+   }
+  },
+  {
+   "name": "_C-Group#2 (Loose Mesh)",
+   "type": "MESH",
+   "parent": "C-Group#2",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    -0.0,
+    0.0,
+    180.0
+   ],
+   "scale": [
+    1.0943,
+    0.7113,
+    1.0943
+   ],
+   "dimensions": [
+    0.0556,
+    0.0361,
+    0.0556
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.5286,
+     0.7434,
+     0.2548
+    ],
+    "max": [
+     1.5842,
+     0.7796,
+     0.3104
+    ],
+    "size": [
+     0.0556,
+     0.0361,
+     0.0556
+    ]
+   }
+  },
+  {
+   "name": "_C-Group#2 (Loose Mesh).001",
+   "type": "MESH",
+   "parent": "C-Group#2.001",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    -180.0,
+    60.0,
+    0.0
+   ],
+   "scale": [
+    1.0943,
+    0.7113,
+    1.0943
+   ],
+   "dimensions": [
+    0.0556,
+    0.0361,
+    0.0556
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.5299,
+     0.7434,
+     0.2551
+    ],
+    "max": [
+     1.5854,
+     0.7796,
+     0.3107
+    ],
+    "size": [
+     0.0556,
+     0.0361,
+     0.0556
+    ]
+   }
+  },
+  {
+   "name": "_C-Group#2 (Loose Mesh).002",
+   "type": "MESH",
+   "parent": "C-Group#2.002",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    -180.0,
+    -60.0,
+    -0.0
+   ],
+   "scale": [
+    1.0943,
+    0.7113,
+    1.0943
+   ],
+   "dimensions": [
+    0.0556,
+    0.0361,
+    0.0556
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.5289,
+     0.7434,
+     0.2561
+    ],
+    "max": [
+     1.5845,
+     0.7796,
+     0.3116
+    ],
+    "size": [
+     0.0556,
+     0.0361,
+     0.0556
+    ]
+   }
+  },
+  {
+   "name": "_G-Object (Loose Mesh)",
+   "type": "MESH",
+   "parent": "G-Object",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    -90.0,
+    -0.0,
+    180.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.1651,
+    0.1651,
+    0.1175
+   ],
+   "vertices": 195,
+   "polygons": 386,
+   "triangles": 386,
+   "materials": [
+    "[Metal_Aluminum_Anodized]",
+    "*5",
+    "*7",
+    "*3"
+   ],
+   "bbox_world": {
+    "min": [
+     1.4743,
+     0.6154,
+     0.1999
+    ],
+    "max": [
+     1.6394,
+     0.7328,
+     0.365
+    ],
+    "size": [
+     0.1651,
+     0.1175,
+     0.1651
+    ]
+   }
+  },
+  {
+   "name": "_G-Object.002 (Loose Mesh)",
+   "type": "MESH",
+   "parent": "G-Object.002",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    180.0,
+    90.0,
+    0.0
+   ],
+   "scale": [
+    1.0943,
+    0.7113,
+    1.0943
+   ],
+   "dimensions": [
+    0.0556,
+    0.0361,
+    0.0556
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.5291,
+     0.7434,
+     0.2553
+    ],
+    "max": [
+     1.5847,
+     0.7796,
+     0.3109
+    ],
+    "size": [
+     0.0556,
+     0.0361,
+     0.0556
+    ]
+   }
+  },
+  {
+   "name": "Allen Slug",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "C-Belt Driven Fan",
+   "type": "EMPTY",
+   "parent": "G-Object",
+   "children": [
+    "C-Group#2",
+    "C-Group#2.001",
+    "C-Group#2.002",
+    "G-Object.001",
+    "G-Object.002"
+   ],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.0688,
+    0.5142,
+    -0.6869
+   ],
+   "rotation_euler": [
+    -0.0,
+    -0.0,
+    180.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "C-Copeland Scroll Compressor",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.8603,
+    -0.8936,
+    0.0127
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "scale": [
+    1.2543,
+    1.2543,
+    1.2543
+   ],
+   "dimensions": [
+    0.3792,
+    0.3792,
+    0.5209
+   ],
+   "vertices": 929,
+   "polygons": 1961,
+   "triangles": 1961,
+   "materials": [
+    "*4",
+    "DefaultMaterial",
+    "*10"
+   ],
+   "bbox_world": {
+    "min": [
+     1.2377,
+     0.2725,
+     0.0127
+    ],
+    "max": [
+     1.617,
+     0.6517,
+     0.5336
+    ],
+    "size": [
+     0.3792,
+     0.3792,
+     0.5209
+    ]
+   }
+  },
+  {
+   "name": "C-Group#2",
+   "type": "EMPTY",
+   "parent": "C-Belt Driven Fan",
+   "children": [
+    "_C-Group#2 (Loose Mesh)",
+    "G-Object.003",
+    "G-Object.004"
+   ],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -1.4956,
+    -0.5469,
+    0.4027
+   ],
+   "rotation_euler": [
+    -0.0,
+    0.0,
+    180.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "C-Group#2.001",
+   "type": "EMPTY",
+   "parent": "C-Belt Driven Fan",
+   "children": [
+    "_C-Group#2 (Loose Mesh).001",
+    "G-Object.005",
+    "G-Object.006"
+   ],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -1.5119,
+    -0.5469,
+    0.4688
+   ],
+   "rotation_euler": [
+    -180.0,
+    60.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "C-Group#2.002",
+   "type": "EMPTY",
+   "parent": "C-Belt Driven Fan",
+   "children": [
+    "_C-Group#2 (Loose Mesh).002",
+    "G-Object.007",
+    "G-Object.008"
+   ],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -1.561,
+    -0.5469,
+    0.4216
+   ],
+   "rotation_euler": [
+    -180.0,
+    -60.0,
+    -0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "G-",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.9093,
+    1.0597,
+    0.5342
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "scale": [
+    1.3783,
+    1.3783,
+    1.3783
+   ],
+   "dimensions": [
+    0.0175,
+    0.1428,
+    0.0175
+   ],
+   "vertices": 48,
+   "polygons": 92,
+   "triangles": 92,
+   "materials": [
+    "[Color_005]"
+   ],
+   "bbox_world": {
+    "min": [
+     1.9093,
+     1.0597,
+     0.5342
+    ],
+    "max": [
+     1.9268,
+     1.2025,
+     0.5517
+    ],
+    "size": [
+     0.0175,
+     0.1428,
+     0.0175
+    ]
+   }
+  },
+  {
+   "name": "G-.001",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.3462,
+    1.016,
+    0.0
+   ],
+   "rotation_euler": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0024,
+    1.0024,
+    1.0024
+   ],
+   "dimensions": [
+    0.8084,
+    0.0578,
+    0.7505
+   ],
+   "vertices": 56,
+   "polygons": 84,
+   "triangles": 84,
+   "materials": [
+    "[Color_H06]"
+   ],
+   "bbox_world": {
+    "min": [
+     1.3462,
+     0.9963,
+     -0.0
+    ],
+    "max": [
+     2.1545,
+     1.0542,
+     0.7505
+    ],
+    "size": [
+     0.8084,
+     0.0578,
+     0.7505
+    ]
+   }
+  },
+  {
+   "name": "G-.002",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.883,
+    1.0597,
+    0.578
+   ],
+   "rotation_euler": [
+    -0.0,
+    90.0,
+    0.0
+   ],
+   "scale": [
+    1.3783,
+    1.3783,
+    1.3783
+   ],
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.883,
+     1.0597,
+     0.5079
+    ],
+    "max": [
+     1.953,
+     1.1297,
+     0.578
+    ],
+    "size": [
+     0.07,
+     0.07,
+     0.07
+    ]
+   }
+  },
+  {
+   "name": "G-.003",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.8917,
+    1.0871,
+    0.5728
+   ],
+   "rotation_euler": [
+    0.0,
+    120.0,
+    90.0
+   ],
+   "scale": [
+    0.4223,
+    0.4223,
+    0.4223
+   ],
+   "dimensions": [
+    0.0215,
+    0.0215,
+    0.0215
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.8702,
+     1.0803,
+     0.5475
+    ],
+    "max": [
+     1.8917,
+     1.1017,
+     0.5689
+    ],
+    "size": [
+     0.0215,
+     0.0215,
+     0.0215
+    ]
+   }
+  },
+  {
+   "name": "G-.004",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.874,
+    1.1229,
+    0.631
+   ],
+   "rotation_euler": [
+    -0.0,
+    -120.0,
+    -90.0
+   ],
+   "scale": [
+    -0.4223,
+    -0.1777,
+    -0.3083
+   ],
+   "dimensions": [
+    0.0215,
+    0.009,
+    0.0157
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.865,
+     1.1022,
+     0.6156
+    ],
+    "max": [
+     1.874,
+     1.1194,
+     0.6356
+    ],
+    "size": [
+     0.009,
+     0.0172,
+     0.02
+    ]
+   }
+  },
+  {
+   "name": "G-.005",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.9571,
+    1.0871,
+    0.5508
+   ],
+   "rotation_euler": [
+    73.9,
+    -25.66,
+    -146.31
+   ],
+   "scale": [
+    0.4223,
+    0.4223,
+    0.4223
+   ],
+   "dimensions": [
+    0.0215,
+    0.0215,
+    0.0215
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.9351,
+     1.0803,
+     0.5528
+    ],
+    "max": [
+     1.9644,
+     1.1017,
+     0.5821
+    ],
+    "size": [
+     0.0293,
+     0.0215,
+     0.0293
+    ]
+   }
+  },
+  {
+   "name": "G-.006",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    2.0163,
+    1.1229,
+    0.537
+   ],
+   "rotation_euler": [
+    -73.9,
+    25.66,
+    33.69
+   ],
+   "scale": [
+    -0.4223,
+    -0.1777,
+    -0.3083
+   ],
+   "dimensions": [
+    0.0215,
+    0.009,
+    0.0157
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     2.003,
+     1.1022,
+     0.5347
+    ],
+    "max": [
+     2.0248,
+     1.1194,
+     0.5525
+    ],
+    "size": [
+     0.0218,
+     0.0172,
+     0.0178
+    ]
+   }
+  },
+  {
+   "name": "G-.007",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.9053,
+    1.0871,
+    0.5052
+   ],
+   "rotation_euler": [
+    -73.9,
+    -25.66,
+    -33.69
+   ],
+   "scale": [
+    0.4223,
+    0.4223,
+    0.4223
+   ],
+   "dimensions": [
+    0.0215,
+    0.0215,
+    0.0215
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.9087,
+     1.0803,
+     0.4886
+    ],
+    "max": [
+     1.938,
+     1.1017,
+     0.5179
+    ],
+    "size": [
+     0.0293,
+     0.0215,
+     0.0293
+    ]
+   }
+  },
+  {
+   "name": "G-.008",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.8638,
+    1.1229,
+    0.4608
+   ],
+   "rotation_euler": [
+    73.9,
+    25.66,
+    146.31
+   ],
+   "scale": [
+    -0.4223,
+    -0.1777,
+    -0.3083
+   ],
+   "dimensions": [
+    0.0215,
+    0.009,
+    0.0157
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.8598,
+     1.1022,
+     0.4507
+    ],
+    "max": [
+     1.8816,
+     1.1194,
+     0.4685
+    ],
+    "size": [
+     0.0218,
+     0.0172,
+     0.0178
+    ]
+   }
+  },
+  {
+   "name": "G-Allen Slug",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.9344,
+    1.0988,
+    0.5742
+   ],
+   "rotation_euler": [
+    -37.5,
+    0.0,
+    -90.0
+   ],
+   "scale": [
+    2.7566,
+    2.7566,
+    2.7566
+   ],
+   "dimensions": [
+    0.0081,
+    0.0081,
+    0.0302
+   ],
+   "vertices": 60,
+   "polygons": 116,
+   "triangles": 116,
+   "materials": [
+    "<Gray>"
+   ],
+   "bbox_world": {
+    "min": [
+     1.9186,
+     1.0907,
+     0.5488
+    ],
+    "max": [
+     1.9434,
+     1.0988,
+     0.5776
+    ],
+    "size": [
+     0.0248,
+     0.0081,
+     0.0289
+    ]
+   }
+  },
+  {
+   "name": "G-Allen Slug.001",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.8875,
+    1.0988,
+    0.5586
+   ],
+   "rotation_euler": [
+    52.5,
+    -0.0,
+    -90.0
+   ],
+   "scale": [
+    2.7566,
+    2.7566,
+    2.7566
+   ],
+   "dimensions": [
+    0.0081,
+    0.0081,
+    0.0302
+   ],
+   "vertices": 60,
+   "polygons": 116,
+   "triangles": 116,
+   "materials": [
+    "<Gray>"
+   ],
+   "bbox_world": {
+    "min": [
+     1.884,
+     1.0907,
+     0.5429
+    ],
+    "max": [
+     1.9129,
+     1.0988,
+     0.5677
+    ],
+    "size": [
+     0.0289,
+     0.0081,
+     0.0248
+    ]
+   }
+  },
+  {
+   "name": "G-Allen Slug.002",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.9469,
+    1.0988,
+    0.5616
+   ],
+   "rotation_euler": [
+    -67.5,
+    0.0,
+    -90.0
+   ],
+   "scale": [
+    2.7566,
+    2.7566,
+    2.7566
+   ],
+   "dimensions": [
+    0.0081,
+    0.0081,
+    0.0302
+   ],
+   "vertices": 60,
+   "polygons": 116,
+   "triangles": 116,
+   "materials": [
+    "<Gray>"
+   ],
+   "bbox_world": {
+    "min": [
+     1.923,
+     1.0907,
+     0.5442
+    ],
+    "max": [
+     1.954,
+     1.0988,
+     0.5633
+    ],
+    "size": [
+     0.031,
+     0.0081,
+     0.019
+    ]
+   }
+  },
+  {
+   "name": "G-Allen Slug.003",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.9198,
+    1.0988,
+    0.5087
+   ],
+   "rotation_euler": [
+    172.5,
+    -0.0,
+    -90.0
+   ],
+   "scale": [
+    2.7566,
+    2.7566,
+    2.7566
+   ],
+   "dimensions": [
+    0.0081,
+    0.0081,
+    0.0302
+   ],
+   "vertices": 60,
+   "polygons": 116,
+   "triangles": 116,
+   "materials": [
+    "<Gray>"
+   ],
+   "bbox_world": {
+    "min": [
+     1.9112,
+     1.0907,
+     0.5043
+    ],
+    "max": [
+     1.9231,
+     1.0988,
+     0.5353
+    ],
+    "size": [
+     0.012,
+     0.0081,
+     0.031
+    ]
+   }
+  },
+  {
+   "name": "G-Allen Slug.004",
+   "type": "MESH",
+   "parent": "G-Object.002",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -0.0407,
+    -0.0202,
+    -0.003
+   ],
+   "rotation_euler": [
+    -37.5,
+    0.0,
+    90.0
+   ],
+   "scale": [
+    1.4226,
+    2.1886,
+    2.1886
+   ],
+   "dimensions": [
+    0.0042,
+    0.0064,
+    0.024
+   ],
+   "vertices": 60,
+   "polygons": 116,
+   "triangles": 116,
+   "materials": [
+    "<Gray>"
+   ],
+   "bbox_world": {
+    "min": [
+     1.5368,
+     0.7594,
+     0.2878
+    ],
+    "max": [
+     1.5564,
+     0.7636,
+     0.3107
+    ],
+    "size": [
+     0.0197,
+     0.0042,
+     0.0229
+    ]
+   }
+  },
+  {
+   "name": "G-Object",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [
+    "_G-Object (Loose Mesh)",
+    "C-Belt Driven Fan"
+   ],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    2.011,
+    0.8123,
+    0.539
+   ],
+   "rotation_euler": [
+    -90.0,
+    -0.0,
+    180.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "G-Object.001",
+   "type": "MESH",
+   "parent": "C-Belt Driven Fan",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -1.5159,
+    -0.5469,
+    0.4241
+   ],
+   "rotation_euler": [
+    -0.0,
+    -0.0,
+    180.0
+   ],
+   "scale": [
+    1.0943,
+    0.7113,
+    1.0943
+   ],
+   "dimensions": [
+    0.0139,
+    0.0737,
+    0.0139
+   ],
+   "vertices": 48,
+   "polygons": 92,
+   "triangles": 92,
+   "materials": [
+    "[Color_005]"
+   ],
+   "bbox_world": {
+    "min": [
+     1.55,
+     0.7059,
+     0.2762
+    ],
+    "max": [
+     1.5639,
+     0.7796,
+     0.2901
+    ],
+    "size": [
+     0.0139,
+     0.0737,
+     0.0139
+    ]
+   }
+  },
+  {
+   "name": "G-Object.002",
+   "type": "EMPTY",
+   "parent": "C-Belt Driven Fan",
+   "children": [
+    "_G-Object.002 (Loose Mesh)",
+    "G-Allen Slug.004"
+   ],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -1.495,
+    -0.5469,
+    0.4589
+   ],
+   "rotation_euler": [
+    180.0,
+    90.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "G-Object.003",
+   "type": "MESH",
+   "parent": "C-Group#2",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -0.0063,
+    -0.0141,
+    0.0521
+   ],
+   "rotation_euler": [
+    -0.76,
+    121.6,
+    -78.58
+   ],
+   "scale": [
+    0.3101,
+    0.3353,
+    0.2524
+   ],
+   "dimensions": [
+    0.0414,
+    0.0769,
+    0.0048
+   ],
+   "vertices": 372,
+   "polygons": 884,
+   "triangles": 884,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.5653,
+     0.7719,
+     0.266
+    ],
+    "max": [
+     1.6439,
+     0.8039,
+     0.3023
+    ],
+    "size": [
+     0.0786,
+     0.032,
+     0.0363
+    ]
+   }
+  },
+  {
+   "name": "G-Object.004",
+   "type": "MESH",
+   "parent": "C-Group#2",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0077,
+    -0.0326,
+    0.0982
+   ],
+   "rotation_euler": [
+    0.76,
+    -121.6,
+    101.42
+   ],
+   "scale": [
+    -0.3101,
+    -0.1411,
+    -0.1843
+   ],
+   "dimensions": [
+    0.1719,
+    0.1831,
+    0.0012
+   ],
+   "vertices": 25,
+   "polygons": 33,
+   "triangles": 33,
+   "materials": [
+    "[Metal_Aluminum_Anodized] copy"
+   ],
+   "bbox_world": {
+    "min": [
+     1.5827,
+     0.7538,
+     0.2068
+    ],
+    "max": [
+     1.7657,
+     0.8707,
+     0.3548
+    ],
+    "size": [
+     0.1829,
+     0.1168,
+     0.148
+    ]
+   }
+  },
+  {
+   "name": "G-Object.005",
+   "type": "MESH",
+   "parent": "C-Group#2.001",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -0.0419,
+    -0.0141,
+    -0.0315
+   ],
+   "rotation_euler": [
+    69.16,
+    -16.77,
+    31.73
+   ],
+   "scale": [
+    0.3101,
+    0.3353,
+    0.2524
+   ],
+   "dimensions": [
+    0.0414,
+    0.0769,
+    0.0048
+   ],
+   "vertices": 372,
+   "polygons": 884,
+   "triangles": 884,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.5024,
+     0.7715,
+     0.2918
+    ],
+    "max": [
+     1.5597,
+     0.8001,
+     0.3643
+    ],
+    "size": [
+     0.0573,
+     0.0286,
+     0.0725
+    ]
+   }
+  },
+  {
+   "name": "G-Object.006",
+   "type": "MESH",
+   "parent": "C-Group#2.001",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    -0.0889,
+    -0.0326,
+    -0.0425
+   ],
+   "rotation_euler": [
+    -69.16,
+    16.77,
+    -148.27
+   ],
+   "scale": [
+    -0.3101,
+    -0.1411,
+    -0.1843
+   ],
+   "dimensions": [
+    0.1719,
+    0.1831,
+    0.0012
+   ],
+   "vertices": 25,
+   "polygons": 33,
+   "triangles": 33,
+   "materials": [
+    "[Metal_Aluminum_Anodized] copy"
+   ],
+   "bbox_world": {
+    "min": [
+     1.4099,
+     0.7522,
+     0.2953
+    ],
+    "max": [
+     1.6052,
+     0.861,
+     0.4821
+    ],
+    "size": [
+     0.1953,
+     0.1087,
+     0.1868
+    ]
+   }
+  },
+  {
+   "name": "G-Object.007",
+   "type": "MESH",
+   "parent": "C-Group#2.002",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0483,
+    -0.0141,
+    -0.0205
+   ],
+   "rotation_euler": [
+    -69.16,
+    -16.77,
+    148.27
+   ],
+   "scale": [
+    0.3101,
+    0.3353,
+    0.2524
+   ],
+   "dimensions": [
+    0.0414,
+    0.0769,
+    0.0048
+   ],
+   "vertices": 372,
+   "polygons": 884,
+   "triangles": 884,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.4996,
+     0.7561,
+     0.1941
+    ],
+    "max": [
+     1.5544,
+     0.7851,
+     0.2722
+    ],
+    "size": [
+     0.0547,
+     0.0289,
+     0.0781
+    ]
+   }
+  },
+  {
+   "name": "G-Object.008",
+   "type": "MESH",
+   "parent": "C-Group#2.002",
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    0.0812,
+    -0.0326,
+    -0.0558
+   ],
+   "rotation_euler": [
+    69.16,
+    16.77,
+    -31.73
+   ],
+   "scale": [
+    -0.3101,
+    -0.1411,
+    -0.1843
+   ],
+   "dimensions": [
+    0.1719,
+    0.1831,
+    0.0012
+   ],
+   "vertices": 25,
+   "polygons": 33,
+   "triangles": 33,
+   "materials": [
+    "[Metal_Aluminum_Anodized] copy"
+   ],
+   "bbox_world": {
+    "min": [
+     1.3914,
+     0.7205,
+     0.0635
+    ],
+    "max": [
+     1.5867,
+     0.8292,
+     0.2503
+    ],
+    "size": [
+     0.1953,
+     0.1087,
+     0.1868
+    ]
+   }
+  },
+  {
+   "name": "G-Object.009",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.0497,
+    0.3573,
+    0.5584
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.0497,
+     0.3573,
+     0.5584
+    ],
+    "max": [
+     1.0544,
+     0.3732,
+     0.5742
+    ],
+    "size": [
+     0.0048,
+     0.0159,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.010",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.0497,
+    0.9158,
+    0.5577
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.0497,
+     0.9158,
+     0.5577
+    ],
+    "max": [
+     1.0544,
+     0.9317,
+     0.5736
+    ],
+    "size": [
+     0.0048,
+     0.0159,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.011",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.0649,
+    0.9386,
+    0.5578
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    -90.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.0649,
+     0.9339,
+     0.5578
+    ],
+    "max": [
+     1.0807,
+     0.9386,
+     0.5736
+    ],
+    "size": [
+     0.0159,
+     0.0048,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.012",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.9736,
+    0.9386,
+    0.5562
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    -90.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.9736,
+     0.9339,
+     0.5562
+    ],
+    "max": [
+     1.9895,
+     0.9386,
+     0.5721
+    ],
+    "size": [
+     0.0159,
+     0.0048,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.013",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.9974,
+    0.9285,
+    0.5562
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    180.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.9926,
+     0.9127,
+     0.5562
+    ],
+    "max": [
+     1.9974,
+     0.9285,
+     0.5721
+    ],
+    "size": [
+     0.0048,
+     0.0159,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.014",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.9974,
+    0.244,
+    0.5562
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    180.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.9926,
+     0.2281,
+     0.5562
+    ],
+    "max": [
+     1.9974,
+     0.244,
+     0.5721
+    ],
+    "size": [
+     0.0048,
+     0.0159,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.015",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.8905,
+    0.2116,
+    0.5112
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.8747,
+     0.2116,
+     0.5112
+    ],
+    "max": [
+     1.8905,
+     0.2163,
+     0.5271
+    ],
+    "size": [
+     0.0159,
+     0.0048,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.016",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.8921,
+    0.2116,
+    0.0542
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.8762,
+     0.2116,
+     0.0542
+    ],
+    "max": [
+     1.8921,
+     0.2163,
+     0.0701
+    ],
+    "size": [
+     0.0159,
+     0.0048,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.017",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.2683,
+    0.2116,
+    0.0511
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.2525,
+     0.2116,
+     0.0511
+    ],
+    "max": [
+     1.2683,
+     0.2163,
+     0.067
+    ],
+    "size": [
+     0.0159,
+     0.0048,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "G-Object.018",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "SKP Mesh Objects"
+   ],
+   "location": [
+    1.2695,
+    0.2116,
+    0.5113
+   ],
+   "rotation_euler": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0048,
+    0.0159,
+    0.0159
+   ],
+   "vertices": 61,
+   "polygons": 95,
+   "triangles": 95,
+   "materials": [
+    "[Metal_Rough] copy1"
+   ],
+   "bbox_world": {
+    "min": [
+     1.2536,
+     0.2116,
+     0.5113
+    ],
+    "max": [
+     1.2695,
+     0.2163,
+     0.5272
+    ],
+    "size": [
+     0.0159,
+     0.0048,
+     0.0159
+    ]
+   }
+  },
+  {
+   "name": "Group#2",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.8837,
+    1.0597,
+    0.5073
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.3783,
+    1.3783,
+    1.3783
+   ],
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.8837,
+     1.0597,
+     0.5073
+    ],
+    "max": [
+     1.9537,
+     1.1297,
+     0.5773
+    ],
+    "size": [
+     0.07,
+     0.07,
+     0.07
+    ]
+   }
+  },
+  {
+   "name": "Group#2.001",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.9043,
+    1.0597,
+    0.5905
+   ],
+   "rotation_euler": [
+    -0.0,
+    120.0,
+    0.0
+   ],
+   "scale": [
+    1.3783,
+    1.3783,
+    1.3783
+   ],
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.8821,
+     1.0597,
+     0.5077
+    ],
+    "max": [
+     1.9521,
+     1.1297,
+     0.5777
+    ],
+    "size": [
+     0.07,
+     0.07,
+     0.07
+    ]
+   }
+  },
+  {
+   "name": "Group#2.002",
+   "type": "MESH",
+   "parent": null,
+   "children": [],
+   "collections": [
+    "Belt Driven Fan_*3",
+    "SKP Components"
+   ],
+   "location": [
+    1.9661,
+    1.0597,
+    0.531
+   ],
+   "rotation_euler": [
+    -0.0,
+    -120.0,
+    -0.0
+   ],
+   "scale": [
+    1.3783,
+    1.3783,
+    1.3783
+   ],
+   "dimensions": [
+    0.07,
+    0.07,
+    0.07
+   ],
+   "vertices": 96,
+   "polygons": 144,
+   "triangles": 144,
+   "materials": [
+    "[Metal_Aluminum_Anodized]2"
+   ],
+   "bbox_world": {
+    "min": [
+     1.8833,
+     1.0597,
+     0.5088
+    ],
+    "max": [
+     1.9533,
+     1.1297,
+     0.5789
+    ],
+    "size": [
+     0.07,
+     0.07,
+     0.07
+    ]
+   }
+  },
+  {
+   "name": "Object",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.001",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.002",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.003",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.004",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.005",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.006",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.007",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.008",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.009",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.010",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.011",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.012",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.013",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.014",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.015",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.016",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.017",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  },
+  {
+   "name": "Object.018",
+   "type": "EMPTY",
+   "parent": null,
+   "children": [],
+   "collections": [],
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_euler": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "dimensions": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "vertices": 0,
+   "polygons": 0,
+   "triangles": 0,
+   "materials": [],
+   "bbox_world": null
+  }
+ ]
+}
