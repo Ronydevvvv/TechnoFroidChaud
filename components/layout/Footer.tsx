@@ -166,7 +166,23 @@ export function Footer() {
                 qui ne sépare plus rien n'est plus qu'un trait. */}
             <p className="flex items-center gap-x-2.5 text-[0.8rem] text-white/40">
               <span aria-hidden className="hidden h-3 w-px bg-white/15 sm:block" />
-              Designed by <span className="heading text-white/70">Astra Studio</span>
+              Designed by{' '}
+              {/* `link-t` est la signature de lien du site, celle que portent
+                  déjà les deux liens légaux à gauche : au repos son filet est
+                  en `scaleX(0)`, donc INVISIBLE — le rendu ne bouge pas d'un
+                  pixel. Il balaie de la gauche au survol, et la couleur monte
+                  de 70 % à 100 % de blanc. Aucune couleur d'accent : le cyan
+                  et le rouge de ce site portent un sens métier.
+
+                  Même onglet, donc pas de `target` — et pas de
+                  `rel="noreferrer"`, qui priverait le studio de son
+                  référent. */}
+              <a
+                href="https://astrastudio.pro/"
+                className="link-t heading text-white/70 transition-colors hover:text-white"
+              >
+                Astra Studio
+              </a>
             </p>
           </div>
         </div>
