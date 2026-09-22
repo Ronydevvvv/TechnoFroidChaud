@@ -205,11 +205,24 @@ export default function EntreprisePage() {
           <div className="mt-14 [&>*+*]:mt-12 lg:mt-20 lg:[&>*+*]:mt-16">
             {principes.map((p, i) => (
               <Reveal key={p.titre} delay={Math.min(i * 0.04, 0.16)}>
-                <div>
-                  <h3 className="heading max-w-[22ch] text-[clamp(1.4rem,2.8vw,2.3rem)] leading-[1.1] text-ink">
+                {/* Deux colonnes sur grand écran : le titre tient les quatre
+                    premières, le corps court de la sixième à la douzième.
+
+                    Les six principes étaient empilés pleine largeur, ce qui
+                    faisait six blocs identiques sur près de trois écrans —
+                    la section la plus longue et la plus monotone du site.
+                    En deux colonnes, chaque principe se lit d'un coup d'œil
+                    et la section tient sur un écran et demi.
+
+                    AUCUN FILET N'EST AJOUTÉ : c'est la seule section du site
+                    tenue par le seul blanc, et c'est ce qui la rend
+                    reconnaissable. La colonne vide entre le titre et le
+                    corps fait le travail que ferait un trait ailleurs. */}
+                <div className="lg:grid lg:grid-cols-12 lg:items-baseline lg:gap-x-16">
+                  <h3 className="heading max-w-[22ch] text-[clamp(1.4rem,2.8vw,2.3rem)] leading-[1.1] text-ink lg:col-span-4">
                     {p.titre}
                   </h3>
-                  <p className="mt-4 max-w-[58ch] text-[1.02rem] leading-8 text-slate">
+                  <p className="mt-4 max-w-[58ch] text-[1.02rem] leading-8 text-slate lg:col-span-7 lg:col-start-6 lg:mt-0">
                     {p.corps}
                   </p>
                 </div>
@@ -291,7 +304,8 @@ export default function EntreprisePage() {
               </h2>
               <p className="max-w-[40ch] text-[0.98rem] leading-8 text-slate lg:pb-1">
                 Travailler sur un territoire connu, c’est arriver en sachant
-                déjà ce qu’on va trouver.
+                déjà ce qu’on va trouver. Les communes sont rangées par
+                distance au siège, de {company.city} vers l’extérieur.
               </p>
             </div>
           </Reveal>
@@ -305,6 +319,26 @@ export default function EntreprisePage() {
                    une continuation. */
                 <li key={t} className="heading text-[clamp(1.25rem,2.6vw,2.2rem)] leading-[1.3] text-ink">
                   {t}
+                  {/* ─── L'ANCRAGE ───
+                      Le mur portait quinze noms de même poids : une liste,
+                      pas un territoire. Or `content/company.ts` documente
+                      déjà que les communes sont ORDONNÉES PAR PROXIMITÉ DU
+                      SIÈGE — une information réelle, présente dans la
+                      source, et jusqu'ici invisible sur la page.
+
+                      Marquer le siège suffit à la rendre lisible : le mur
+                      cesse d'être une énumération et devient un rayon, qui
+                      part de Morsbach et s'éloigne. C'est la seule marque
+                      cyan de la section, et elle porte le seul fait qui
+                      ancre l'entreprise quelque part.
+
+                      Rien n'est ajouté au contenu : la commune vient de
+                      `company.city`, l'ordre vient du tableau. */}
+                  {t === company.city && (
+                    <span className="label ml-2.5 align-middle text-[0.6em] tracking-[0.1em] text-brand uppercase">
+                      Siège
+                    </span>
+                  )}
                   {i < servedTowns.length - 1 && (
                     <span aria-hidden className="px-3 text-line lg:px-4">
                       ·

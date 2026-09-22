@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { PageHero } from '@/components/sections/PageHero';
 import { CallToAction } from '@/components/sections/CallToAction';
 import { Reveal } from '@/components/ui/Reveal';
+import { GlypheMetier, type Metier } from '@/components/ui/GlypheMetier';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 
@@ -14,29 +16,57 @@ import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
  * intervention datée et localisée qui n'a pas eu lieu est une allégation
  * commerciale fausse, et c'est le genre de détail qu'un concurrent vérifie.
  *
- * Les fiches projet et leurs six routes ont donc été supprimées. La page
- * présente ce que l'entreprise sait faire — des typologies, pas des
- * références — et le dit franchement au visiteur plutôt que de laisser
- * croire à une galerie vide.
+ * La page présente donc ce que l'entreprise SAIT FAIRE — des typologies,
+ * pas des références — et le dit franchement au visiteur.
  *
- * ─── LA COMPOSITION DÉCOULE DE CETTE ABSENCE ─────────────────────────────
- * Pas de photographies de chantier, donc pas de vignettes : ce sont les
- * NOMS des installations qui portent la page, posés à 4,2 rem. Cinq entrées
- * monumentales, chacune un titre, une clientèle, un paragraphe et trois
- * caractéristiques — un sommaire de ce qu'on sait poser, pas une galerie
- * qui ferait semblant d'en être une.
+ * ─── RENDRE LA PAGE VISUELLE SANS RIEN REVENDIQUER ───────────────────────
+ * La version précédente était strictement typographique : faute de
+ * photographies de chantier, on avait renoncé à toute image. C'était
+ * honnête, mais c'était aussi la page la plus aride du site — cinq pavés de
+ * texte, là où le visiteur vient précisément pour VOIR.
  *
- * L'ancienne page alternait blanc et pierre en inversant l'ordre des
- * colonnes un bloc sur deux. Ce zigzag est exactement ce qu'on reconnaît
- * dans un gabarit ; il a disparu.
+ * L'image revient, sous une condition tenue jusqu'au bout : CHACUNE PORTE
+ * SON CARTOUCHE, et ce cartouche dit exactement ce qu'elle est. Pas une
+ * légende de politesse en bas de page, pas une mention dans les crédits :
+ * une ligne sous chaque photographie, à la même place que le cartouche des
+ * planches techniques du site.
  *
- * La section « Où nous intervenons » a été retirée : elle reprenait les
- * quinze communes que `/entreprise` affiche désormais en mur de noms, et
- * c'est là-bas qu'elles prouvent quelque chose.
+ *     « Illustration métier — matériel de la filière »
  *
- * QUAND LES PHOTOS ET LES CHANTIERS CONFIRMÉS ARRIVERONT : chaque entrée
- * accueille une image sous son titre, et les entrées peuvent se dédoubler
- * en fiches. La structure ne bouge pas.
+ * Aucune commune, aucune date, aucun client, aucun « réalisé par nos
+ * équipes ». Une photographie de matériel illustre un SAVOIR-FAIRE ; elle
+ * n'atteste d'aucune RÉALISATION, et la page ne laisse jamais croire le
+ * contraire. C'est la même règle que sur l'accueil et les pages métier
+ * (voir `public/photos/CREDITS.md`), appliquée ici là où elle est la plus
+ * sensible — parce que c'est la page qui s'appelle « Nos installations ».
+ *
+ * ─── LA COMPOSITION ──────────────────────────────────────────────────────
+ * Le titre monumental reste : c'est lui qui porte la page, et la DA est
+ * validée. Ce qui change est ce qui vient dessous.
+ *
+ *   TITRE       pleine largeur, jusqu'à 4,2 rem
+ *   PHOTO       colonnes 7 à 12, en 16/10 — le ratio des tuiles de l’accueil
+ *   TEXTE       colonnes 1 à 5 — corps, caractéristiques, lien métier
+ *
+ * L'image est TOUJOURS à droite, le texte TOUJOURS à gauche. On aurait pu
+ * les alterner un bloc sur deux : c'est précisément le zigzag qu'on
+ * reconnaît dans un gabarit, et qui avait déjà été retiré de cette page.
+ * Une asymétrie tenue sur cinq blocs se lit comme une décision ; une
+ * asymétrie qui bascule se lit comme un effet.
+ *
+ * Sur mobile la photographie passe EN PREMIER, avant le texte : c'est là
+ * que la page doit devenir visuelle le plus vite, et l'ordre du DOM suffit
+ * — la grille de bureau replace tout par `col-start`, sans dépendre de lui.
+ *
+ * ─── LE GLYPHE ───────────────────────────────────────────────────────────
+ * Chaque entrée porte le glyphe de sa page métier — la réduction de sa
+ * propre planche technique, la même qu'en tête des listes de l'accueil. Il
+ * ne décore pas : il fait le lien entre cette entrée et la page qu'elle
+ * ouvre, et le visiteur retrouve dans la planche ce qu'il a vu ici.
+ *
+ * QUAND LES CHANTIERS CONFIRMÉS ARRIVERONT : la photographie de chaque
+ * entrée est remplacée et son cartouche devient la vraie légende — commune,
+ * année, nature de la pose. La structure ne bouge pas d'une ligne.
  * ─────────────────────────────────────────────────────────────────────────
  */
 
@@ -49,7 +79,15 @@ export const metadata = pageMetadata({
 
 const trail = [{ name: 'Nos installations', path: '/realisations' }];
 
-/** Typologies réellement proposées. Aucune n'est datée ni localisée. */
+/**
+ * Typologies réellement proposées. Aucune n'est datée ni localisée.
+ *
+ * `img` / `alt` / `legende` : la photographie et son cartouche. `legende`
+ * décrit CE QUE MONTRE L'IMAGE, jamais ce que l'entreprise aurait posé —
+ * c'est cette phrase qui empêche la confusion, et elle est écrite entrée
+ * par entrée plutôt que générée, pour qu'on ne puisse pas la vider par
+ * inadvertance.
+ */
 const typologies = [
   {
     title: 'Chambre froide professionnelle',
@@ -57,6 +95,10 @@ const typologies = [
     body: 'Montage des panneaux sandwich, pose du groupe logé ou déporté, régulation et relevé des températures. Le dimensionnement tient compte de la charge à refroidir, du nombre d’ouvertures de porte et de la température de la pièce autour — pas seulement du volume.',
     points: ['Positive 0 à +4 °C', 'Négative −18 à −22 °C', 'Groupe logé ou déporté'],
     href: '/chambres-froides',
+    glyphe: 'chambre-froide' as Metier,
+    img: '/photos/metier-chambres-froides.jpg',
+    alt: 'Intérieur d’une chambre froide en panneaux isothermes, rayonnages et sol clair.',
+    legende: 'Chambre froide en panneaux isothermes',
   },
   {
     title: 'Installation frigorifique commerciale',
@@ -64,6 +106,10 @@ const typologies = [
     body: 'Meubles positifs et négatifs, groupes à distance, raccordements en cave ou en local technique. Le circuit est conçu pour rester accessible : un groupe qu’on atteint se dépanne en une heure, un groupe encastré immobilise une journée.',
     points: ['Vitrine +2 à +6 °C', 'Groupe à distance', 'Traçabilité des charges'],
     href: '/refrigeration',
+    glyphe: 'refrigeration' as Metier,
+    img: '/photos/metier-refrigeration.jpg',
+    alt: 'Groupes frigorifiques montés sur châssis dans un local technique.',
+    legende: 'Groupes frigorifiques sur châssis',
   },
   {
     title: 'Climatisation',
@@ -71,6 +117,10 @@ const typologies = [
     body: 'Mono-split pour une pièce, multi-split pour plusieurs volumes sur un seul groupe extérieur, gainable quand aucune unité ne doit être visible. Le choix se fait après relevé du volume, de l’exposition et de l’occupation réelle.',
     points: ['Mono et multi-split', 'Gainable en combles', 'Cassette en faux plafond'],
     href: '/climatisation',
+    glyphe: 'climatisation' as Metier,
+    img: '/photos/metier-climatisation.jpg',
+    alt: 'Unités de climatisation murales en façade d’un bâtiment.',
+    legende: 'Unités de climatisation en façade',
   },
   {
     title: 'Pompe à chaleur',
@@ -78,6 +128,10 @@ const typologies = [
     body: 'Air/air et air/eau, raccordées sur plancher chauffant ou radiateurs basse température. Le dimensionnement part des déperditions du bâtiment : sur un bâti mal isolé, nous le disons avant la commande plutôt qu’après la première facture.',
     points: ['Air/air, air/eau', 'Relève de chaudière', 'Mise en service et réglages'],
     href: '/pompes-a-chaleur',
+    glyphe: 'pac' as Metier,
+    img: '/photos/metier-pompes-a-chaleur.jpg',
+    alt: 'Groupe extérieur de pompe à chaleur posé sur socle le long d’une façade.',
+    legende: 'Groupe extérieur de pompe à chaleur',
   },
   {
     title: 'Entretien et dépannage',
@@ -85,6 +139,10 @@ const typologies = [
     body: 'Contrat annuel ou passage ponctuel : nettoyage des échangeurs, contrôle des pressions, vérification de l’étanchéité et des sécurités. En dépannage, nous cherchons la cause — une fuite retrouvée évite trois recharges de fluide.',
     points: ['Contrat annuel', 'Recherche de fuite', 'Remise en service'],
     href: '/entretien-depannage',
+    glyphe: 'depannage' as Metier,
+    img: '/photos/metier-depannage.jpg',
+    alt: 'Manifold de service raccordé sur le circuit d’une installation frigorifique.',
+    legende: 'Manifold de service sur un circuit frigorifique',
   },
 ] as const;
 
@@ -106,14 +164,10 @@ export default function RealisationsPage() {
       />
 
       {/* ═════════════ LE SOMMAIRE ═════════════
-          Faute de photographies de chantier, ce sont les NOMS qui portent la
-          page. Chaque entrée s'ouvre sur un filet d'encre de 2 px et son
-          titre occupe toute la largeur utile : cinq entrées monumentales
-          plutôt que cinq blocs à vignette.
-
-          Les trois caractéristiques tiennent sur une seule ligne, en gris.
-          Elles étaient en cyan : trois valeurs colorées par entrée, quinze
-          en tout, faisaient un semis de marqueurs sans aucune fonction. */}
+          Cinq entrées monumentales. Le titre porte, la photographie montre,
+          le cartouche dit ce qu'elle est — dans cet ordre, et jamais
+          l'inverse : si l'image passait devant le titre, la page
+          ressemblerait à une galerie de réalisations, ce qu'elle n'est pas. */}
       <section aria-labelledby="sommaire" className="bg-white py-16 lg:py-24">
         <div className="container-t">
           <h2 id="sommaire" className="sr-only">
@@ -122,30 +176,75 @@ export default function RealisationsPage() {
 
           {typologies.map((t, i) => (
             <Reveal key={t.title} delay={Math.min(i * 0.04, 0.16)}>
-              <article className="border-t-2 border-ink pt-8 pb-14 lg:pt-10 lg:pb-20">
-                <h3 className="heading max-w-[20ch] text-[clamp(2rem,5.4vw,4.2rem)] leading-[1.02] text-ink">
+              <article className="border-t-2 border-ink pt-7 pb-14 lg:pt-9 lg:pb-24">
+                {/* La ligne de tête : le glyphe de la page métier, puis la
+                    clientèle. Le glyphe hérite de la couleur du texte, donc
+                    il n'introduit aucune couleur propre. */}
+                <p className="flex items-center gap-3 text-[0.95rem] text-slate">
+                  <GlypheMetier metier={t.glyphe} className="size-4 shrink-0 text-slate/55" />
+                  {t.lede}
+                </p>
+
+                <h3 className="heading mt-4 max-w-[20ch] text-[clamp(2rem,5.4vw,4.2rem)] leading-[1.02] text-ink">
                   {t.title}
                 </h3>
-                <p className="mt-4 text-[1rem] text-slate">{t.lede}</p>
 
-                <div className="mt-8 lg:grid lg:grid-cols-12 lg:gap-x-16">
-                  <p className="text-[1.02rem] leading-8 text-slate lg:col-span-7">{t.body}</p>
+                <div className="mt-8 lg:mt-11 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-16">
+                  {/* ─── LA PHOTOGRAPHIE ET SON CARTOUCHE ───
+                      Première dans le DOM pour que mobile devienne visuel
+                      tout de suite ; replacée à droite sur grand écran par
+                      `col-start`, qui ne dépend pas de l'ordre du DOM.
 
-                  <div className="mt-7 lg:col-span-4 lg:col-start-9 lg:mt-0">
-                    <ul className="flex flex-wrap gap-x-6 gap-y-2 lg:block">
+                      `figcaption` et non un simple `p` : le navigateur et le
+                      lecteur d'écran rattachent alors la phrase à l'image,
+                      donc la mise au point vaut aussi hors de l'écran. */}
+                  <figure className="m-0 lg:col-span-6 lg:col-start-7 lg:row-start-1">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-steel-800">
+                      <Image
+                        src={t.img}
+                        alt={t.alt}
+                        fill
+                        sizes="(min-width:1024px) 46vw, 92vw"
+                        className="object-cover"
+                      />
+                      {/* Le même voile que les tuiles de l'accueil : il tient
+                          les cinq photographies à la même densité quelles que
+                          soient leurs expositions d'origine. */}
+                      <span
+                        aria-hidden
+                        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,17,24,0.34)_0%,rgba(10,17,24,0.08)_60%,rgba(10,17,24,0)_100%)]"
+                      />
+                    </div>
+
+                    <figcaption className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-line pt-3 text-[0.74rem] tracking-[0.08em] text-slate uppercase">
+                      <span className="text-ink">Illustration métier</span>
+                      <span aria-hidden className="text-line">
+                        —
+                      </span>
+                      <span>{t.legende}</span>
+                    </figcaption>
+                  </figure>
+
+                  {/* ─── LE TEXTE ───
+                      Les caractéristiques sur filets, puis le lien métier.
+                      Elles étaient en cyan : trois valeurs colorées par
+                      entrée, quinze en tout, faisaient un semis de marqueurs
+                      sans aucune fonction. */}
+                  <div className="mt-9 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:mt-0">
+                    <p className="text-[1.02rem] leading-8 text-slate">{t.body}</p>
+
+                    <ul className="mt-7 border-t border-line">
                       {t.points.map((p) => (
                         <li
                           key={p}
-                          className="text-[0.93rem] leading-7 text-slate lg:border-t lg:border-line lg:py-2"
+                          className="border-b border-line py-2.5 text-[0.93rem] leading-7 text-slate"
                         >
                           {p}
                         </li>
                       ))}
                     </ul>
-                    <Link
-                      href={t.href}
-                      className="link-t mt-6 inline-flex text-[0.97rem] text-ink lg:mt-7"
-                    >
+
+                    <Link href={t.href} className="link-t mt-6 inline-flex text-[0.97rem] text-ink">
                       Le métier en détail
                     </Link>
                   </div>

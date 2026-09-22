@@ -2,6 +2,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Accordion } from '@/components/ui/Accordion';
 import { Reveal } from '@/components/ui/Reveal';
 import { LigneDeVie } from '@/components/thermo/LigneDeVie';
+import { TroisCadrans } from '@/components/thermo/TroisCadrans';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, breadcrumbSchema, faqSchema } from '@/lib/seo';
 import { company } from '@/content/company';
@@ -257,6 +258,73 @@ export default function DepannagePage() {
                 </li>
               ))}
             </ol>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═════════════ CE QU'ON LIT SUR L'INSTALLATION ═════════════
+          La ligne de vie, juste au-dessus, a le TEMPS pour axe : elle dit
+          quand les choses arrivent. Elle ne dit pas ce qu'on regarde
+          pendant ce temps-là — or un frigoriste ne diagnostique pas à
+          l'oreille, il pose un manomètre et il lit.
+
+          Ces trois cadrans sont ce relevé, pris à trois des cinq temps de
+          la séquence. Ils ne redisent donc pas le chronogramme : ils lui
+          ajoutent l'ÉTAT LU, là où lui donne l'ordre.
+
+          Le fond revient au blanc entre deux fonds pierre. Deux planches
+          techniques sur un même aplat feraient un bloc ; séparées par un
+          changement de fond, elles se lisent comme deux instruments
+          distincts de la même page.
+
+          AUCUN CHIFFRE SUR CES CADRANS, et c'est écrit dans le cartouche :
+          les pressions dépendent du fluide et de la machine, aucune n'est
+          documentée ici, et en graduer un serait inventer une donnée
+          technique. Voir l'en-tête de `components/thermo/TroisCadrans.tsx`. */}
+      <section aria-labelledby="releve" className="bg-white py-16 lg:py-24">
+        <div className="container-t">
+          <Reveal>
+            <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
+              <h2
+                id="releve"
+                className="heading max-w-[14ch] text-[clamp(1.8rem,3.6vw,2.8rem)] leading-[1.05] text-ink"
+              >
+                Ce qu’on lit sur l’installation
+              </h2>
+              <p className="max-w-[44ch] text-[0.98rem] leading-8 text-slate lg:pb-2">
+                La séquence ci-dessus donne l’ordre des opérations. Le relevé,
+                lui, donne l’état : c’est lui qui décide si l’on change une
+                pièce ou si l’on cherche encore.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal as="figure" className="m-0 mt-11 lg:mt-14" delay={0.06}>
+            {/* Même cartouche que les autres planches du site. La mention
+                « non gradués » y est au même endroit que « axe non gradué »
+                sur la ligne de vie : la règle ne change pas d'une planche à
+                l'autre. */}
+            <div className="flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:items-baseline sm:justify-between sm:text-[0.74rem]">
+              <span className="text-ink">
+                Relevé de service — cadrans de principe, non gradués
+              </span>
+              <span className="flex items-center gap-2">
+                <span aria-hidden className="h-[3px] w-6 bg-slate" />
+                Plage de service
+              </span>
+            </div>
+
+            <div className="mt-9 lg:mt-12">
+              <TroisCadrans />
+            </div>
+
+            <figcaption className="mt-10 max-w-[58ch] border-t border-line pt-6 text-[0.95rem] leading-7 text-slate">
+              Ces cadrans ne portent ni chiffre ni unité, et n’en porteront
+              pas : une pression de service dépend du fluide, de la machine et
+              de la saison. Ce qu’ils montrent est la seule chose vraie de
+              toute installation — la position de l’aiguille par rapport à sa
+              plage.
+            </figcaption>
           </Reveal>
         </div>
       </section>
