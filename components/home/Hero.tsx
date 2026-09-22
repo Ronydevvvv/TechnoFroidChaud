@@ -6,8 +6,12 @@ import { HeroVideo } from '@/components/home/HeroVideo';
 /**
  * La vidéo de fond du premier écran.
  *
- * 1280 × 720, H.264 + AAC, 10,01 s, 4,5 Mo, `moov` placé avant `mdat` —
- * le fichier démarre donc avant d'être entièrement téléchargé.
+ * 1128 × 720, H.264, sans piste audio, 10,00 s, 2,76 Mo, `moov` placé avant
+ * `mdat` — le fichier démarre donc avant d'être entièrement téléchargé.
+ *
+ * La source livrée faisait 1280 × 720 et portait un filigrane incrusté ;
+ * elle a été rognée de 144 px à droite. Le détail de la mesure et du choix
+ * est écrit sur le composant `HeroVideo`, plus bas dans ce fichier.
  *
  * Elle est posée SUR la photographie ci-dessous, qui reste le socle et le
  * repli. Voir `components/home/HeroVideo.tsx` pour le détail.
@@ -178,12 +182,32 @@ export function Hero() {
               de socle : premier écran peint immédiatement, repli propre si la
               vidéo n'arrive pas, et rien ne démarre en mouvement réduit.
 
-              Cadrage : `object-center` aux deux largeurs. La source est en
-              1280 × 720, donc en 16/9 — sur un écran étroit, le cadre du hero
-              devient haut et la vidéo perd forcément ses côtés. Le centre est
-              le seul choix neutre tant que la position du sujet dans le plan
-              n'est pas vérifiée à l'œil ; c'est le réglage à modifier si la
-              machine n'est pas centrée. */}
+              ─── LE FICHIER A ÉTÉ RECADRÉ, ET POURQUOI ───
+              La source d'origine (1280 × 720) portait un FILIGRANE incrusté :
+              une étoile à quatre branches de 48 × 48 px, exactement à 96 px
+              du bord droit et 96 px du bas — des valeurs rondes qui trahissent
+              un placement programmatique, et non un élément de la scène.
+              Mesuré par le minimum temporel sur vingt images : le filigrane
+              est identique sur toutes, la scène ne l'est pas.
+
+              Il tombait dans le champ entre 1024 et 1600 px de large, donc sur
+              la majorité des postes de bureau.
+
+              Le fichier est donc rogné à 1128 × 720 — 144 px retirés à droite,
+              plus 8 px de marge. C'était le seul axe possible : dégager le
+              coin par le bas aurait coûté 144 px de hauteur, soit le socle
+              entier de la machine. À droite, on ne perd que du mur sombre et
+              une gaine. Le détecteur qui trouvait la marque sur l'original ne
+              trouve plus rien sur le fichier recadré.
+
+              La piste audio a été supprimée : la vidéo est muette et
+              `aria-hidden`, elle ne servait à rien. 4,72 Mo → 2,76 Mo.
+
+              Cadrage : `object-center` aux deux largeurs, désormais VÉRIFIÉ à
+              l'écran à 1440, 1024, 768, 430 et 375 px. La vidéo couvre le
+              cadre partout ; elle n'est agrandie qu'au-delà de ~1155 px
+              (1,28 à 1440), et se trouve à l'échelle native ou réduite en
+              dessous. */}
           <HeroVideo src={VIDEO} className="object-center" />
         </>
       ) : (
@@ -236,6 +260,49 @@ export function Hero() {
           className="absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_bottom,rgba(8,14,20,0.72)_0%,rgba(8,14,20,0.3)_55%,rgba(8,14,20,0)_100%)]"
         />
       ) : null}
+
+      {/* ————— LE BORD DE PLANCHE —————
+          Une réglette graduée dans la gouttière gauche, posée dans le vide
+          sombre qui borde le texte.
+
+          ─── POURQUOI ELLE EXISTE ───
+          Le reste du site est DESSINÉ : chaque page métier porte sa planche
+          technique, l'accueil sa coupe de bâtiment. Le hero, lui, est
+          photographique — c'est le seul écran du site qui ne relève pas du
+          bureau d'études, et il s'ouvre dessus.
+
+          Cette réglette est le bord d'une feuille à dessin. Elle ne décrit
+          rien, ne mesure rien, n'annonce aucune valeur : elle dit seulement
+          que ce qu'on regarde appartient à la même feuille que la coupe qui
+          vient deux écrans plus bas. C'est un raccord, pas un ornement.
+
+          ─── AUCUN CHIFFRE, ET C'EST LA MÊME RÈGLE QU'AILLEURS ───
+          Des graduations sans valeurs : exactement la convention des autres
+          planches, dont les cartouches annoncent « axe non gradué » et
+          « cadrans de principe ». Une échelle chiffrée ici supposerait une
+          grandeur, et le hero n'en porte aucune.
+
+          ─── CE QU'ELLE NE FAIT PAS ───
+          Elle ne bouge pas, ne brille pas, n'a pas de couleur propre —
+          du blanc à 9 et 14 %, sur le voile le plus sombre du hero. Elle
+          s'arrête au-dessus des boutons et sous l'en-tête, donc elle ne
+          croise ni le titre, ni les liens, ni la zone cliquable.
+
+          `lg:` seulement : sous 1024 px la gouttière se referme et le sujet
+          de la photographie passe sous le texte. Il n'y a plus de vide à
+          border, et une réglette y serait dans le champ, pas dans la marge.
+
+          Deux éléments superposés plutôt qu'un seul : les petites
+          graduations tous les 26 px, les grandes tous les 130 px. Un seul
+          dégradé ne sait pas produire deux longueurs de trait. */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute top-36 bottom-24 left-3 hidden w-1.5 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.14)_0_1px,transparent_1px_26px)] border-l border-white/[0.09] lg:block"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute top-36 bottom-24 left-3 hidden w-3.5 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.2)_0_1px,transparent_1px_130px)] lg:block"
+      />
 
       <div className="container-t relative flex min-h-[82svh] items-center pt-28 pb-16 lg:min-h-[78vh] lg:pt-32 lg:pb-20">
         <div className="w-full max-w-xl lg:max-w-[38rem]">
