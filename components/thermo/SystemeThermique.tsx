@@ -385,7 +385,14 @@ function Coupe({ p }: { p: Plan }) {
             {[versSplits, versSplits2, versFroids, versFroids2, versVitrine]
               .filter(Boolean)
               .map((t, i) => (
-                <path key={i} d={t} stroke="var(--color-brand)" strokeWidth={1.4 * k} opacity={0.45} />
+                <path
+                  key={i}
+                  d={t}
+                  stroke="var(--color-brand)"
+                  strokeWidth={1.4 * k}
+                  opacity={0.45}
+                  markerMid="url(#tfc-sys-sens)"
+                />
               ))}
             <path d={versFroids} stroke="var(--color-brand)" strokeWidth={2.6 * k} strokeDasharray="22 480" className="tfc-circule" />
             <path d={versSplits} stroke="var(--color-brand)" strokeWidth={2.6 * k} strokeDasharray="18 360" className="tfc-circule" style={{ animationDelay: '2.5s' }} />
@@ -483,6 +490,17 @@ export function SystemeThermique() {
     <defs>
       <marker id="tfc-sys-chaud" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
         <path d="M0 1 L9 5 L0 9" fill="none" stroke="var(--color-alert)" strokeWidth="1.7" />
+      </marker>
+      {/* ─── LE SENS DU FLUX ───
+          Un chevron posé au MILIEU des liaisons, pas à leur extrémité.
+          Une canalisation frigorifique n'a pas de bout visible — elle entre
+          dans une machine — donc une flèche en fin de tracé y désignerait
+          l'appareil, pas la circulation. Au milieu, elle ne dit qu'une
+          chose : dans quel sens ça va. `markerUnits` en unités de tracé
+          pour que le chevron garde la même taille sur les deux géométries,
+          dont les épaisseurs de trait diffèrent (k = 1 et k = 1,7). */}
+      <marker id="tfc-sys-sens" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto">
+        <path d="M2 1.5 L7 5 L2 8.5" fill="none" stroke="var(--color-brand)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </marker>
     </defs>
   );

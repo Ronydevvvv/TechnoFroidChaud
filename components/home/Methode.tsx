@@ -73,7 +73,23 @@ export function Methode() {
             <Reveal as="li" key={e.nom} delay={Math.min(i * 0.04, 0.2)}>
               {/* Le filet : horizontal au-dessus de l'étape dès 640 px,
                   vertical à sa gauche sur téléphone. */}
-              <div className="border-l border-white/[0.28] pl-5 sm:border-l-0 sm:border-t sm:border-white/15 sm:pt-5 sm:pl-0">
+              {/* ─── LE NŒUD SUR LE FILET ───
+                  Le filet existait déjà ; il manquait ce qui fait qu'on le
+                  lit comme un PARCOURS et non comme six traits : un point
+                  posé dessus, à l'aplomb du numéro.
+
+                  Il est en cyan et cerclé de la couleur du fond : le cercle
+                  évide le filet juste derrière lui, si bien que le point
+                  paraît enfilé sur la ligne plutôt que collé par-dessus.
+
+                  Sa position suit l'orientation du filet — à gauche sur
+                  téléphone où la ligne est verticale, en tête dès 640 px où
+                  elle passe à l'horizontale. */}
+              <div className="relative border-l border-white/[0.28] pl-5 sm:border-l-0 sm:border-t sm:border-white/15 sm:pt-5 sm:pl-0">
+                <span
+                  aria-hidden
+                  className="absolute -left-[4.5px] top-2 size-[7px] rounded-full bg-brand ring-[3px] ring-steel-900 sm:top-[-4.5px] sm:left-0"
+                />
                 {/* Le numéro est SUR la ligne du nom, pas au-dessus.
                     Empilé, il coûtait une ligne par étape : six lignes de
                     plus, soit près de 150 px de hauteur sur téléphone pour

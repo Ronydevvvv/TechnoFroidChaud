@@ -40,6 +40,7 @@ const metiers = [
     titre: 'Climatisation',
     texte: 'Mono-split, multi-split, gainable et cassette.',
     href: '/climatisation',
+    chaud: false,
     img: '/photos/metier-climatisation.jpg',
     alt: 'Unités extérieures de climatisation multi-split en façade d’un bâtiment.',
   },
@@ -47,6 +48,7 @@ const metiers = [
     titre: 'Chauffage et chaudières',
     texte: 'Installation, remplacement et entretien.',
     href: '/chauffage',
+    chaud: true,
     img: '/photos/metier-chauffage.jpg',
     alt: 'Local technique équipé de ballons tampons et d’une production de chaleur.',
   },
@@ -54,6 +56,7 @@ const metiers = [
     titre: 'Pompes à chaleur',
     texte: 'Air/air et air/eau, dimensionnées sur le bâtiment.',
     href: '/pompes-a-chaleur',
+    chaud: true,
     img: '/photos/metier-pompes-a-chaleur.jpg',
     alt: 'Pompe à chaleur air/eau installée en pignon d’une maison individuelle.',
   },
@@ -61,6 +64,7 @@ const metiers = [
     titre: 'Réfrigération',
     texte: 'Groupes, vitrines et laboratoires de préparation.',
     href: '/refrigeration',
+    chaud: false,
     img: '/photos/metier-refrigeration.jpg',
     alt: 'Groupes frigorifiques montés sur châssis contre la façade d’un bâtiment.',
   },
@@ -68,6 +72,7 @@ const metiers = [
     titre: 'Chambres froides',
     texte: 'Positive ou négative, montée et réglée sur place.',
     href: '/chambres-froides',
+    chaud: false,
     img: '/photos/metier-chambres-froides.jpg',
     alt: 'Intérieur d’une chambre froide professionnelle en service.',
   },
@@ -75,6 +80,7 @@ const metiers = [
     titre: 'Entretien et dépannage',
     texte: 'Urgence qualifiée dès l’appel, entretien planifié.',
     href: '/entretien-depannage',
+    chaud: false,
     img: '/photos/metier-depannage.jpg',
     alt: 'Frigoriste raccordant un manifold de service sur une installation.',
   },
@@ -105,7 +111,10 @@ export function Metiers() {
         <ul className="mt-8 grid grid-cols-1 gap-x-7 gap-y-8 sm:mt-10 sm:gap-y-9 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-12">
           {metiers.map((m, i) => (
             <Reveal as="li" key={m.titre} delay={Math.min(i * 0.05, 0.25)}>
-              <Link href={m.href} className="group block">
+              <Link
+                href={m.href}
+                className="group block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[3px]"
+              >
                 {/* `overflow-hidden` sur le cadre, `scale` sur l'image :
                     c'est l'image qui bouge à l'intérieur d'un cadre fixe.
                     Si la tuile entière grandissait, elle pousserait ses
@@ -132,12 +141,12 @@ export function Metiers() {
                       `inline-block` + `after` : il épouse la largeur du mot,
                       pas celle de la colonne — un trait qui dépasserait le
                       texte se lirait comme une bordure de carte. */}
-                  <span className="relative inline-block after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-right after:scale-x-0 after:bg-brand after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:after:origin-left group-hover:after:scale-x-100">
+                  <span className={`relative inline-block after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-right after:scale-x-0 ${m.chaud ? 'after:bg-alert' : 'after:bg-brand'} after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:after:origin-left group-hover:after:scale-x-100`}>
                     {m.titre}
                   </span>
                   <span
                     aria-hidden
-                    className="text-[0.95rem] text-white/30 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-brand"
+                    className={`text-[0.95rem] text-white/30 transition-[transform,color] duration-300 group-hover:translate-x-1 ${m.chaud ? 'group-hover:text-alert' : 'group-hover:text-brand'}`}
                   >
                     →
                   </span>

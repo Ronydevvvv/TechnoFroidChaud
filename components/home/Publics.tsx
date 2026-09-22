@@ -101,8 +101,20 @@ export function Publics() {
                     <li key={m.label} className="border-b border-line">
                       <Link
                         href={m.href}
-                        className="group -mx-3 flex items-baseline justify-between gap-6 rounded-[3px] px-3 py-3.5 transition-colors sm:py-4 duration-[250ms] hover:bg-ink/[0.035]"
+                        className="group relative -mx-3 flex items-baseline justify-between gap-6 rounded-[3px] px-3 py-3.5 transition-colors sm:py-4 duration-[250ms] hover:bg-ink/[0.035]"
                       >
+                        {/* ─── LE FILET ACTIF ───
+                            Un trait cyan sur le bord gauche, qui s'ouvre
+                            depuis son centre au survol. Il dit QUELLE ligne
+                            est visée — le fond seul, à 3,5 %, se remarque à
+                            peine sur un écran mal réglé. `scale-y` plutôt
+                            qu'une hauteur animée : une transformation ne
+                            déclenche aucun recalcul de mise en page. */}
+                        <span
+                          aria-hidden
+                          className="absolute inset-y-1 -left-3 w-px origin-center scale-y-0 bg-brand transition-transform duration-[250ms] ease-out group-hover:scale-y-100"
+                        />
+
                         {/* Le glyphe hérite de la couleur de la ligne : il
                             s'éclaire au survol avec elle, sans une seule
                             règle de couleur propre. `shrink-0` et
@@ -111,7 +123,7 @@ export function Publics() {
                         <span className="flex min-w-0 items-baseline gap-3.5">
                           <GlypheMetier
                             metier={m.glyphe}
-                            className="mt-px size-4 shrink-0 translate-y-px text-slate/45 transition-colors duration-[250ms] group-hover:text-brand"
+                            className="mt-px size-4 shrink-0 translate-y-px text-slate/45 transition-[color,transform] duration-[250ms] group-hover:translate-x-0.5 group-hover:text-brand"
                           />
                           <span className="heading text-[clamp(1.05rem,2vw,1.3rem)] leading-snug text-ink">
                             {m.label}

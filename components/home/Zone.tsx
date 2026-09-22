@@ -1,5 +1,6 @@
 import { company, servedTowns } from '@/content/company';
 import { Reveal } from '@/components/ui/Reveal';
+import { ZoneIntervention } from '@/components/thermo/ZoneIntervention';
 
 /**
  * Zone d'intervention.
@@ -43,11 +44,11 @@ export function Zone() {
   const derniere = servedTowns[servedTowns.length - 1];
 
   return (
-    <section className="bg-stone py-14 sm:py-16 lg:py-24">
+    <section aria-labelledby="zone-titre" className="bg-stone py-14 sm:py-16 lg:py-24">
       <div className="container-t grid gap-10 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-4">
           <Reveal>
-            <h2 className="heading t-h2 text-ink">Nous intervenons près de chez vous</h2>
+            <h2 id="zone-titre" className="heading t-h2 text-ink">Nous intervenons près de chez vous</h2>
           </Reveal>
         </div>
 
@@ -81,11 +82,53 @@ export function Zone() {
               forfait de déplacement figure sur le devis.
             </p>
 
-            <p className="mt-5 max-w-2xl text-[0.95rem] leading-8 text-slate/80 sm:leading-7">
+            {/* ─── LES COMMUNES EN PHRASE, SUR GRAND ÉCRAN SEULEMENT ───
+                Le schéma les nomme désormais lui aussi. Sous 1024 px, l'axe
+                de distance les liste en VRAI TEXTE juste en dessous : la
+                phrase y ferait lire quinze noms deux fois de suite.
+
+                Elle reste indispensable au-dessus de 1024 px, où l'éventail
+                est un SVG `aria-hidden` — ses intitulés n'existent donc ni
+                pour un lecteur d'écran, ni en pratique pour un moteur. Une
+                seule source de noms à chaque largeur, et jamais aucune. */}
+            <p className="mt-5 hidden max-w-2xl text-[0.95rem] leading-8 text-slate/80 sm:leading-7 lg:block">
               Nous intervenons à {communes} et {derniere}.
             </p>
           </Reveal>
         </div>
+
+        {/* ═════════════ LE SCHÉMA DE ZONE ═════════════
+            La section était la plus vide de l'accueil : un titre, trois
+            régions, deux paragraphes. Elle affirmait un ancrage sans jamais
+            le MONTRER.
+
+            Ce schéma ne dessine qu'une donnée, et elle est réelle :
+            `content/company.ts` documente que les quinze communes sont
+            rangées par proximité du siège. Le rayon de chaque point est son
+            rang. L'angle ne dit rien — il sépare, c'est tout — et le
+            cartouche l'annonce.
+
+            Aucune coordonnée géographique n'a été inventée : le projet n'en
+            contient aucune, et placer quinze communes de mémoire produirait
+            une géographie subtilement fausse, sur la seule page qui
+            prétend dire qu'on connaît le terrain. */}
+        <figure className="m-0 lg:col-span-12">
+          <Reveal delay={0.1}>
+            <div className="mt-4 flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:items-baseline sm:justify-between sm:text-[0.74rem] lg:mt-6">
+              <span className="text-ink">
+                Zone d’intervention — {servedTowns.length} communes
+              </span>
+              <span className="flex items-center gap-2">
+                <span aria-hidden className="size-1.5 rounded-full bg-brand" />
+                Rangées par distance au siège, sans échelle géographique
+              </span>
+            </div>
+
+            <div className="mt-8 lg:mt-4">
+              <ZoneIntervention />
+            </div>
+          </Reveal>
+        </figure>
       </div>
     </section>
   );

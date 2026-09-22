@@ -22,6 +22,31 @@ const legal = [
 export function Footer() {
   return (
     <footer className="bg-carbon text-white">
+      {/* ─── LA GRADUATION DE PIED DE PAGE ───
+          Une réglette en tête du footer, sur toute la largeur. C'est le
+          même trait que le bord de feuille du hero et que les repères de la
+          bande sous celui-ci : le site s'ouvre et se ferme sur la même
+          marque, et le pied de page cesse d'être un simple bloc de texte.
+
+          Le dégradé porte les graduations, un élément porte le filet : rien
+          n'est ajouté au DOM que ce seul `span`, et il est `aria-hidden`.
+
+          Les deux premiers centimètres sont cyan puis rouges — froid et
+          chaleur, les deux régimes du métier, exactement comme le premier
+          repère de la bande d'accueil. Au-delà, la graduation devient
+          neutre. C'est la seule couleur du footer. */}
+      <span
+        aria-hidden
+        className="block h-2 w-full border-t border-line-dark bg-[repeating-linear-gradient(to_right,rgba(255,255,255,0.14)_0_1px,transparent_1px_22px)]"
+      />
+      <span
+        aria-hidden
+        className="-mt-[1px] flex h-px w-40"
+      >
+        <span className="h-full w-1/2 bg-brand/70" />
+        <span className="h-full w-1/2 bg-alert/70" />
+      </span>
+
       <div className="container-t py-14 lg:py-16">
         {/* La zone d’intervention passe SOUS le bloc de marque, dans la même
             colonne. Placée à droite, elle laissait une réserve de près de

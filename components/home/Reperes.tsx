@@ -27,16 +27,30 @@ import { company, servedTowns } from '@/content/company';
  * photographique plein écran, elle sert aussi de respiration.
  */
 
+/**
+ * `thermique` : ce repère porte-t-il, en lui-même, le froid ET le chaud ?
+ *
+ * Un seul le fait — « Frigoriste · Chauffagiste », dont la légende dit
+ * justement « Froid et chaleur, un seul métier ». Sa graduation est donc
+ * coupée en deux, cyan puis rouge. Les trois autres restent neutres.
+ *
+ * C'est la seule couleur de la bande, et elle traduit une phrase déjà
+ * écrite : elle n'ajoute aucune information, elle en montre une.
+ */
 const reperes = [
-  { valeur: 'Frigoriste · Chauffagiste', legende: 'Froid et chaleur, un seul métier' },
-  { valeur: `Depuis ${company.foundedYear}`, legende: `Entreprise immatriculée à ${company.city}` },
+  { valeur: 'Frigoriste · Chauffagiste', legende: 'Froid et chaleur, un seul métier', thermique: true },
+  {
+    valeur: `Depuis ${company.foundedYear}`,
+    legende: `Entreprise immatriculée à ${company.city}`,
+    thermique: false,
+  },
   /* La légende annonçait « Moselle · Alsace · Meurthe-et-Moselle ». Les
      quinze communes de `content/company.ts` sont TOUTES en Moselle, et le
      reste du site — pied de page, /entreprise, /contact — parle du bassin
      houiller et de l'est mosellan. C'était la dernière occurrence de cette
      affirmation, déjà corrigée sur /contact. */
-  { valeur: `${servedTowns.length} communes`, legende: 'Bassin houiller et est mosellan' },
-  { valeur: 'Devis après visite', legende: 'Aucun chiffrage au téléphone' },
+  { valeur: `${servedTowns.length} communes`, legende: 'Bassin houiller et est mosellan', thermique: false },
+  { valeur: 'Devis après visite', legende: 'Aucun chiffrage au téléphone', thermique: false },
 ] as const;
 
 export function Reperes() {
@@ -45,10 +59,36 @@ export function Reperes() {
       <div className="container-t py-9 lg:py-10">
         {/* Deux colonnes sur téléphone : quatre repères empilés feraient une
             colonne de 400 px là où l'on attend une bande. */}
-        <ul className="grid grid-cols-2 gap-x-6 gap-y-7 lg:grid-cols-4 lg:gap-x-10">
+        {/* ─── LA GRADUATION ───
+            Chaque repère s'ouvre sur un court segment gradué : un filet
+            continu, puis quatre traits verticaux. C'est le même vocabulaire
+            que la réglette du hero et que les cartouches des planches — un
+            bord de feuille, pas un ornement.
+
+            Le premier est coupé en deux, cyan puis rouge, parce que c'est
+            le seul repère qui parle des deux régimes. */}
+        <ul className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-x-10">
           {reperes.map((r) => (
             <li key={r.valeur}>
-              <p className="heading text-[0.98rem] text-ink lg:text-[1.08rem]">{r.valeur}</p>
+              <span aria-hidden className="flex h-2 items-start">
+                {r.thermique ? (
+                  <>
+                    <span className="h-px w-1/2 bg-brand" />
+                    <span className="h-px w-1/2 bg-alert" />
+                  </>
+                ) : (
+                  <span className="h-px w-full bg-line" />
+                )}
+              </span>
+              {/* Les quatre traits de graduation, sous le filet. Ils sont
+                  posés en fond plutôt qu'en éléments : quatre `span` par
+                  repère feraient seize nœuds pour un motif que le moteur de
+                  rendu trace en une passe. */}
+              <span
+                aria-hidden
+                className="-mt-2 block h-1.5 w-16 bg-[repeating-linear-gradient(to_right,var(--color-line)_0_1px,transparent_1px_15px)]"
+              />
+              <p className="heading mt-3 text-[0.98rem] text-ink lg:text-[1.08rem]">{r.valeur}</p>
               <p className="mt-1.5 text-[0.93rem] leading-6 text-slate sm:text-[0.85rem]">{r.legende}</p>
             </li>
           ))}

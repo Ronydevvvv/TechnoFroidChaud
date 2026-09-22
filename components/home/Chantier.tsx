@@ -125,9 +125,28 @@ export function Chantier() {
                 Le titre porte la preuve, la ligne en dessous la qualifie.
                 Un filet en tête de chaque bloc plutôt qu'un filet unique à
                 gauche : on balaie trois entrées au lieu de lire une liste. */}
-            <ul className="mt-8 space-y-6 sm:mt-9">
+            {/* ─── LES TROIS LIVRABLES, RELIÉS ───
+                Ils étaient trois blocs ouverts chacun par son filet : trois
+                objets, donc, là où le texte dit une SÉQUENCE — on ne chiffre
+                pas avant d'avoir calculé, on ne met pas en service avant
+                d'avoir posé.
+
+                Un filet vertical continu les traverse désormais à gauche, et
+                chaque numéro porte son nœud dessus. La lecture devient un
+                parcours avant même qu'on ait lu un mot. `relative` sur la
+                liste, `absolute` sur le filet : il court du premier nœud au
+                dernier, sans déborder ni au-dessus ni en dessous. */}
+            <ul className="relative mt-8 space-y-6 pl-8 sm:mt-9">
+              <span
+                aria-hidden
+                className="absolute top-[26px] bottom-[26px] left-[3px] w-px bg-line"
+              />
               {livrables.map((l, i) => (
-                <li key={l.titre} className="border-t border-line pt-4">
+                <li key={l.titre} className="relative border-t border-line pt-4">
+                  <span
+                    aria-hidden
+                    className="absolute left-0 mt-[7px] size-[7px] rounded-full bg-brand ring-[3px] ring-white"
+                  />
                   <p className="text-[0.86rem] font-medium text-brand tabular-nums sm:text-[0.8rem]">
                     {String(i + 1).padStart(2, '0')}
                   </p>
