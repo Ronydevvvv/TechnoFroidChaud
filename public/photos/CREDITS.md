@@ -203,3 +203,48 @@ la version de l'accueil.
 Toutes, dès que les prises de vue de l'entreprise seront disponibles. Une
 page métier ne demande qu'un objet `photo` dans son `PageHero` : rien
 d'autre à toucher.
+
+
+---
+
+## Les six `metier-*.jpg` servent aussi `/realisations`
+
+Aucun fichier n'a été ajouté. Cinq des six photographies de métier sont
+désormais affichées une seconde fois, sur `/realisations`, en regard de la
+typologie qu'elles illustrent :
+
+| Typologie | Fichier |
+| --- | --- |
+| Chambre froide professionnelle | `metier-chambres-froides.jpg` |
+| Installation frigorifique commerciale | `metier-refrigeration.jpg` |
+| Climatisation | `metier-climatisation.jpg` |
+| Pompe à chaleur | `metier-pompes-a-chaleur.jpg` |
+| Entretien et dépannage | `metier-depannage.jpg` |
+
+### La règle est appliquée plus strictement là qu'ailleurs
+
+C'est la page qui s'appelle « Nos installations » : c'est donc celle où une
+photographie risque le plus d'être prise pour une réalisation de
+l'entreprise. Chacune porte pour cette raison un **cartouche nominatif**,
+posé sous l'image, dans un `figcaption` — donc rattaché à l'image par le
+navigateur comme par le lecteur d'écran :
+
+    ILLUSTRATION MÉTIER — CHAMBRE FROIDE EN PANNEAUX ISOTHERMES
+
+La légende décrit **ce que montre l'image**, jamais ce que l'entreprise
+aurait posé. Aucune commune, aucune date, aucun client, aucun « réalisé par
+nos équipes », nulle part sur la page. Le chapô de la page le redit en
+clair : « Les images qui l'illustrent montrent du matériel, pas nos
+chantiers. »
+
+Les légendes sont écrites **entrée par entrée** dans le tableau
+`typologies` de `app/realisations/page.tsx`, et non générées à partir du
+titre : une légende générée peut se vider ou se désaccorder de son image à
+la première modification, celle-ci ne le peut pas.
+
+### À remplacer
+
+Dès que les prises de vue de l'entreprise seront disponibles. Trois champs
+par entrée — `img`, `alt`, `legende` — et le cartouche devient alors la
+vraie légende du chantier : commune, année, nature de la pose. Aucune
+structure à toucher.

@@ -118,6 +118,32 @@ Cahier des charges de prise de vue : en tête de `components/home/Hero.tsx`.
 Points de remplacement : `components/home/Metiers.tsx`,
 `components/home/Chantier.tsx`, et le champ `photo` de chaque `PageHero`.
 
+### 2.6 Partenariat sportif — DEMANDÉ, RIEN DE DISPONIBLE
+
+Vous avez évoqué **un partenaire de lutte à Stiring-Wendel** à intégrer sur
+`/entreprise`. Cette information **n'existe nulle part dans le projet** :
+recherche de `lutte`, `partenaire`, `sponsor`, `club` et `stiring` dans
+`content/`, `app/`, `components/` et `public/` — la seule occurrence de
+« Stiring-Wendel » est la commune, dans la liste des villes desservies de
+`content/company.ts`.
+
+La section n'a donc **pas** été écrite. Inventer le nom d'un club, la nature
+d'un partenariat ou son ancienneté serait exactement ce que le cahier des
+charges interdit — et un partenariat sportif est vérifiable en un appel.
+
+**Ce qu'il faut pour l'écrire :**
+
+| Élément | Pourquoi |
+| --- | --- |
+| Le nom exact du club | Il sera affiché tel quel, et il est vérifiable |
+| La nature du lien | Sponsor maillot ? équipementier ? mécène ? membre ? |
+| Depuis quand | Seulement si la date est sûre — sinon on l'omet |
+| Un logo ou une photographie | Sinon la section reste purement typographique |
+| L'accord du club | Afficher son nom l'engage aussi |
+
+Sans le premier point, rien ne peut être publié. Les quatre suivants
+enrichissent la section mais ne la bloquent pas.
+
 ### 2.5 Certifications — volontairement absentes
 
 Le site n'affiche **aucune certification**. RGE QualiPAC, FEEBAT et CAPEB
