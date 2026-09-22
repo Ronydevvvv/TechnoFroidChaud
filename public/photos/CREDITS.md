@@ -248,3 +248,74 @@ Dès que les prises de vue de l'entreprise seront disponibles. Trois champs
 par entrée — `img`, `alt`, `legende` — et le cartouche devient alors la
 vraie légende du chantier : commune, année, nature de la pose. Aucune
 structure à toucher.
+
+
+---
+
+## `public/video/hero-climatisation.mp4` — vidéo du hero
+
+| | |
+| --- | --- |
+| **Nature** | **Vidéo générée par intelligence artificielle.** |
+| **Source** | Fournie par le client (fichier d'origine : `Create_a_highly_photorealistic.mp4`). |
+| **Format servi** | H.264, 1128 × 720, sans piste audio, 10,00 s, 2 756 703 o, `moov` avant `mdat`. |
+| **Statut** | **PROVISOIRE** — à remplacer par une prise de vue réelle. |
+
+### Ce point doit rester écrit noir sur blanc
+
+Le reste des visuels du site suit une règle stricte : **aucune image
+générée**. Cette vidéo y fait **exception**, en connaissance de cause et
+sur décision explicite du client.
+
+**Le recadrage décrit ci-dessous a retiré le FILIGRANE, pas l'origine.** La
+vidéo reste générée. Ne pas laisser l'absence de marque visible faire
+croire l'inverse, ici ou ailleurs.
+
+Comme pour les photographies : elle n'est **pas** présentée comme un
+chantier de Techno Froid Chaud. Elle est `aria-hidden`, sans légende, sans
+commune, sans date, sans client. Elle ne sert que de fond animé.
+
+### Le filigrane, et comment il a été mesuré
+
+Le fichier d'origine (1280 × 720) portait une marque incrustée : une étoile
+à quatre branches de **48 × 48 px, à exactement 96 px du bord droit et
+96 px du bas**. Des valeurs aussi rondes ne sortent pas d'une scène filmée —
+c'est un placement programmatique.
+
+Méthode : **minimum temporel** sur vingt images réparties dans les dix
+secondes. La scène change, le filigrane non ; là où il se trouve, le pixel
+ne descend jamais aussi bas qu'ailleurs, et l'étoile ressort seule. Un
+premier essai par simple seuillage avait échoué — la vapeur éclaire ce coin.
+
+Exposition avant correction : **visible entre 1024 et 1600 px de large**,
+c'est-à-dire sur la majorité des postes de bureau. Hors cadre sur mobile et
+tablette, où `object-fit: cover` rogne les côtés.
+
+### Le recadrage
+
+144 px retirés **à droite** (plus 8 px de marge) → 1128 × 720.
+
+Le choix de l'axe n'en était pas un : le filigrane devait être dégagé
+**entièrement sur un axe** — rogner un peu à droite *et* un peu en bas
+l'aurait laissé dans le coin. Par le bas, cela coûtait 144 px de hauteur,
+soit le **socle entier de la machine**. À droite, on ne perd que du mur
+sombre et une gaine flexible.
+
+Vérification avec témoin : le détecteur qui trouve la marque sur l'original
+**ne trouve plus aucune tache constante** sur le fichier recadré.
+
+La **piste audio a été supprimée** — la vidéo est muette et `aria-hidden`.
+4 717 032 o → 2 756 703 o, soit 42 % de moins.
+
+### Conséquence sur la qualité
+
+À 1440 px, la vidéo est agrandie d'un facteur **1,277** (contre 1,125
+avant). Un `scale()` CSS aurait coûté exactement le même facteur sans
+régler les autres largeurs. En dessous de ~1155 px elle est à l'échelle
+native ou réduite : **0,975 à 1024 px**, 1,025 à 768, 430 et 375.
+
+### À remplacer
+
+Par une prise de vue réelle, ou par une vidéo de banque libre à usage
+commercial (Pexels, Coverr). Une seule constante à modifier : `VIDEO` dans
+`components/home/Hero.tsx`. Le composant `HeroVideo` ne bouge pas.
