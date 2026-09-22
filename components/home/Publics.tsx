@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Reveal } from '@/components/ui/Reveal';
+import { GlypheMetier, type Metier } from '@/components/ui/GlypheMetier';
 
 /**
  * Professionnels / Particuliers — à qui l'entreprise s'adresse.
@@ -38,10 +39,10 @@ const publics = [
     titre: 'Professionnels',
     intro: 'Une panne de froid se compte en heures, pas en jours.',
     items: [
-      { label: 'Chambres froides', href: '/chambres-froides' },
-      { label: 'Réfrigération', href: '/refrigeration' },
-      { label: 'Climatisation professionnelle', href: '/climatisation' },
-      { label: 'Dépannage', href: '/entretien-depannage' },
+      { label: 'Chambres froides', href: '/chambres-froides', glyphe: 'chambre-froide' as Metier },
+      { label: 'Réfrigération', href: '/refrigeration', glyphe: 'refrigeration' as Metier },
+      { label: 'Climatisation professionnelle', href: '/climatisation', glyphe: 'climatisation' as Metier },
+      { label: 'Dépannage', href: '/entretien-depannage', glyphe: 'depannage' as Metier },
     ],
   },
   {
@@ -49,10 +50,10 @@ const publics = [
     titre: 'Particuliers',
     intro: 'Le matériel se choisit après le calcul, jamais avant.',
     items: [
-      { label: 'Chauffage', href: '/chauffage' },
-      { label: 'Chaudières', href: '/chauffage' },
-      { label: 'Pompes à chaleur', href: '/pompes-a-chaleur' },
-      { label: 'Climatisation', href: '/climatisation' },
+      { label: 'Chauffage', href: '/chauffage', glyphe: 'chauffage' as Metier },
+      { label: 'Chaudières', href: '/chauffage', glyphe: 'chauffage' as Metier },
+      { label: 'Pompes à chaleur', href: '/pompes-a-chaleur', glyphe: 'pac' as Metier },
+      { label: 'Climatisation', href: '/climatisation', glyphe: 'climatisation' as Metier },
     ],
   },
 ] as const;
@@ -102,8 +103,19 @@ export function Publics() {
                         href={m.href}
                         className="group -mx-3 flex items-baseline justify-between gap-6 rounded-[3px] px-3 py-3.5 transition-colors sm:py-4 duration-[250ms] hover:bg-ink/[0.035]"
                       >
-                        <span className="heading text-[clamp(1.05rem,2vw,1.3rem)] leading-snug text-ink">
-                          {m.label}
+                        {/* Le glyphe hérite de la couleur de la ligne : il
+                            s'éclaire au survol avec elle, sans une seule
+                            règle de couleur propre. `shrink-0` et
+                            `translate-y` l'assoient sur la ligne de base du
+                            texte, qui est en `items-baseline`. */}
+                        <span className="flex min-w-0 items-baseline gap-3.5">
+                          <GlypheMetier
+                            metier={m.glyphe}
+                            className="mt-px size-4 shrink-0 translate-y-px text-slate/45 transition-colors duration-[250ms] group-hover:text-brand"
+                          />
+                          <span className="heading text-[clamp(1.05rem,2vw,1.3rem)] leading-snug text-ink">
+                            {m.label}
+                          </span>
                         </span>
                         <span
                           aria-hidden

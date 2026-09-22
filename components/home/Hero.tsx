@@ -1,6 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { company } from '@/content/company';
+import { HeroVideo } from '@/components/home/HeroVideo';
+
+/**
+ * La vidéo de fond du premier écran.
+ *
+ * 1280 × 720, H.264 + AAC, 10,01 s, 4,5 Mo, `moov` placé avant `mdat` —
+ * le fichier démarre donc avant d'être entièrement téléchargé.
+ *
+ * Elle est posée SUR la photographie ci-dessous, qui reste le socle et le
+ * repli. Voir `components/home/HeroVideo.tsx` pour le détail.
+ */
+const VIDEO = '/video/hero-climatisation.mp4';
 
 /**
  * Hero.
@@ -151,14 +163,29 @@ export function Hero() {
          * Un écran étroit n'est pas un écran large en plus petit : c'est un
          * autre cadrage de la même photographie.
          */
-        <Image
-          src={PHOTO.src}
-          alt={PHOTO.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[88%_50%] lg:object-[62%_50%]"
-        />
+        <>
+          <Image
+            src={PHOTO.src}
+            alt={PHOTO.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[88%_50%] lg:object-[62%_50%]"
+          />
+
+          {/* ————— LA VIDÉO —————
+              Elle se pose SUR la photographie, qui reste dessous et lui sert
+              de socle : premier écran peint immédiatement, repli propre si la
+              vidéo n'arrive pas, et rien ne démarre en mouvement réduit.
+
+              Cadrage : `object-center` aux deux largeurs. La source est en
+              1280 × 720, donc en 16/9 — sur un écran étroit, le cadre du hero
+              devient haut et la vidéo perd forcément ses côtés. Le centre est
+              le seul choix neutre tant que la position du sujet dans le plan
+              n'est pas vérifiée à l'œil ; c'est le réglage à modifier si la
+              machine n'est pas centrée. */}
+          <HeroVideo src={VIDEO} className="object-center" />
+        </>
       ) : (
         <>
           {/* Sans photographie : le champ anthracite du site.

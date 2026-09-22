@@ -83,10 +83,20 @@ export function Chantier() {
       aria-labelledby="installations-titre"
       className="bg-white py-14 sm:py-16 lg:py-24"
     >
-      <div className="container-t grid items-center gap-11 lg:grid-cols-12 lg:gap-14">
+      {/* ─── POURQUOI PLUS DE `items-center` ───
+          La colonne éditoriale est plus courte que la photographie. Centrée,
+          elle laissait un bloc blanc mort d'environ 600 × 135 px dans le coin
+          bas-gauche, juste avant le changement de fond — d'où l'impression
+          que la page s'arrêtait net.
+
+          Les deux colonnes s'étirent donc à la même hauteur et la rangée de
+          boutons descend en pied de colonne (`lg:mt-auto`). Le vide n'est pas
+          comblé par du contenu ajouté : il est REDISTRIBUÉ en respiration
+          entre la liste et l'appel à l'action, là où il travaille. */}
+      <div className="container-t grid gap-11 lg:grid-cols-12 lg:items-stretch lg:gap-14">
         {/* ─────────── L'éditorial ─────────── */}
-        <div className="lg:col-span-5">
-          <Reveal>
+        <div className="lg:col-span-5 lg:flex">
+          <Reveal className="lg:flex lg:h-full lg:flex-col">
             <p className="flex items-center gap-3 text-[0.95rem] text-slate"><span aria-hidden className="h-px w-7 bg-brand" />Nos installations</p>
 
             <h2
@@ -131,7 +141,7 @@ export function Chantier() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 sm:mt-9">
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 sm:mt-9 lg:mt-auto lg:pt-10">
               <Link href="/contact" className="btn btn-primary btn-arrow">
                 Demander un devis
               </Link>

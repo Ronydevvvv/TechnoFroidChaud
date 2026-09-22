@@ -318,14 +318,27 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
+          {/* Le combiné sonne au survol — trois oscillations amorties sur
+              0,55 s, et rien d'autre : ni changement de taille, ni couleur
+              qui change sur le numéro. L'animation est portée par l'icône
+              seule, jamais par le lien entier, sinon c'est la ligne de
+              texte qui tremble.
+
+              `group-hover` et non `hover` sur l'icône : la sonnerie part
+              dès que le curseur entre dans la cible de 44 px du lien, pas
+              seulement quand il touche le pictogramme de 16 px. */}
           <a
             href={company.phoneHref}
-            className={`hidden items-center gap-2 py-3 text-[0.9rem] font-semibold whitespace-nowrap xl:flex ${
+            className={`group hidden items-center gap-2 py-3 text-[0.9rem] font-semibold whitespace-nowrap xl:flex ${
               onDark ? 'text-white' : 'text-ink'
             }`}
             aria-label={`Appeler le ${company.phone}`}
           >
-            <Phone aria-hidden strokeWidth={1.6} className="h-4 w-4 text-brand" />
+            <Phone
+              aria-hidden
+              strokeWidth={1.6}
+              className="h-4 w-4 origin-center text-brand transition-colors duration-300 group-hover:text-brand group-hover:[animation:tfc-sonne_0.55s_ease-in-out]"
+            />
             {company.phone}
           </a>
 

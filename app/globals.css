@@ -465,6 +465,42 @@ html.lenis body {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   LA SONNERIE — combiné du téléphone, au survol seulement
+   ───────────────────────────────────────────────────────────────────────
+   Trois oscillations qui s'amortissent, sur 0,55 s. L'amplitude est en
+   DEGRÉS et non en pixels : un combiné qui sonne pivote autour de son
+   point d'accroche, il ne glisse pas latéralement. Un `translateX` seul
+   aurait donné un tremblement de bug, pas une sonnerie.
+
+   9° au premier temps, 4° au dernier : l'amortissement est ce qui sépare
+   un objet qui sonne d'un élément d'interface qui s'agite.
+
+   Elle ne tourne QU'AU SURVOL et ne se répète pas — `prefers-reduced-motion`
+   la neutralise avec toutes les autres, plus haut.
+   ═══════════════════════════════════════════════════════════════════════ */
+@keyframes tfc-sonne {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(-9deg);
+  }
+  28% {
+    transform: rotate(9deg);
+  }
+  44% {
+    transform: rotate(-6deg);
+  }
+  60% {
+    transform: rotate(6deg);
+  }
+  78% {
+    transform: rotate(-3deg);
+  }
+}
+
 /* L'air soufflé : les tirets avancent le long de leur arc. */
 .tfc-flux {
   animation: tfc-flux 7s linear infinite;
