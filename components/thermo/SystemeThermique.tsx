@@ -90,6 +90,32 @@ type Plan = {
   splitH: number;
   /** Décalage des splits sous la toiture. */
   splitDy: number;
+  /**
+   * Épaisseur du POCHÉ — la matière tranchée par le plan de coupe.
+   *
+   * C'est ce qui sépare une coupe d'un schéma. Les murs, la dalle et la
+   * toiture étaient des traits simples : la planche n'avait donc pas de
+   * silhouette, et à 1440 px elle se lisait comme un filaire posé sur du
+   * blanc. Remplir la matière et laisser le vide vide est LA convention
+   * d'une coupe de bureau d'études — et c'est aussi ce qui donne au dessin
+   * une présence visible de loin, sans ajouter le moindre ornement.
+   */
+  poche: number;
+  /**
+   * Les REFENDS — cloisons de l'étage, en x.
+   *
+   * L'étage était une boîte vide : deux splits à gauche, deux émetteurs à
+   * droite, et rien entre les deux. Les cloisons en font des PIÈCES, et les
+   * pièces expliquent les appareils — deux volumes climatisés, deux volumes
+   * chauffés, un appareil par pièce. Le vide se remplit d'information, pas
+   * de décoration.
+   *
+   * Elles montent du plafond au plancher, et les réseaux leur passent
+   * dessus : une canalisation traverse une cloison, elle ne la contourne
+   * pas. C'est l'ordre de tracé qui le dit — les circuits sont peints après
+   * le bâti, donc par-dessus.
+   */
+  refends: number[];
   emetteurs: number[];
   emW: number;
   emH: number;
@@ -115,10 +141,34 @@ function Coupe({ p }: { p: Plan }) {
           <path key={i} d={d([[gauche - 120 + i * 33, sol + 4], [gauche - 134 + i * 33, sol + 18]])} stroke="currentColor" strokeWidth={0.8} opacity={0.3} />
         ))}
 
-      <path d={d([[gauche, sol], [gauche, toit], [droite, toit], [droite, sol]])} stroke="currentColor" strokeWidth={1.6 * k} opacity={0.9} />
-      <path d={d([[gauche, dalle], [droite, dalle]])} stroke="currentColor" strokeWidth={1.4 * k} opacity={0.6} />
-      <path d={d([[gauche - 12, toit], [droite + 12, toit]])} stroke="currentColor" strokeWidth={1.6 * k} opacity={0.9} />
-      {[gauche - 12, droite + 12].map((x) => (
+      {/* ── LE POCHÉ ──────────────────────────────────────────────────
+          La matière tranchée est pleine, le vide reste vide. Quatre bandes
+          et deux cloisons remplacent les quatre traits d'avant : même
+          géométrie, même encombrement, mais le bâtiment a désormais un
+          corps — et c'est ce corps qui se voit de loin. */}
+      {(() => {
+        const ep = p.poche;
+        const larg = droite - gauche + 2 * ep;
+        return (
+          <g fill="currentColor" stroke="none">
+            {/* Les deux murs de façade */}
+            <path d={rect(gauche - ep, toit, ep, sol - toit)} opacity={0.9} />
+            <path d={rect(droite, toit, ep, sol - toit)} opacity={0.9} />
+            {/* Le plancher haut, sous les machines de toiture */}
+            <path d={rect(gauche - ep, toit, larg, ep * 1.15)} opacity={0.9} />
+            {/* La dalle intermédiaire */}
+            <path d={rect(gauche - ep, dalle, larg, ep * 1.15)} opacity={0.9} />
+            {/* Les refends. Plus fins que les façades — une cloison de
+                distribution n'est pas un mur porteur, et le dessin doit le
+                dire plutôt que de les aligner tous au même trait. */}
+            {p.refends.map((x) => (
+              <path key={x} d={rect(x - ep * 0.34, toit, ep * 0.68, dalle - toit)} opacity={0.72} />
+            ))}
+          </g>
+        );
+      })()}
+      <path d={d([[gauche - 12 - p.poche, toit], [droite + 12 + p.poche, toit]])} stroke="currentColor" strokeWidth={1.6 * k} opacity={0.9} />
+      {[gauche - 12 - p.poche, droite + 12 + p.poche].map((x) => (
         <path key={x} d={d([[x, toit], [x, toit - 13]])} stroke="currentColor" strokeWidth={1.3 * k} opacity={0.6} />
       ))}
 
@@ -160,8 +210,7 @@ function Coupe({ p }: { p: Plan }) {
             key={i}
             d={d([[x, toit - p.groupe.h - 8], [x + 10, toit - p.groupe.h - 46]])}
             stroke="var(--color-alert)"
-            strokeWidth={1.7 * k}
-            opacity={0.9}
+            strokeWidth={2 * k}
             markerEnd="url(#tfc-sys-chaud)"
           />
         );
@@ -236,6 +285,12 @@ function Coupe({ p }: { p: Plan }) {
       {/* Les émetteurs, à l'étage. */}
       {p.emetteurs.map((x) => (
         <g key={x}>
+          {/* Le même voile que les volumes froids, mais en rouge.
+              Les trois chambres étaient teintées de cyan et les émetteurs
+              n'étaient teintés de rien : la planche s'intitulait « froid ET
+              chaleur » et ne montrait que du froid. Deux aplats à 7 % ne
+              sont pas un ornement — ils rendent le titre vrai. */}
+          <path d={rect(x, dalle - p.emH - 12, p.emW, p.emH)} fill="var(--color-alert)" opacity={0.08} stroke="none" />
           <path d={rect(x, dalle - p.emH - 12, p.emW, p.emH)} stroke="currentColor" strokeWidth={1.4 * k} />
           {detail &&
             Array.from({ length: 4 }, (_, i) => (
@@ -267,11 +322,11 @@ function Coupe({ p }: { p: Plan }) {
         ]);
         return (
           <>
-            <path d={`${depart} M${g1} ${yD} L${g2} ${yD}`} stroke="var(--color-alert)" strokeWidth={1.5 * k} opacity={0.42} />
+            <path d={`${depart} M${g1} ${yD} L${g2} ${yD}`} stroke="var(--color-alert)" strokeWidth={1.6 * k} opacity={0.6} />
             <path d={depart} stroke="var(--color-alert)" strokeWidth={2.6 * k} strokeDasharray="20 320" className="tfc-circule-inverse" />
-            <path d={retour} stroke="var(--color-alert)" strokeWidth={1.4 * k} opacity={0.3} />
+            <path d={retour} stroke="var(--color-alert)" strokeWidth={1.4 * k} opacity={0.42} />
             {[g1, g2].map((x) => (
-              <path key={x} d={d([[x, yD], [x, dalle - 12]])} stroke="var(--color-alert)" strokeWidth={1.5 * k} opacity={0.55} />
+              <path key={x} d={d([[x, yD], [x, dalle - 12]])} stroke="var(--color-alert)" strokeWidth={1.6 * k} opacity={0.72} />
             ))}
           </>
         );
@@ -382,6 +437,8 @@ const LARGE: Plan = {
   splitW: 76,
   splitH: 26,
   splitDy: 44,
+  poche: 9,
+  refends: [398, 605, 774],
   emetteurs: [690, 796],
   emW: 62,
   emH: 42,
@@ -408,6 +465,8 @@ const ETROIT: Plan = {
   splitW: 62,
   splitH: 22,
   splitDy: 40,
+  poche: 7,
+  refends: [210, 332],
   emetteurs: [268, 344],
   emW: 52,
   emH: 36,
