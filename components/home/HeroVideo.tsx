@@ -50,6 +50,29 @@ import { useEffect, useRef, useState } from 'react';
  * lecture automatique. `playsInline` empêche iOS de passer en plein écran.
  */
 
+/**
+ * ─── TROIS RÉGIMES, ET UN SEUL TÉLÉCHARGE LA VIDÉO ───────────────────────
+ * La page d'accueil pesait 3 151 ko, dont 2 692 pour ce seul fichier — 85 %.
+ * Les autres pages du site font 205 à 372 ko. Le même flux partait vers un
+ * téléphone en 4G, derrière un texte qui le recouvre.
+ *
+ *   'lecture'  ≥ 1024 px, mouvement accepté   → la vidéo, 1 000 ko
+ *   'fixe'     ≥ 1024 px, mouvement réduit    → le poster seul, 47 ko
+ *   'absente'  < 1024 px                      → rien, la photo suffit
+ *
+ * Sous 1024 px, la photographie du hero est DÉJÀ chargée en `priority` et
+ * déjà cadrée pour l'écran étroit (`object-[88%_50%]`). Poser une vidéo
+ * par-dessus n'ajoute aucune information : cela rejoue la même scène, à
+ * 1 Mo, sur la connexion qui les compte. Le hero reste un hero
+ * photographique — c'est sa composition d'origine.
+ *
+ * En mouvement réduit, on garde le `<video>` avec son poster mais SANS
+ * `src` : l'image affichée reste exactement la même qu'en lecture, puisque
+ * le poster est la première image du fichier. Rien ne bouge, rien ne se
+ * télécharge au-delà de 47 ko.
+ */
+type Regime = 'attente' | 'lecture' | 'fixe' | 'absente';
+
 export function HeroVideo({
   src,
   poster,
@@ -62,39 +85,42 @@ export function HeroVideo({
   const ref = useRef<HTMLVideoElement>(null);
   /** Faux uniquement si la vidéo échoue : on rend alors la photo au hero. */
   const [ok, setOk] = useState(true);
+  /* 'attente' au premier rendu : le régime dépend de la fenêtre et d'une
+     préférence système, qui n'existent ni l'une ni l'autre sur le serveur.
+     Rien n'est donc émis dans le HTML — et rien ne se télécharge avant que
+     le client ait tranché. */
+  const [regime, setRegime] = useState<Regime>('attente');
 
   useEffect(() => {
-    const v = ref.current;
-    if (!v) return;
+    if (!window.matchMedia('(min-width: 1024px)').matches) return setRegime('absente');
+    setRegime(
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'fixe' : 'lecture',
+    );
+  }, []);
 
-    /* Mouvement réduit : on fige sur le poster. La vidéo reste visible —
-       une image fixe ne contrevient à rien, et la masquer ferait
-       réapparaître une AUTRE image, donc un changement de visuel selon la
-       préférence système. */
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      v.pause();
-      v.removeAttribute('autoplay');
-      return;
-    }
-
+  useEffect(() => {
     /* Un refus de lecture automatique n'est PAS un échec : le poster est
        déjà la bonne image, on la garde simplement fixe. */
-    void v.play().catch(() => {});
-  }, []);
+    if (regime === 'lecture') void ref.current?.play().catch(() => {});
+  }, [regime]);
+
+  if (regime === 'attente' || regime === 'absente') return null;
 
   return (
     <video
       ref={ref}
-      src={src}
+      /* Pas de `src` en régime fixe : le poster suffit, et il est la
+         première image du fichier — donc le même visuel, à 47 ko. */
+      src={regime === 'lecture' ? src : undefined}
       poster={poster}
-      autoPlay
+      autoPlay={regime === 'lecture'}
       muted
       loop
       playsInline
-      /* `auto` et non `metadata` : la vidéo fait 2,76 Mo et le poster tient
-         le premier écran pendant son chargement. Rien ne sert de retarder
-         le flux — c'est ce retard qui faisait durer l'ancien décalage. */
-      preload="auto"
+      /* `auto` : la vidéo fait maintenant 1 000 ko et le poster tient le
+         premier écran pendant son chargement. Rien ne sert de retarder le
+         flux — c'est ce retard qui faisait durer l'ancien décalage. */
+      preload={regime === 'lecture' ? 'auto' : 'none'}
       aria-hidden
       tabIndex={-1}
       onError={() => setOk(false)}
