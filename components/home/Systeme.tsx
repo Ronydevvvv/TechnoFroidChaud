@@ -28,26 +28,34 @@ import { SystemeThermique, FROIDS } from '@/components/thermo/SystemeThermique';
  */
 
 export function Systeme() {
-  /* ─── L'OUVERTURE DE SECTION, ET POURQUOI 56 px ───
-     Cette section suit la bande des repères, et toutes deux sont blanches.
-     À 72 px, son ouverture s'additionnait aux 36 px de fermeture de la
-     bande : 109 px de blanc que rien — ni filet, ni fond — ne permettait
-     d'attribuer à l'une ou à l'autre. Une marge qu'on ne peut pas attribuer
-     n'est plus une marge, c'est un trou.
+  /* ─── L'OUVERTURE DE SECTION, ET POURQUOI 24 px ───
+     Cette section suit la bande des repères. Entre le bas de l'encre de la
+     bande et le haut de la capitale de « Froid », l'inventaire complet du
+     blanc tient en cinq postes, et un seul est réglable :
+         1 px   descente de fonte de la légende
+        24 px   `padding-bottom` de la bande      (elle, on n'y touche pas)
+         1 px   `border-top` de cette section
+        XX px   `padding-top` de cette section    ← le seul levier
+         2 px   blanc de fonte au-dessus de la capitale
+     Rien d'autre : pas de `min-height`, pas de marge de `Reveal`, pas de
+     padding de conteneur, pas de `margin-top` sur le titre. Le `gap` de la
+     rangée ne joue qu'en colonne, donc sous 1024 px.
 
-     Mais 40 px était l'excès inverse. Le titre fait 62 px de corps, donc
-     une capitale de l'ordre de 45 px : il ne restait que 58 px de blanc
-     optique au-dessus d'elle, moins que sa propre hauteur, et le filet de
-     section refermait la composition par le haut.
+     `leading-[1.02]` est ce qui rend le réglage aussi direct : un titre
+     d'affiche à interligne serré n'apporte que 2 px de blanc interne. Tout
+     l'écart est donc dans le padding, et s'y lit au pixel.
 
-     56 px donne 74 px optiques — un peu plus que la capitale, ce qui est la
-     proportion attendue au-dessus d'un titre d'affiche.
+     À 72 px, le blanc atteignait 94 px, que rien — ni filet, ni fond — ne
+     permettait d'attribuer à l'une ou l'autre section. 24 px le ramène à
+     46 px, et pose le filet au milieu d'un couloir symétrique : 24 px
+     au-dessus, 24 px en dessous. Ce n'est plus un intervalle, c'est une
+     séparation, et elle se lit comme voulue.
 
-     Le bas garde ses 96 px : il débouche sur l'acier des métiers, et un
-     changement de surface rend la marge attribuable. C'est toute la
-     différence, à valeur égale, entre une respiration et un trou. */
+     Le bas de section garde ses 96 px : il débouche sur l'acier des
+     métiers, et un changement de surface rend la marge attribuable. C'est
+     toute la différence, à valeur égale, entre une respiration et un trou. */
   return (
-    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-14 lg:pb-24">
+    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-6 lg:pb-24">
       <div className="container-t">
         <Reveal>
           <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
