@@ -28,15 +28,26 @@ import { SystemeThermique, FROIDS } from '@/components/thermo/SystemeThermique';
  */
 
 export function Systeme() {
-  /* `lg:pt-10` et non `lg:pt-[4.5rem]` : cette section suit la bande des
-     repères, et toutes deux sont blanches. Les 72 px d'ouverture se
-     cumulaient avec les 36 px de fermeture de la bande, sans que rien — ni
-     filet, ni fond — ne dise à l'œil où finissait l'une et où commençait
-     l'autre. Le bas de la section garde ses 96 px : lui débouche sur
-     l'acier des métiers, donc il se lit comme une marge, pas comme un
-     trou. */
+  /* ─── L'OUVERTURE DE SECTION, ET POURQUOI 56 px ───
+     Cette section suit la bande des repères, et toutes deux sont blanches.
+     À 72 px, son ouverture s'additionnait aux 36 px de fermeture de la
+     bande : 109 px de blanc que rien — ni filet, ni fond — ne permettait
+     d'attribuer à l'une ou à l'autre. Une marge qu'on ne peut pas attribuer
+     n'est plus une marge, c'est un trou.
+
+     Mais 40 px était l'excès inverse. Le titre fait 62 px de corps, donc
+     une capitale de l'ordre de 45 px : il ne restait que 58 px de blanc
+     optique au-dessus d'elle, moins que sa propre hauteur, et le filet de
+     section refermait la composition par le haut.
+
+     56 px donne 74 px optiques — un peu plus que la capitale, ce qui est la
+     proportion attendue au-dessus d'un titre d'affiche.
+
+     Le bas garde ses 96 px : il débouche sur l'acier des métiers, et un
+     changement de surface rend la marge attribuable. C'est toute la
+     différence, à valeur égale, entre une respiration et un trou. */
   return (
-    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-10 lg:pb-24">
+    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-14 lg:pb-24">
       <div className="container-t">
         <Reveal>
           <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
