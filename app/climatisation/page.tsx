@@ -3,6 +3,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import Link from 'next/link';
 import { Accordion } from '@/components/ui/Accordion';
 import { Reveal } from '@/components/ui/Reveal';
+import { GlypheClim, type Pose } from '@/components/thermo/GlypheClim';
 import { PlanDiffusion } from '@/components/thermo/PlanDiffusion';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, serviceSchema, breadcrumbSchema } from '@/lib/seo';
@@ -56,6 +57,14 @@ import { faq } from '@/content/site';
  */
 
 const trade = tradeBySlug('climatisation')!;
+/**
+ * L'ordre des glyphes suit celui de `trade.items` — mono, multi, gainable,
+ * cassette. Il est écrit ici plutôt que déduit du titre : une correspondance
+ * par chaîne de caractères se casse silencieusement à la première
+ * reformulation du contenu.
+ */
+const POSES: Pose[] = ['mono', 'multi', 'gainable', 'cassette'];
+
 const trail = [{ name: 'Climatisation', path: '/climatisation' }];
 
 export const metadata = pageMetadata({
@@ -129,10 +138,38 @@ export default function ClimatisationPage() {
           La nomenclature est SERRÉE — quatre lignes, petit corps, filets
           entre les rangs seulement. Elle se lit comme une planche de
           matériel, pas comme quatre paragraphes. */}
-      <section className="relative bg-white">
-        <div className="lg:grid lg:grid-cols-12">
-          {/* Photographie : à fond perdu à gauche, sur 5 colonnes. */}
-          <div className="relative h-[320px] lg:col-span-5 lg:h-[660px]">
+      {/* ═════════════ LES QUATRE POSES ═════════════
+          ─── CE QUI A ÉTÉ CORRIGÉ ───
+          Le panneau blanc était tiré de 64 px PAR-DESSUS la photographie
+          (`-ml-16` avec un `z-10` pour forcer le passage). L'intention était
+          un chevauchement de magazine ; le rendu était un rectangle blanc
+          posé de travers sur une image elle-même coupée au bord de l'écran.
+          Deux plans qui se recouvrent sans se justifier se lisent comme une
+          grille cassée, pas comme un parti pris.
+
+          Plus aucun recouvrement. La photographie tient cinq colonnes à
+          fond perdu à gauche, le texte en tient six à partir de la
+          septième : il reste une colonne de vide entre les deux, et c'est
+          ce vide qui fait la composition. La photographie s'étire à la
+          hauteur de la rangée (`self-stretch`) au lieu d'imposer 660 px
+          fixes — c'est le texte qui commande, l'image qui suit.
+
+          ─── LES QUATRE CONFIGURATIONS ───
+          Elles étaient quatre lignes de nomenclature : un mot, un
+          paragraphe. Or « gainable » et « cassette » ne veulent rien dire
+          pour un visiteur, et la différence entre les quatre est entièrement
+          géométrique — où est l'appareil, par où sort l'air.
+
+          Chaque ligne porte donc son GLYPHE, qui dessine exactement cela.
+          Le matériel y suit la couleur du texte, seuls les jets d'air sont
+          cyan : la couleur dit le fluide, jamais l'objet. C'est la
+          grammaire de toutes les planches du site.
+
+          Aucune carte, aucun arrondi, aucune ombre : un filet par rang, et
+          le glyphe aligné sur une colonne fixe. Une planche de matériel. */}
+      <section aria-labelledby="poses" className="bg-white">
+        <div className="lg:grid lg:grid-cols-12 lg:items-stretch">
+          <div className="relative h-[280px] lg:col-span-5 lg:h-auto lg:min-h-[32rem] lg:self-stretch">
             <Image
               src="/photos/clim-unite.jpg"
               alt="Unité extérieure de climatisation et sa grille de ventilation, fixée sur un mur à panneaux."
@@ -142,14 +179,17 @@ export default function ClimatisationPage() {
             />
           </div>
 
-          {/* `z-10` : sans lui, la photographie affleurait derrière le bord
-              du panneau et le chevauchement se lisait comme un défaut
-              d'alignement plutôt que comme un parti pris. Le panneau doit
-              passer franchement DEVANT. */}
-          <div className="relative z-10 lg:col-span-7 lg:-ml-16 lg:pt-20">
-            <div className="bg-white px-[clamp(1.25rem,4.5vw,3.5rem)] py-12 lg:py-14 lg:pr-[clamp(1.25rem,4.5vw,3.5rem)] lg:pl-16">
+          <div className="lg:col-span-6 lg:col-start-7">
+            <div className="px-[clamp(1.25rem,4.5vw,3.5rem)] py-12 lg:py-20 lg:pr-[clamp(1.25rem,4.5vw,3.5rem)] lg:pl-0">
               <Reveal>
-                <h2 className="heading max-w-[16ch] text-[clamp(1.7rem,2.9vw,2.3rem)] leading-[1.1] text-ink">
+                <p className="flex items-center gap-3 text-[0.9rem] text-slate">
+                  <span aria-hidden className="h-px w-7 bg-brand" />
+                  Quatre configurations
+                </p>
+                <h2
+                  id="poses"
+                  className="heading mt-4 max-w-[16ch] text-[clamp(1.7rem,2.9vw,2.3rem)] leading-[1.1] text-ink"
+                >
                   Quatre façons de poser une climatisation
                 </h2>
                 <p className="mt-5 max-w-[46ch] text-[1rem] leading-7 text-slate">
@@ -160,14 +200,23 @@ export default function ClimatisationPage() {
                 </p>
               </Reveal>
 
-              <dl className="mt-9">
+              <dl className="mt-9 border-t border-line">
                 {trade.items.map((item, i) => (
                   <Reveal key={item.title} delay={Math.min(i * 0.04, 0.16)}>
-                    <div className="grid gap-x-8 gap-y-1 border-t border-line py-4 sm:grid-cols-[10rem_1fr]">
-                      <dt className="heading text-[1.02rem] text-ink">
+                    <div className="grid grid-cols-[2.75rem_1fr] gap-x-4 gap-y-1 border-b border-line py-5 sm:grid-cols-[2.75rem_9rem_1fr] sm:gap-x-6">
+                      {/* Si le contenu gagnait une cinquième entrée,
+                          `POSES[i]` serait `undefined` et la planche
+                          tomberait. On laisse alors la colonne vide plutôt
+                          que d'afficher un glyphe faux. */}
+                      {POSES[i] ? (
+                        <GlypheClim pose={POSES[i]} className="mt-0.5 size-9 text-slate" />
+                      ) : (
+                        <span aria-hidden />
+                      )}
+                      <dt className="heading self-center text-[1.02rem] text-ink">
                         {item.title}
                       </dt>
-                      <dd className="text-[0.93rem] leading-6 text-slate">
+                      <dd className="col-span-2 text-[0.93rem] leading-6 text-slate sm:col-span-1 sm:col-start-3">
                         {item.body}
                       </dd>
                     </div>

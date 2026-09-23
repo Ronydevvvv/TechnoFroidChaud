@@ -79,13 +79,13 @@ const pt = (deg: number, r: number): [number, number] => {
 
 /** Les quatorze communes, dans l'ordre de la source — donc par proximité. */
 const POINTS = (() => {
-  const out: { nom: string; deg: number; r: number; x: number; y: number }[] = [];
+  const out: { nom: string; deg: number; r: number; x: number; y: number; anneau: number }[] = [];
   let i = 0;
   for (const anneau of ANNEAUX)
     for (const deg of anneau.angles) {
       if (i >= AUTRES.length) break;
       const [x, y] = pt(deg, anneau.r);
-      out.push({ nom: AUTRES[i], deg, r: anneau.r, x: f(x), y: f(y) });
+      out.push({ nom: AUTRES[i], deg, r: anneau.r, x: f(x), y: f(y), anneau: ANNEAUX.indexOf(anneau) });
       i++;
     }
   return out;
@@ -116,7 +116,7 @@ function Eventail() {
       {/* Les quatre arcs de guidage — un par anneau. Aucun n'est gradué :
           ils donnent le rang, pas une distance. */}
       {ANNEAUX.map((a) => (
-        <path key={a.r} d={arcGuide(a.r)} stroke="currentColor" strokeWidth={0.8} opacity={0.13} />
+        <path key={a.r} d={arcGuide(a.r)} stroke="currentColor" strokeWidth={0.8} opacity={0.11} />
       ))}
 
       {/* Les rayons, du siège vers chaque commune. Ils s'arrêtent AVANT le
@@ -138,34 +138,58 @@ function Eventail() {
       {/* Les quatorze communes. L'étiquette se pose toujours à droite du
           point : l'éventail s'ouvre vers la droite, donc c'est le seul côté
           où elle ne retombe jamais sur un rayon. */}
-      {POINTS.map((p) => (
-        <g key={p.nom}>
-          <circle cx={p.x} cy={p.y} r={3.1} fill="currentColor" opacity={0.7} />
-          <text
-            x={p.x + 10}
-            y={p.y + 4.4}
-            fontSize={13.5}
-            fill="currentColor"
-            stroke="none"
-            opacity={0.74}
-            className="font-[family-name:var(--font-sans)]"
-          >
-            {p.nom}
-          </text>
-        </g>
-      ))}
+      {POINTS.map((p) => {
+        /* ─── LE POIDS DIT LA PROXIMITÉ ───
+           Les quatorze communes étaient toutes au même poids : le schéma
+           rangeait donc par distance sans que cela se VOIE. Le point et
+           l'étiquette s'allègent maintenant d'un anneau au suivant. On lit
+           l'éloignement avant de lire les noms, et le siège cesse d'être
+           un point parmi quinze. */
+        const k = p.anneau / (ANNEAUX.length - 1);
+        return (
+          <g key={p.nom}>
+            <circle cx={p.x} cy={p.y} r={f(3.2 - k * 0.9)} fill="currentColor" opacity={0.62 - k * 0.18} />
+            <text
+              x={p.x + 10}
+              y={p.y + 4.2}
+              fontSize={f(13.5 - k * 1.2)}
+              fill="currentColor"
+              stroke="none"
+              opacity={0.66 - k * 0.14}
+              className="font-[family-name:var(--font-sans)]"
+            >
+              {p.nom}
+            </text>
+          </g>
+        );
+      })}
 
       {/* ─── LE SIÈGE ───
           Le seul élément cyan du schéma, et le seul cerclé. Il n'est pas
           « plus important » : il est l'ORIGINE, c'est-à-dire ce par rapport
           à quoi tout le reste est rangé. */}
-      <circle cx={CX} cy={CY} r={16} stroke="var(--color-brand)" strokeWidth={1} opacity={0.35} />
-      <circle cx={CX} cy={CY} r={5.4} fill="var(--color-brand)" />
+      {/* Le réticule : quatre traits courts qui s'arrêtent avant le cercle.
+          C'est la marque d'un point de référence sur une planche — elle dit
+          « c'est d'ICI que tout est mesuré », ce qu'un simple disque ne dit
+          pas. Les traits n'entrent pas dans le cercle : un réticule fermé
+          devient une cible, et une cible n'est plus un repère. */}
+      {[[-1, 0], [1, 0], [0, -1], [0, 1]].map(([dx, dy]) => (
+        <path
+          key={`${dx}${dy}`}
+          d={`M${CX + dx * 20} ${CY + dy * 20} L${CX + dx * 27} ${CY + dy * 27}`}
+          stroke="var(--color-brand)"
+          strokeWidth={1}
+          opacity={0.5}
+        />
+      ))}
+      <circle cx={CX} cy={CY} r={17.5} stroke="var(--color-brand)" strokeWidth={1.1} opacity={0.55} />
+      <circle cx={CX} cy={CY} r={11} stroke="var(--color-brand)" strokeWidth={0.8} opacity={0.28} />
+      <circle cx={CX} cy={CY} r={5.6} fill="var(--color-brand)" />
       <text
         x={CX}
-        y={CY - 28}
+        y={CY - 36}
         textAnchor="middle"
-        fontSize={17}
+        fontSize={20}
         fill="currentColor"
         stroke="none"
         className="font-[family-name:var(--font-display)]"
@@ -174,7 +198,7 @@ function Eventail() {
       </text>
       <text
         x={CX}
-        y={CY + 38}
+        y={CY + 46}
         textAnchor="middle"
         fontSize={11}
         letterSpacing={1.3}

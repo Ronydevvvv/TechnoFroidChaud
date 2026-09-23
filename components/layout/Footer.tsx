@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { company, servedTowns } from '@/content/company';
 import { navigation } from '@/content/navigation';
@@ -61,9 +62,37 @@ export function Footer() {
               retenir d'un pied de page. Les trois groupes utiles se
               resserrent à sa droite. */}
           <div className="sm:col-span-2 lg:col-span-5">
-            <p className="heading text-[clamp(1.5rem,2.4vw,2rem)] leading-tight text-white">
-              {company.legalName}
-            </p>
+            {/* ─── LE PICTOGRAMME OFFICIEL ───
+                Le pied de page ne portait que le NOM. Le fichier fourni par
+                l'entreprise — un flocon et un thermomètre — n'y figurait
+                nulle part, alors qu'il ouvre l'en-tête de chaque page.
+
+                Il est affiché TEL QUEL : mêmes pixels que l'en-tête et que
+                le favicon, aucun recadrage, aucune recoloration. Seule sa
+                hauteur change, pour s'asseoir sur le nom du pied de page,
+                qui est composé plus grand que celui de l'en-tête.
+
+                `Logo` n'est pas réutilisé ici : ce composant fixe son propre
+                corps typographique (1,05 rem), celui de la barre de
+                navigation. L'imposer au pied de page reviendrait à y écraser
+                le nom, qui monte à 2 rem et qui est la seule chose qu'on doit
+                retenir d'un footer. On reprend donc le MÊME fichier, pas la
+                même composition — c'est ce que permet une marque figurative.
+
+                `alt=""` : le nom est juste à côté, en texte. Décrire le
+                pictogramme le ferait annoncer deux fois. */}
+            <div className="flex items-center gap-3.5">
+              <Image
+                src="/photos/logo.png"
+                alt=""
+                width={128}
+                height={93}
+                className="h-9 w-auto shrink-0 lg:h-11"
+              />
+              <p className="heading text-[clamp(1.5rem,2.4vw,2rem)] leading-tight text-white">
+                {company.legalName}
+              </p>
+            </div>
             <p className="mt-5 max-w-[24rem] text-[0.95rem] leading-7 text-mist">
               Climatisation, pompes à chaleur, réfrigération et chambres
               froides. Installation, entretien et dépannage à{' '}

@@ -56,7 +56,12 @@ const reperes = [
 export function Reperes() {
   return (
     <section aria-label="Repères" className="bg-white">
-      <div className="container-t py-9 lg:py-10">
+      {/* La bande se resserre contre le hero. Elle flottait à 58 px sous
+            lui et à 137 px du titre suivant : entre les deux, un rectangle
+            blanc qui ne se lisait ni comme une respiration ni comme une
+            séparation. Rapprochée, elle se lit comme ce qu'elle est — une
+            légende du premier écran. */}
+        <div className="container-t pt-7 pb-8 lg:pt-8 lg:pb-9">
         {/* Deux colonnes sur téléphone : quatre repères empilés feraient une
             colonne de 400 px là où l'on attend une bande. */}
         {/* ─── LA GRADUATION ───

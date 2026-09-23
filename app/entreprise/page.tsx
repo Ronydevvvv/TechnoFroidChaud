@@ -5,6 +5,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 import { company, commitments, servedTowns } from '@/content/company';
+import { ZoneIntervention } from '@/components/thermo/ZoneIntervention';
 
 /**
  * L'entreprise.
@@ -310,43 +311,34 @@ export default function EntreprisePage() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.08}>
-            <ul className="mt-11 flex flex-wrap items-baseline gap-y-2 border-t border-line pt-9 lg:mt-14">
-              {servedTowns.map((t, i) => (
-                /* Le point médian suit le nom au lieu de le précéder : placé
-                   devant, il ouvrait les lignes suivantes du mur par un
-                   séparateur orphelin. Derrière, une fin de ligne se lit comme
-                   une continuation. */
-                <li key={t} className="heading text-[clamp(1.25rem,2.6vw,2.2rem)] leading-[1.3] text-ink">
-                  {t}
-                  {/* ─── L'ANCRAGE ───
-                      Le mur portait quinze noms de même poids : une liste,
-                      pas un territoire. Or `content/company.ts` documente
-                      déjà que les communes sont ORDONNÉES PAR PROXIMITÉ DU
-                      SIÈGE — une information réelle, présente dans la
-                      source, et jusqu'ici invisible sur la page.
+          {/* ═════════════ LA PLANCHE TERRITORIALE ═════════════
+              Le mur de quinze noms disait le territoire en typographie. Il
+              le disait bien, mais il le disait en LISTE — et une liste ne
+              montre pas un rayon.
 
-                      Marquer le siège suffit à la rendre lisible : le mur
-                      cesse d'être une énumération et devient un rayon, qui
-                      part de Morsbach et s'éloigne. C'est la seule marque
-                      cyan de la section, et elle porte le seul fait qui
-                      ancre l'entreprise quelque part.
+              C'est la planche de l'accueil qui vient ici, à l'identique :
+              même composant, même source, même cartouche. Elle ne répète
+              pas la liste, elle la remplace — et elle apporte ce que la
+              liste ne pouvait pas donner, l'ordre de proximité, qui est
+              pourtant documenté dans `content/company.ts` depuis toujours.
 
-                      Rien n'est ajouté au contenu : la commune vient de
-                      `company.city`, l'ordre vient du tableau. */}
-                  {t === company.city && (
-                    <span className="label ml-2.5 align-middle text-[0.6em] tracking-[0.1em] text-brand uppercase">
-                      Siège
-                    </span>
-                  )}
-                  {i < servedTowns.length - 1 && (
-                    <span aria-hidden className="px-3 text-line lg:px-4">
-                      ·
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
+              Sous 1024 px elle se déroule en axe vertical, donc les quinze
+              noms restent du vrai texte : rien n'est perdu pour un lecteur
+              d'écran ni pour un moteur. */}
+          <Reveal as="figure" className="m-0 mt-11 lg:mt-14" delay={0.08}>
+            <div className="flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:items-baseline sm:justify-between sm:text-[0.74rem]">
+              <span className="text-ink">
+                Zone d’intervention — {servedTowns.length} communes
+              </span>
+              <span className="flex items-center gap-2">
+                <span aria-hidden className="size-1.5 rounded-full bg-brand" />
+                Rangées par distance au siège, sans échelle géographique
+              </span>
+            </div>
+
+            <div className="mt-8 lg:mt-4">
+              <ZoneIntervention />
+            </div>
           </Reveal>
 
           <Reveal delay={0.14}>

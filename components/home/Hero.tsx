@@ -19,6 +19,15 @@ import { HeroVideo } from '@/components/home/HeroVideo';
 const VIDEO = '/video/hero-climatisation.mp4';
 
 /**
+ * La première image de la vidéo, extraite du fichier lui-même.
+ *
+ * C'est elle qui peint le hero avant que le flux n'arrive — et comme elle
+ * EST la première image lue, le passage à la lecture ne change rien à
+ * l'écran. Voir `components/home/HeroVideo.tsx`.
+ */
+const POSTER = '/video/hero-poster.jpg';
+
+/**
  * Hero.
  *
  * ─── LE MODÈLE 3D A ÉTÉ RETIRÉ ───────────────────────────────────────────
@@ -208,7 +217,7 @@ export function Hero() {
               cadre partout ; elle n'est agrandie qu'au-delà de ~1155 px
               (1,28 à 1440), et se trouve à l'échelle native ou réduite en
               dessous. */}
-          <HeroVideo src={VIDEO} className="object-center" />
+          <HeroVideo src={VIDEO} poster={POSTER} className="object-center" />
         </>
       ) : (
         <>

@@ -29,7 +29,7 @@ import { SystemeThermique, FROIDS } from '@/components/thermo/SystemeThermique';
 
 export function Systeme() {
   return (
-    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:py-24">
+    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-[4.5rem] lg:pb-24">
       <div className="container-t">
         <Reveal>
           <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">

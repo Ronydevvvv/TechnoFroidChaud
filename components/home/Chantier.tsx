@@ -160,7 +160,13 @@ export function Chantier() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 sm:mt-9 lg:mt-auto lg:pt-10">
+            {/* Les boutons suivent le texte. Ils étaient poussés en pied de
+                colonne par `lg:mt-auto` : cela comblait le vide EN BAS, mais
+                le déplaçait AU MILIEU — entre la dernière étape et eux. Un
+                trou au milieu d'une colonne se voit davantage qu'un bas de
+                colonne court. C'est désormais la photographie qui s'aligne
+                sur le texte, plus bas dans ce fichier. */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 sm:mt-9 lg:mt-10">
               <Link href="/contact" className="btn btn-primary btn-arrow">
                 Demander un devis
               </Link>
@@ -194,16 +200,38 @@ export function Chantier() {
             écran étroit, une image à fond perdu mangerait la marge qui rend
             le texte lisible. */}
         <div className="lg:col-span-7 lg:col-start-6 lg:-mr-[clamp(1.25rem,4.5vw,3.5rem)]">
-          <Reveal delay={0.08}>
+          <Reveal className="lg:h-full" delay={0.08}>
+            {/* ─── LA PHOTOGRAPHIE S'ALIGNE SUR LE TEXTE ───
+                Elle est au format 4/5. À sept colonnes elle réclamait près
+                de 960 px de haut pour une colonne de texte qui en fait 620 :
+                c'est cet écart qui creusait le vide de la section.
+
+                `h-full` + `object-cover` inversent la dépendance. La grille
+                est en `items-stretch`, donc la colonne connaît déjà sa
+                hauteur — celle du texte. L'image la remplit et se recadre
+                elle-même. Le texte commande, la photographie suit. */}
             <figure className="m-0">
+              {/* ─── LE CADRE COMMANDE, PAS LE FICHIER ───
+                  `h-full` seul ne pouvait rien : la hauteur de la rangée
+                  était justement dictée par l'image, donc elle se mesurait
+                  à elle-même. Au format 4/5 sur sept colonnes, elle
+                  réclamait 960 px pour une colonne de texte qui en fait
+                  690 — d'où 270 px de blanc sous les boutons.
+
+                  On lui impose donc un rapport proche de la colonne de
+                  texte, et `object-cover` recadre. Le sujet — le technicien
+                  et le module — occupe le centre du cliché : il survit au
+                  recadrage. */}
+              <div className="lg:aspect-[6/5] lg:overflow-hidden lg:rounded-sm lg:rounded-r-none">
               <Image
                 src={PHOTO.src}
                 alt={PHOTO.alt}
                 width={PHOTO.width}
                 height={PHOTO.height}
                 sizes="(min-width:1024px) 58vw, 92vw"
-                className="photo h-auto w-full rounded-sm lg:rounded-r-none"
+                className="photo h-auto w-full rounded-sm lg:h-full lg:rounded-none lg:object-cover"
               />
+              </div>
               {/* La légende décrit un geste du métier. Elle n'attribue ni
                   chantier, ni lieu, ni client — rien de tout cela n'est
                   confirmé. */}
