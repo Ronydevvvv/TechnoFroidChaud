@@ -28,7 +28,7 @@ import { SystemeThermique, FROIDS } from '@/components/thermo/SystemeThermique';
  */
 
 export function Systeme() {
-  /* ─── L'OUVERTURE DE SECTION, ET POURQUOI 24 px ───
+  /* ─── L'OUVERTURE DE SECTION, ET POURQUOI 44 px ───
      Cette section suit la bande des repères. Entre le bas de l'encre de la
      bande et le haut de la capitale de « Froid », l'inventaire complet du
      blanc tient en cinq postes, et un seul est réglable :
@@ -46,16 +46,21 @@ export function Systeme() {
      l'écart est donc dans le padding, et s'y lit au pixel.
 
      À 72 px, le blanc atteignait 94 px, que rien — ni filet, ni fond — ne
-     permettait d'attribuer à l'une ou l'autre section. 24 px le ramène à
-     46 px, et pose le filet au milieu d'un couloir symétrique : 24 px
-     au-dessus, 24 px en dessous. Ce n'est plus un intervalle, c'est une
-     séparation, et elle se lit comme voulue.
+     permettait d'attribuer à l'une ou l'autre section. 24 px le ramenait à
+     46 px : le trou disparaissait, mais le titre ouvrait aussitôt après le
+     filet, sans que la section prenne son souffle.
+
+     44 px donne 66 px de blanc d'encre à encre. C'est le réglage retenu :
+     assez pour que le titre s'annonce, trop peu pour redevenir un
+     rectangle vide. Entre 46 et 94, la fenêtre utile était étroite, et
+     elle s'est trouvée par approches successives en production — pas au
+     jugé dans l'éditeur.
 
      Le bas de section garde ses 96 px : il débouche sur l'acier des
      métiers, et un changement de surface rend la marge attribuable. C'est
      toute la différence, à valeur égale, entre une respiration et un trou. */
   return (
-    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-6 lg:pb-24">
+    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-11 lg:pb-24">
       <div className="container-t">
         <Reveal>
           <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
