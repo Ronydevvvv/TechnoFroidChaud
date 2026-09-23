@@ -28,7 +28,7 @@ import { SystemeThermique, FROIDS } from '@/components/thermo/SystemeThermique';
  */
 
 export function Systeme() {
-  /* ─── L'OUVERTURE DE SECTION, ET POURQUOI 44 px ───
+  /* ─── L'OUVERTURE DE SECTION, ET POURQUOI 24 px ───
      Cette section suit la bande des repères. Entre le bas de l'encre de la
      bande et le haut de la capitale de « Froid », l'inventaire complet du
      blanc tient en cinq postes, et un seul est réglable :
@@ -46,21 +46,20 @@ export function Systeme() {
      l'écart est donc dans le padding, et s'y lit au pixel.
 
      À 72 px, le blanc atteignait 94 px, que rien — ni filet, ni fond — ne
-     permettait d'attribuer à l'une ou l'autre section. 24 px le ramenait à
-     46 px : le trou disparaissait, mais le titre ouvrait aussitôt après le
-     filet, sans que la section prenne son souffle.
+     permettait d'attribuer à l'une ou l'autre section. 24 px le ramène à
+     46 px, et pose le filet au milieu d'un couloir symétrique : 24 px
+     au-dessus, 24 px en dessous.
 
-     44 px donne 66 px de blanc d'encre à encre. C'est le réglage retenu :
-     assez pour que le titre s'annonce, trop peu pour redevenir un
-     rectangle vide. Entre 46 et 94, la fenêtre utile était étroite, et
-     elle s'est trouvée par approches successives en production — pas au
-     jugé dans l'éditeur.
+     C'est le minimum défendable, et c'est volontaire. Le hero occupe tout
+     le premier écran : la bande se pose donc au ras du pli, et ce qui suit
+     décide si l'écran se termine sur une page ou sur du papier. Chaque
+     pixel rendu ici rapproche le titre du pli.
 
      Le bas de section garde ses 96 px : il débouche sur l'acier des
      métiers, et un changement de surface rend la marge attribuable. C'est
      toute la différence, à valeur égale, entre une respiration et un trou. */
   return (
-    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-11 lg:pb-24">
+    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-6 lg:pb-24">
       <div className="container-t">
         <Reveal>
           <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
@@ -78,7 +77,7 @@ export function Systeme() {
           </div>
         </Reveal>
 
-        {/* ─── `lg:mt-9`, ET POURQUOI C'ÉTAIT ICI LE VRAI TROU ───
+        {/* ─── `lg:mt-8`, ET POURQUOI C'ÉTAIT ICI LE VRAI TROU ───
             Un scan de pixels de la production — les rangées entièrement
             blanches sur toute la largeur du conteneur — a classé les vides
             de la zone par hauteur. Le plus grand n'était pas la transition
@@ -91,9 +90,9 @@ export function Systeme() {
             commencé ». Le blanc placé juste avant elle est donc le seul de
             la page qui se lise comme une attente.
 
-            36 px le ramène à 45 px, au niveau des deux autres intervalles
-            de la zone (50 et 48). Mobile inchangé : `mt-11` tient. */}
-        <Reveal as="figure" className="m-0 mt-11 lg:mt-9" delay={0.06}>
+            32 px le ramène à 41 px, au niveau des deux autres intervalles
+            de la zone. Mobile inchangé : `mt-11` tient. */}
+        <Reveal as="figure" className="m-0 mt-11 lg:mt-8" delay={0.06}>
           {/* Le cartouche, même convention que les autres planches du site :
               désignation à gauche, code couleur à droite. */}
           <div className="flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:text-[0.74rem] sm:items-baseline sm:justify-between">
