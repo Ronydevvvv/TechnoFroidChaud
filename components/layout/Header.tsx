@@ -326,10 +326,27 @@ export function Header() {
 
               `group-hover` et non `hover` sur l'icône : la sonnerie part
               dès que le curseur entre dans la cible de 44 px du lien, pas
-              seulement quand il touche le pictogramme de 16 px. */}
+              seulement quand il touche le pictogramme de 16 px.
+
+              ─── POURQUOI `lg:` ET NON `xl:` ───
+              Le numéro était affiché à partir de 1280 px, alors que le
+              burger — et le menu replié qui contient lui aussi un bouton
+              d'appel — s'arrête à 1024 px. Entre les deux, le téléphone
+              n'était donc NULLE PART : ni dans la barre, ni dans un menu,
+              puisqu'il n'y avait plus de menu à ouvrir. C'est la plage d'un
+              portable 13 pouces ou d'une fenêtre non maximisée, et l'appel
+              est le premier canal de ce métier.
+
+              Les deux seuils coïncident désormais sur `lg` (1024 px) : en
+              dessous, le menu porte l'appel ; au-dessus, la barre le porte.
+              Aucune largeur ne tombe entre les deux.
+
+              La place existe : à 1024 px le header occupe 761 px sur 1024,
+              soit 263 px de libre pour un lien qui en réclame 133 plus
+              16 px de gouttière. */}
           <a
             href={company.phoneHref}
-            className={`group hidden items-center gap-2 py-3 text-[0.9rem] font-semibold whitespace-nowrap xl:flex ${
+            className={`group hidden items-center gap-2 py-3 text-[0.9rem] font-semibold whitespace-nowrap lg:flex ${
               onDark ? 'text-white' : 'text-ink'
             }`}
             aria-label={`Appeler le ${company.phone}`}
