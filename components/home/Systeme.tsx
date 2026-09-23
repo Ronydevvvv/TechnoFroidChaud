@@ -28,8 +28,15 @@ import { SystemeThermique, FROIDS } from '@/components/thermo/SystemeThermique';
  */
 
 export function Systeme() {
+  /* `lg:pt-10` et non `lg:pt-[4.5rem]` : cette section suit la bande des
+     repères, et toutes deux sont blanches. Les 72 px d'ouverture se
+     cumulaient avec les 36 px de fermeture de la bande, sans que rien — ni
+     filet, ni fond — ne dise à l'œil où finissait l'une et où commençait
+     l'autre. Le bas de la section garde ses 96 px : lui débouche sur
+     l'acier des métiers, donc il se lit comme une marge, pas comme un
+     trou. */
   return (
-    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-[4.5rem] lg:pb-24">
+    <section aria-labelledby="systeme-titre" className="border-y border-line bg-white py-14 sm:py-16 lg:pt-10 lg:pb-24">
       <div className="container-t">
         <Reveal>
           <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">

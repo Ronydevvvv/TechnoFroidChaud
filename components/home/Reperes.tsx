@@ -56,12 +56,18 @@ const reperes = [
 export function Reperes() {
   return (
     <section aria-label="Repères" className="bg-white">
-      {/* La bande se resserre contre le hero. Elle flottait à 58 px sous
-            lui et à 137 px du titre suivant : entre les deux, un rectangle
-            blanc qui ne se lisait ni comme une respiration ni comme une
-            séparation. Rapprochée, elle se lit comme ce qu'elle est — une
-            légende du premier écran. */}
-        <div className="container-t pt-7 pb-8 lg:pt-8 lg:pb-9">
+      {/* ─── POURQUOI CES VALEURS, ET POURQUOI `lg:` SEULEMENT ───
+          Sur grand écran la bande mesurait 135 px pour 67 px de contenu —
+          le double. Et la section suivante ouvre sur du blanc, elle aussi :
+          les deux respirations s'additionnaient en un rectangle vide de
+          109 px que rien ne séparait, ni filet ni changement de fond. Une
+          respiration qu'on ne peut pas attribuer à l'une des deux sections
+          n'est plus une respiration, c'est un trou.
+
+          Sous 1024 px, en revanche, la bande passe à deux colonnes : 234 px
+          de contenu pour 294 px de cadre, donc déjà proportionnée. Elle
+          n'avait rien à corriger, et ces classes ne la touchent pas. */}
+      <div className="container-t pt-7 pb-8 lg:pt-7 lg:pb-6">
         {/* Deux colonnes sur téléphone : quatre repères empilés feraient une
             colonne de 400 px là où l'on attend une bande. */}
         {/* ─── LA GRADUATION ───
