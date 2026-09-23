@@ -78,7 +78,22 @@ export function Systeme() {
           </div>
         </Reveal>
 
-        <Reveal as="figure" className="m-0 mt-11 lg:mt-16" delay={0.06}>
+        {/* ─── `lg:mt-9`, ET POURQUOI C'ÉTAIT ICI LE VRAI TROU ───
+            Un scan de pixels de la production — les rangées entièrement
+            blanches sur toute la largeur du conteneur — a classé les vides
+            de la zone par hauteur. Le plus grand n'était pas la transition
+            depuis la bande (50 px), mais celui-ci : 73 px entre le bas du
+            bloc titre et le cartouche, dus aux 64 px de `lg:mt-16`.
+
+            C'est logique une fois vu. Ce qui fait exister cette section aux
+            yeux du lecteur, c'est le DESSIN, pas le titre : tant que la
+            planche n'est pas apparue, il lit encore « la section n'a pas
+            commencé ». Le blanc placé juste avant elle est donc le seul de
+            la page qui se lise comme une attente.
+
+            36 px le ramène à 45 px, au niveau des deux autres intervalles
+            de la zone (50 et 48). Mobile inchangé : `mt-11` tient. */}
+        <Reveal as="figure" className="m-0 mt-11 lg:mt-9" delay={0.06}>
           {/* Le cartouche, même convention que les autres planches du site :
               désignation à gauche, code couleur à droite. */}
           <div className="flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:text-[0.74rem] sm:items-baseline sm:justify-between">
