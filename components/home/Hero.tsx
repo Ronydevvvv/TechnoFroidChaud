@@ -313,7 +313,26 @@ export function Hero() {
         className="pointer-events-none absolute top-36 bottom-24 left-3 hidden w-3.5 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.2)_0_1px,transparent_1px_130px)] lg:block"
       />
 
-      <div className="container-t relative flex min-h-[82svh] items-center pt-28 pb-16 lg:min-h-[78vh] lg:pt-32 lg:pb-20">
+      {/* ─── LE PREMIER ÉCRAN SE TERMINE SUR LA BANDE ───
+          Sur grand écran, le hero ne fait plus une fraction arbitraire de
+          la fenêtre : il fait exactement la fenêtre MOINS la bande des
+          repères qui le suit. Le bas de la bande tombe donc au pli, à un
+          pixel près — celui du filet.
+
+          C'est ce qui manquait. Tant que le hero valait 78vh, la bande
+          débordait de quelques dizaines de pixels et le titre de la
+          section suivante venait dépasser sous elle : le premier écran se
+          terminait sur une amorce de texte coupée, c'est-à-dire sur un
+          accident. Aucun réglage d'espacement plus bas dans la page ne
+          pouvait corriger ça, puisque la cause était ici.
+
+          Les deux soustractions sont les deux hauteurs que prend la bande :
+          9rem (144 px) entre 1024 et 1279 px, où les légendes passent sur
+          deux lignes, et 7.5rem (120 px) au-delà, où elles tiennent sur
+          une. Sous 1024 px la bande fait 222 à 294 px de haut — l'amputer
+          du hero laisserait une image trop basse — donc `min-h-[82svh]`
+          tient, et le mobile ne change pas d'un pixel. */}
+      <div className="container-t relative flex min-h-[82svh] items-center pt-28 pb-16 lg:min-h-[calc(100svh-9rem)] lg:pt-32 lg:pb-20 xl:min-h-[calc(100svh-7.5rem)]">
         <div className="w-full max-w-xl lg:max-w-[38rem]">
           <p className="text-[0.98rem] text-white/70">Frigoriste · Chauffagiste</p>
 
