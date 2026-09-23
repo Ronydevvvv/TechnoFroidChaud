@@ -55,9 +55,18 @@ import { servedTowns } from '@/content/company';
  */
 
 const CX = 90;
-const CY = 200;
-/** Aplatissement vertical de l'éventail. */
-const KY = 0.5;
+const CY = 190;
+/**
+ * Aplatissement vertical de l'éventail.
+ *
+ * Passé de 0,5 à 0,42. À 0,5 la planche occupait 780 px de haut sur grand
+ * écran — le plus gros bloc de chacune des trois pages qui la portent, pour
+ * quinze points et quinze noms. L'ellipse un peu plus plate resserre le
+ * dessin sans toucher ni aux rayons, ni aux angles, ni aux étiquettes : la
+ * donnée dessinée reste exactement la même, seule la hauteur du cadre
+ * change.
+ */
+const KY = 0.42;
 
 /** Les quatre anneaux : rayon, puis angles des communes qui s'y posent. */
 const ANNEAUX: { r: number; angles: number[] }[] = [
@@ -105,7 +114,7 @@ const arcGuide = (r: number) => {
 function Eventail() {
   return (
     <svg
-      viewBox="0 -34 720 468"
+      viewBox="0 -14 720 400"
       aria-hidden
       focusable="false"
       fill="none"

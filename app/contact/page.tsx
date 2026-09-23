@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Phone } from 'lucide-react';
 import { Accordion } from '@/components/ui/Accordion';
 import { CallToAction } from '@/components/sections/CallToAction';
-import { GlypheMetier, type Metier } from '@/components/ui/GlypheMetier';
+import { GlypheDemande, type Demande } from '@/components/contact/GlypheDemande';
 import { ZoneIntervention } from '@/components/thermo/ZoneIntervention';
 import { AxeThermique } from '@/components/contact/AxeThermique';
 import { company, servedTowns } from '@/content/company';
@@ -62,25 +62,25 @@ const BESOINS = [
     titre: 'Installation',
     texte: 'Climatisation, chauffage, pompe à chaleur, réfrigération.',
     href: '/realisations',
-    glyphe: 'climatisation' as Metier,
+    glyphe: 'installation' as Demande,
   },
   {
     titre: 'Entretien',
     texte: 'Contrôle, nettoyage des échangeurs, vérification des sécurités.',
     href: '/entretien-depannage',
-    glyphe: 'refrigeration' as Metier,
+    glyphe: 'entretien' as Demande,
   },
   {
     titre: 'Dépannage',
     texte: 'Panne, équipement à l’arrêt, recherche de défaut.',
     href: '/entretien-depannage',
-    glyphe: 'depannage' as Metier,
+    glyphe: 'depannage' as Demande,
   },
   {
     titre: 'Renseignement',
     texte: 'Une question avant de lancer un projet.',
     href: '/entreprise',
-    glyphe: 'pac' as Metier,
+    glyphe: 'renseignement' as Demande,
   },
 ] as const;
 
@@ -158,7 +158,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section aria-labelledby="joindre" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="joindre" className="bg-white py-14 lg:py-20">
         <div className="container-t lg:grid lg:grid-cols-12 lg:gap-x-16">
           {/* ─── NOUS JOINDRE ─── */}
           <div className="lg:col-span-5">
@@ -257,7 +257,7 @@ export default function ContactPage() {
           Les quatre entrées ne sont pas inventées : ce sont les valeurs du
           champ « Objet de la demande » du formulaire ci-dessus, rendues
           visibles avant qu'on n'ouvre la liste déroulante. */}
-      <section aria-labelledby="besoin" className="border-t border-line bg-stone py-16 lg:py-24">
+      <section aria-labelledby="besoin" className="border-t border-line bg-stone py-14 lg:py-20">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
@@ -280,7 +280,7 @@ export default function ContactPage() {
                 <div className="border-b border-line">
                   <Link
                     href={n.href}
-                    className="group relative -mx-3 flex items-baseline justify-between gap-6 rounded-[3px] px-3 py-5 transition-colors duration-[250ms] hover:bg-ink/[0.035] sm:py-6"
+                    className="group relative -mx-3 flex items-baseline justify-between gap-6 rounded-[3px] px-3 py-5 transition-[background-color,padding-left] duration-[250ms] hover:bg-ink/[0.035] hover:pl-5 sm:py-6"
                   >
                     {/* Le filet actif, comme sur les lignes de l'accueil :
                         il s'ouvre depuis son centre. `scale-y` plutôt qu'une
@@ -291,9 +291,9 @@ export default function ContactPage() {
                       className="absolute inset-y-2 -left-3 w-px origin-center scale-y-0 bg-brand transition-transform duration-[250ms] ease-out group-hover:scale-y-100"
                     />
                     <span className="flex min-w-0 items-baseline gap-4">
-                      <GlypheMetier
-                        metier={n.glyphe}
-                        className="mt-px size-4 shrink-0 translate-y-px text-slate/45 transition-[color,transform] duration-[250ms] group-hover:translate-x-0.5 group-hover:text-brand"
+                      <GlypheDemande
+                        demande={n.glyphe}
+                        className="mt-0.5 size-5 shrink-0 text-slate/50 transition-[color,transform] duration-[250ms] group-hover:translate-x-0.5 group-hover:text-brand"
                       />
                       <span className="min-w-0">
                         <span className="heading block text-[clamp(1.1rem,2.2vw,1.45rem)] leading-snug text-ink">
@@ -306,7 +306,7 @@ export default function ContactPage() {
                     </span>
                     <span
                       aria-hidden
-                      className="shrink-0 text-[0.95rem] text-slate/40 transition-[transform,color] duration-[250ms] group-hover:translate-x-1 group-hover:text-brand"
+                      className="shrink-0 text-[0.95rem] text-slate/40 transition-[transform,color] duration-[250ms] group-hover:translate-x-1.5 group-hover:text-brand"
                     >
                       →
                     </span>
@@ -326,7 +326,7 @@ export default function ContactPage() {
           Les quatre entrées sortent MOT POUR MOT de l'invite du champ
           « Votre situation » du formulaire. Rien n'a été ajouté — on rend
           simplement visible ce qui y était caché. */}
-      <section aria-labelledby="avant" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="avant" className="bg-white py-14 lg:py-20">
         <div className="container-t lg:grid lg:grid-cols-12 lg:gap-x-16">
           <div className="lg:col-span-5">
             <Reveal>
@@ -350,7 +350,15 @@ export default function ContactPage() {
 
           <div className="mt-10 lg:col-span-6 lg:col-start-7 lg:mt-0">
             <Reveal delay={0.08}>
-              <dl className="border-t-2 border-ink">
+              {/* La graduation en tête de fiche : le même bord de feuille
+                  que la bande de l'accueil et que le pied de page. Elle
+                  n'ajoute aucun élément au DOM — un dégradé répété la
+                  trace en une passe. */}
+              <span
+                aria-hidden
+                className="block h-1.5 w-full bg-[repeating-linear-gradient(to_right,var(--color-line)_0_1px,transparent_1px_16px)]"
+              />
+              <dl className="-mt-[2px] border-t-2 border-ink">
                 {AVANT.map((x) => (
                   <div
                     key={x.cle}
@@ -374,7 +382,7 @@ export default function ContactPage() {
           Sous 1024 px elle se déroule en axe vertical, donc les quinze noms
           restent du vrai texte — rien n'est perdu pour un lecteur d'écran
           ni pour un moteur. */}
-      <section aria-labelledby="ou" className="border-y border-line bg-stone py-16 lg:py-24">
+      <section aria-labelledby="ou" className="border-y border-line bg-stone py-14 lg:py-20">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
@@ -412,7 +420,7 @@ export default function ContactPage() {
           Les quatre questions de `content/site.ts` qui concernent une prise
           de contact. Même composant que les autres pages : toutes fermées
           au chargement, ligne entière cliquable, « + » qui pivote. */}
-      <section aria-labelledby="questions" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="questions" className="bg-white py-14 lg:py-20">
         <div className="container-t">
           <Reveal>
             <h2
@@ -431,6 +439,7 @@ export default function ContactPage() {
       </section>
 
       <CallToAction
+        axe
         title={
           <>
             Un projet en tête ?<br />

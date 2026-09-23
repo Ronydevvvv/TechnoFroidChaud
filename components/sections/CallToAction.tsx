@@ -36,15 +36,47 @@ import { company } from '@/content/company';
 export function CallToAction({
   title = 'Un projet de chauffage, de climatisation ou de froid ?',
   body = 'Décrivez-nous la situation en quelques lignes. Nous vous rappelons pour convenir d’une visite — ou pour évaluer l’urgence s’il s’agit d’une panne.',
+  axe = false,
 }: {
   /** Conservé pour compatibilité : plus affiché depuis la refonte du CTA. */
   overline?: string;
   title?: React.ReactNode;
   body?: string;
+  /**
+   * Ouvre le bloc sur un filet gradué qui va du froid au chaud.
+   *
+   * OPT-IN, et il le restera : ce composant ferme sept pages. Le filet
+   * reprend l'axe thermique de `/contact`, donc il n'a de sens que là — sur
+   * les six autres il serait un ornement, c'est-à-dire exactement ce que la
+   * direction artistique s'interdit.
+   *
+   * `false` par défaut : les six autres pages rendent le même HTML qu'avant,
+   * à l'octet près.
+   */
+  axe?: boolean;
 }) {
   return (
     <section className="bg-steel-900 py-14 text-white lg:py-16">
       <div className="container-t">
+        {/* ─── LE FILET THERMIQUE ───
+            Froid à gauche, chaleur à droite, et des graduations qui
+            s'effacent vers le milieu. C'est le même trait que l'axe posé en
+            tête de `/contact`, réduit à sa plus simple expression : deux
+            mots, un dégradé, aucune valeur.
+
+            Deux éléments superposés plutôt qu'un seul : un dégradé CSS ne
+            sait pas porter à la fois un trait continu et des graduations. */}
+        {axe ? (
+          <div aria-hidden className="mb-7 lg:mb-9">
+            <div className="h-1.5 w-full bg-[repeating-linear-gradient(to_right,rgba(255,255,255,0.22)_0_1px,transparent_1px_18px)]" />
+            <div className="-mt-[1px] h-px w-full bg-[linear-gradient(to_right,var(--color-brand)_0%,rgba(255,255,255,0.25)_46%,var(--color-alert)_100%)]" />
+            <div className="mt-2.5 flex justify-between text-[0.7rem] tracking-[0.14em] uppercase">
+              <span className="text-brand">Froid</span>
+              <span className="text-alert">Chaleur</span>
+            </div>
+          </div>
+        ) : null}
+
         <Reveal>
           <h2 className="heading max-w-4xl text-[clamp(2rem,4.2vw,3.4rem)] text-white">
             {title}
