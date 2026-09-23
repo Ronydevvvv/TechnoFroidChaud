@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 import { company, commitments, servedTowns } from '@/content/company';
 import { ZoneIntervention } from '@/components/thermo/ZoneIntervention';
+import { PartenaireLocal } from '@/components/entreprise/PartenaireLocal';
 
 /**
  * L'entreprise.
@@ -349,6 +350,16 @@ export default function EntreprisePage() {
           </Reveal>
         </div>
       </section>
+
+      {/* ═════════════ PARTENAIRE LOCAL ═════════════
+          Écrite, mais neutralisée tant que le nom exact du club de lutte de
+          Stiring-Wendel n'est pas confirmé. Le composant renvoie `null` et
+          la page n'affiche rien : un cadre vide sous un titre « PARTENAIRE
+          LOCAL » se lirait comme un site inachevé, pas comme une section en
+          préparation.
+
+          Tout tient dans une constante à remplir — voir le fichier. */}
+      <PartenaireLocal />
 
       <CallToAction
         title="Une question sur votre installation ?"
