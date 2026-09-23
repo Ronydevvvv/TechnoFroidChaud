@@ -136,14 +136,14 @@ export default function DepannagePage() {
           savoir quand quelqu'un vient. */}
       <section aria-labelledby="ordre" className="bg-white py-16 lg:py-24">
         <div className="container-t">
-          <Reveal>
+          <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
             <h2
               id="ordre"
               className="heading max-w-[13ch] text-[clamp(2rem,4.6vw,3.6rem)] leading-[1.03] text-ink"
             >
               Ce qui passe devant, et pourquoi
             </h2>
-            <p className="mt-6 max-w-[48ch] text-[1.02rem] leading-8 text-slate">
+            <p className="max-w-[48ch] text-[1.02rem] leading-8 text-slate lg:pb-2">
               Nous annonçons l’ordre plutôt que de promettre à tout le monde une
               intervention immédiate. Une promesse tenue vaut mieux qu’une
               promesse large.

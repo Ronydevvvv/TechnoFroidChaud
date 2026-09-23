@@ -131,17 +131,30 @@ export default function EntreprisePage() {
           large (jusqu'à 1,3 rem) parce que c'est la page où il doit être lu,
           pas parcouru. */}
       <section aria-labelledby="portrait" className="bg-white py-16 lg:py-24">
-        <div className="container-t">
-          <Reveal>
+        {/* ─── DEUX COLONNES À PARTIR DE 1024 px ───
+            Le bloc empilait titre, chapeau, corps et signature dans une seule
+            colonne large de 50 à 62 caractères : sur un écran de 1 440 px, la
+            moitié droite restait vide sur 854 px de haut, sur la page même
+            qui doit inspirer confiance.
+
+            La colonne de texte ne s'élargit pas — une ligne de plus de 65
+            signes se lit mal, et ça ne se négocie pas. C'est le SECOND bloc
+            qui vient occuper le vide, ce qui est exactement la composition de
+            la planche d'accueil : l'énoncé à gauche, ce qui le développe à
+            droite.
+
+            `lg:row-start-1` sur les deux colonnes : sans lui, le premier
+            enfant déclaré en `col-start-8` pousserait le suivant sur une
+            deuxième rangée. */}
+        <div className="container-t lg:grid lg:grid-cols-12 lg:gap-x-16">
+          <Reveal className="lg:col-span-6 lg:row-start-1">
             <h2
               id="portrait"
               className="heading max-w-[16ch] text-[clamp(2.2rem,5.4vw,4.2rem)] leading-[1.01] text-ink"
             >
               Le froid et le chaud, même physique
             </h2>
-          </Reveal>
 
-          <Reveal delay={0.06}>
             <p className="mt-8 max-w-[50ch] text-[clamp(1.1rem,1.9vw,1.4rem)] leading-[1.55] text-ink lg:mt-10">
               Déplacer de l’énergie d’un endroit à un autre : c’est le même
               raisonnement qui gouverne une pompe à chaleur et un groupe de
@@ -149,8 +162,8 @@ export default function EntreprisePage() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <p className="mt-8 max-w-[62ch] text-[1.05rem] leading-8 text-slate">
+          <Reveal className="lg:col-span-5 lg:col-start-8 lg:row-start-1" delay={0.1}>
+            <p className="mt-8 max-w-[62ch] text-[1.05rem] leading-8 text-slate lg:mt-3">
               C’est pour cette raison qu’une même équipe pose une pompe à
               chaleur le mardi et remonte un groupe frigorifique le jeudi. Le
               geste change, le raisonnement non. Les bâtiments du bassin
@@ -158,12 +171,12 @@ export default function EntreprisePage() {
               alimentations anciennes, façades contraintes — et cela change le
               dimensionnement plus souvent qu’on ne le croit.
             </p>
-          </Reveal>
 
-          {/* La signature. Le dirigeant, le siège, la date : trois données
-              de `content/company.ts`, posées comme on signe une lettre. */}
-          <Reveal delay={0.16}>
-            <div className="mt-12 border-t border-ink pt-7 lg:mt-16 lg:pt-8">
+            {/* La signature. Le dirigeant, le siège, la date : trois données
+                de `content/company.ts`, posées comme on signe une lettre.
+                Elle suit le corps dans sa colonne : une signature se pose au
+                bas de ce qu'elle signe, pas au bas de la page. */}
+            <div className="mt-12 border-t border-ink pt-7 lg:mt-10 lg:pt-8">
               <p className="heading text-[clamp(1.2rem,2.2vw,1.7rem)] text-ink">
                 {company.director}
               </p>
@@ -184,14 +197,19 @@ export default function EntreprisePage() {
           un titre et un paragraphe, séparées par de l'espace et rien d'autre. */}
       <section aria-labelledby="principes" className="border-y border-line bg-stone py-16 lg:py-24">
         <div className="container-t">
-          <Reveal>
+          {/* Titre à gauche, énoncé à droite : la composition de la planche
+              d'accueil, reprise ici pour la même raison. Empilés, les deux
+              laissaient la moitié droite vide juste avant une liste de six
+              principes — soit, pour le lecteur, un long blanc suivi d'un long
+              texte. */}
+          <Reveal className="flex flex-col gap-x-16 gap-y-4 lg:flex-row lg:items-end lg:justify-between">
             <h2
               id="principes"
               className="heading max-w-[13ch] text-[clamp(1.9rem,4vw,3.1rem)] leading-[1.05] text-ink"
             >
               Comment nous travaillons
             </h2>
-            <p className="mt-5 max-w-[48ch] text-[1rem] leading-8 text-slate">
+            <p className="max-w-[48ch] text-[1rem] leading-8 text-slate lg:pb-2">
               Ce qui distingue deux installations identiques sur le papier tient
               à la méthode. Voici la nôtre, dans le détail.
             </p>
@@ -255,14 +273,14 @@ export default function EntreprisePage() {
           d'ordre, ils tiennent ensemble. */}
       <section aria-labelledby="engagements" className="bg-steel-900 py-16 text-white lg:py-24">
         <div className="container-t">
-          <Reveal>
+          <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
             <h2
               id="engagements"
               className="heading max-w-[14ch] text-[clamp(2rem,4.6vw,3.6rem)] leading-[1.04] text-white"
             >
               Ce sur quoi vous pouvez nous tenir
             </h2>
-            <p className="mt-6 max-w-[50ch] text-[1rem] leading-8 text-steel-100">
+            <p className="max-w-[50ch] text-[1rem] leading-8 text-steel-100 lg:pb-2">
               Trois engagements que nous prenons nous-mêmes, vérifiables dès le
               premier rendez-vous. Aucun ne dépend d’un organisme extérieur.
             </p>

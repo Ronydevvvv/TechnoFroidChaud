@@ -235,14 +235,14 @@ export default function ChauffagePage() {
           de 120 px de large ne se lisent pas. */}
       <section aria-labelledby="arbitrage" className="bg-steel-900 py-16 text-white lg:py-24">
         <div className="container-t">
-          <Reveal>
+          <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
             <h2
               id="arbitrage"
               className="heading max-w-[13ch] text-[clamp(2.3rem,6vw,4.6rem)] leading-[1.02] text-white"
             >
               Réparer, ou changer ?
             </h2>
-            <p className="mt-6 max-w-[44ch] text-[1.02rem] leading-8 text-steel-100">
+            <p className="max-w-[44ch] text-[1.02rem] leading-8 text-steel-100 lg:pb-2">
               La réponse dépend du bâtiment, pas du catalogue. Voici les trois
               issues possibles, et ce qui fait pencher vers chacune.
             </p>

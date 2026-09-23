@@ -153,14 +153,18 @@ export default function PompesAChaleurPage() {
           le détail. */}
       <section aria-labelledby="cycle" className="bg-white py-16 lg:py-24">
         <div className="container-t">
-          <Reveal>
+          {/* Titre à gauche, énoncé à droite, sur une seule ligne — la même
+              composition que la planche d'accueil. Empilés, ils laissaient
+              la moitié droite de l'écran vide juste avant le schéma, à
+              l'endroit exact où la page doit donner envie de descendre. */}
+          <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
             <h2
               id="cycle"
               className="heading max-w-[15ch] text-[clamp(2rem,4.6vw,3.6rem)] leading-[1.04] text-ink"
             >
               Elle ne fabrique pas la chaleur, elle la déplace
             </h2>
-            <p className="mt-6 max-w-[46ch] text-[1.02rem] leading-8 text-slate">
+            <p className="max-w-[46ch] text-[1.02rem] leading-8 text-slate lg:pb-2">
               C’est pourquoi elle restitue plus d’énergie qu’elle n’en consomme.
               Le fluide fait le même tour, sans fin, tant que la consigne n’est
               pas atteinte.
@@ -276,14 +280,14 @@ export default function PompesAChaleurPage() {
           une grille de cartes. */}
       <section aria-labelledby="solutions" className="bg-white py-16 lg:py-24">
         <div className="container-t">
-          <Reveal>
+          <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
             <h2
               id="solutions"
               className="heading max-w-[18ch] text-[clamp(1.8rem,3.6vw,2.8rem)] leading-[1.06] text-ink"
             >
               Quatre configurations, selon l’existant
             </h2>
-            <p className="mt-5 max-w-[50ch] text-[1rem] leading-8 text-slate">
+            <p className="max-w-[50ch] text-[1rem] leading-8 text-slate lg:pb-2">
               Le choix se décide sur l’isolation, le type d’émetteurs et la
               température d’eau nécessaire — jamais sur catalogue.
             </p>
@@ -319,14 +323,14 @@ export default function PompesAChaleurPage() {
           visiteur — elle reçoit donc le filet épais. */}
       <section aria-labelledby="aides" className="bg-carbon py-16 text-white lg:py-24">
         <div className="container-t">
-          <Reveal>
+          <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
             <h2
               id="aides"
               className="heading max-w-[16ch] text-[clamp(2rem,4.6vw,3.6rem)] leading-[1.04] text-white"
             >
               Ce qui existe, et à quelles conditions
             </h2>
-            <p className="mt-6 max-w-[52ch] text-[1.02rem] leading-8 text-mist">
+            <p className="max-w-[52ch] text-[1.02rem] leading-8 text-mist lg:pb-2">
               Le financement d’une pompe à chaleur passe rarement par le seul
               devis. Voici les dispositifs en vigueur et ce qu’ils exigent — y
               compris quand la réponse ne nous arrange pas.
