@@ -102,7 +102,7 @@ export function Methode() {
                     plus étroit que le 0 et les six noms ne s'alignent plus
                     verticalement d'une étape à l'autre. */}
                 <h3 className="heading flex items-baseline gap-2.5 text-[1.15rem] text-white lg:text-[1.25rem]">
-                  <span className="text-[0.88rem] font-medium text-brand tabular-nums sm:text-[0.82rem]">
+                  <span className="text-[0.88rem] font-medium text-brand-clair tabular-nums sm:text-[0.82rem]">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   {e.nom}

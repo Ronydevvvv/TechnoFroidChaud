@@ -184,7 +184,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-5 border-t border-line-dark pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[0.8rem] text-white/40">
+          <p className="text-[0.8rem] text-white/55">
             © {new Date().getFullYear()} {company.legalName} — SIREN {company.siren}
           </p>
           {/* Les liens légaux ET la signature de conception tiennent dans UN
@@ -198,7 +198,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="link-t inline-block py-0.5 text-[0.8rem] text-white/40 hover:text-white/80"
+                    className="link-t inline-block py-0.5 text-[0.8rem] text-white/55 hover:text-white/80"
                   >
                     {l.label}
                   </Link>
@@ -218,7 +218,7 @@ export function Footer() {
                 Le filet disparaît sous 640 px : le bandeau bas y passe en
                 colonne, la signature tombe sur sa propre ligne, et un trait
                 qui ne sépare plus rien n'est plus qu'un trait. */}
-            <p className="flex items-center gap-x-2.5 text-[0.8rem] text-white/40">
+            <p className="flex items-center gap-x-2.5 text-[0.8rem] text-white/55">
               <span aria-hidden className="hidden h-3 w-px bg-white/15 sm:block" />
               Designed by{' '}
               {/* `link-t` est la signature de lien du site, celle que portent

@@ -91,7 +91,7 @@ export function Zone() {
                 est un SVG `aria-hidden` — ses intitulés n'existent donc ni
                 pour un lecteur d'écran, ni en pratique pour un moteur. Une
                 seule source de noms à chaque largeur, et jamais aucune. */}
-            <p className="mt-5 hidden max-w-2xl text-[0.95rem] leading-8 text-slate/80 sm:leading-7 lg:block">
+            <p className="mt-5 hidden max-w-2xl text-[0.95rem] leading-8 text-slate sm:leading-7 lg:block">
               Nous intervenons à {communes} et {derniere}.
             </p>
           </Reveal>

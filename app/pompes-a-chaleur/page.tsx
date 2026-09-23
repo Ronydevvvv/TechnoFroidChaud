@@ -361,7 +361,7 @@ export default function PompesAChaleurPage() {
 
           <Reveal delay={0.24}>
             <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <p className="max-w-[46ch] text-[0.88rem] leading-7 text-white/45">
+              <p className="max-w-[46ch] text-[0.88rem] leading-7 text-white/55">
                 Montants et conditions fixés par la réglementation en vigueur —
                 à vérifier à la date des travaux.
               </p>

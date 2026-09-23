@@ -258,10 +258,10 @@ export default function ClimatisationPage() {
 
           <Reveal delay={0.12}>
             <p className="mt-9 text-[0.9rem] leading-7 text-slate">
-              <span className="text-slate/60">Le déroulé — </span>
+              <span className="text-slate">Le déroulé — </span>
               {etapes.map((e) => e.nom).join(' · ')}
-              <span className="mx-3 text-slate/30">|</span>
-              <span className="text-slate/60">Nos engagements — </span>
+              <span aria-hidden className="mx-3 text-slate/30">|</span>
+              <span className="text-slate">Nos engagements — </span>
               {engagements.join(' · ')}
             </p>
           </Reveal>

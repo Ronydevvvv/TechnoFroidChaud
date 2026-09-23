@@ -295,7 +295,7 @@ export default function ChambresFroidesPage() {
                 ['Chaleur rejetée', 'Vers l’extérieur du local'],
               ].map(([k, v]) => (
                 <div key={k}>
-                  <p className="text-[0.8rem] tracking-[0.08em] text-white/40 uppercase sm:text-[0.72rem]">{k}</p>
+                  <p className="text-[0.8rem] tracking-[0.08em] text-white/55 uppercase sm:text-[0.72rem]">{k}</p>
                   <p className="heading mt-1.5 text-[0.98rem] text-white/85">{v}</p>
                 </div>
               ))}

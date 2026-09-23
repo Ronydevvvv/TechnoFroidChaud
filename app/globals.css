@@ -35,6 +35,12 @@
      anneau de focus. Nulle part ailleurs. */
   --color-brand: #14657f;
   --color-brand-deep: #0f4d63;
+  /* Le MÊME accent, éclairci pour les fonds sombres — et rien d'autre.
+     `--color-brand` sur l'acier donne 2,7:1 : le cyan y disparaît pour
+     qui lit mal, alors qu'il tient 5,9:1 sur le papier. Ce n'est pas une
+     couleur de plus dans la palette, c'est la même à sa luminosité
+     lisible. Sur fond clair, `--color-brand` reste seul. */
+  --color-brand-clair: #3d8ea8;
 
   /* ————— Signal d'urgence — rouge du logo —————
      Un seul emploi sur tout le site : la page Dépannage. */
