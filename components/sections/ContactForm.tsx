@@ -71,6 +71,20 @@ export function ContactForm({ email, phone }: { email: string; phone: string }) 
 
   return (
     <form ref={formRef} onSubmit={envoyer} className="grid gap-6 sm:grid-cols-2">
+      {/* ─── LE SURTITRE ───
+          Le formulaire n'annonçait rien : on arrivait directement sur
+          « Nom et prénom », comme sur un formulaire administratif. Cette
+          ligne dit ce qu'on est en train de faire — une demande
+          d'intervention, pas un message de contact générique — et elle le
+          dit dans le vocabulaire des cartouches du site : filet cyan,
+          petites capitales.
+
+          `sm:col-span-2` : le formulaire est une grille de deux colonnes,
+          le surtitre les traverse. */}
+      <p className="flex items-center gap-3 text-[0.82rem] tracking-[0.08em] text-slate uppercase sm:col-span-2">
+        <span aria-hidden className="h-px w-7 bg-brand" />
+        Demande d’intervention
+      </p>
       <div>
         <label htmlFor="nom" className={label}>
           Nom et prénom
@@ -157,7 +171,11 @@ export function ContactForm({ email, phone }: { email: string; phone: string }) 
             <button
               type="submit"
               disabled={etat.phase === 'envoi'}
-              className="btn btn-primary btn-arrow disabled:cursor-not-allowed disabled:opacity-60"
+              /* Le bouton portait le corps par défaut, celui d'un lien de
+                 navigation. C'est le geste qui termine la page : il prend
+                 le corps au-dessus et un peu d'air autour, sans changer ni
+                 de forme ni de couleur. */
+              className="btn btn-primary btn-arrow px-8 py-4 text-[1rem] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {etat.phase === 'envoi' ? 'Envoi en cours…' : 'Envoyer la demande'}
             </button>
