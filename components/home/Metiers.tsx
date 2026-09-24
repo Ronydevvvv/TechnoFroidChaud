@@ -136,7 +136,32 @@ export function Metiers() {
                   />
                 </div>
 
-                <h3 className="heading mt-5 flex items-baseline justify-between gap-4 text-[1.12rem] text-white lg:text-[1.22rem]">
+                {/* ─── LA GRADUATION THERMIQUE ───
+                    `chaud` existait deja dans les donnees, mais ne servait
+                    qu'au survol : la couleur du filet et de la fleche. Une
+                    information qui ne se voit qu'au passage de la souris
+                    n'existe pas sur telephone, et n'existe pas non plus pour
+                    qui parcourt la page des yeux.
+
+                    Le meme booleen porte maintenant un filet PERMANENT,
+                    cyan ou rouge, suivi de quatre graduations — le
+                    vocabulaire exact de la bande des reperes, en version
+                    sombre. Les six tuiles se lisent alors comme une carte
+                    thermique des specialites : quatre froids, deux chauds,
+                    avant meme d'avoir lu un titre.
+
+                    Aucun texte ajoute, aucune couleur nouvelle : les deux
+                    accents sont ceux du logo, et ils etaient deja la. */}
+                <span aria-hidden className="mt-5 flex h-2 items-start">
+                  <span className={`h-px w-12 ${m.chaud ? 'bg-alert' : 'bg-brand'}`} />
+                  <span className="h-px w-8 bg-white/18" />
+                </span>
+                <span
+                  aria-hidden
+                  className="-mt-2 block h-1.5 w-20 bg-[repeating-linear-gradient(to_right,rgba(255,255,255,0.22)_0_1px,transparent_1px_15px)]"
+                />
+
+                <h3 className="heading mt-3 flex items-baseline justify-between gap-4 text-[1.12rem] text-white lg:text-[1.22rem]">
                   {/* Le filet d'accent se trace sous le titre au survol.
                       `inline-block` + `after` : il épouse la largeur du mot,
                       pas celle de la colonne — un trait qui dépasserait le
