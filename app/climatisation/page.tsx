@@ -3,7 +3,8 @@ import { PageHero } from '@/components/sections/PageHero';
 import Link from 'next/link';
 import { Accordion } from '@/components/ui/Accordion';
 import { Reveal } from '@/components/ui/Reveal';
-import { GlypheClim, type Pose } from '@/components/thermo/GlypheClim';
+import { type Pose } from '@/components/thermo/GlypheClim';
+import { PlanchePose } from '@/components/thermo/PlanchePoses';
 import { PlanDiffusion } from '@/components/thermo/PlanDiffusion';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, serviceSchema, breadcrumbSchema } from '@/lib/seo';
@@ -200,31 +201,75 @@ export default function ClimatisationPage() {
                 </p>
               </Reveal>
 
-              <dl className="mt-9 border-t border-line">
-                {trade.items.map((item, i) => (
-                  <Reveal key={item.title} delay={Math.min(i * 0.04, 0.16)}>
-                    <div className="grid grid-cols-[2.75rem_1fr] gap-x-4 gap-y-1 border-b border-line py-5 sm:grid-cols-[2.75rem_9rem_1fr] sm:gap-x-6">
-                      {/* Si le contenu gagnait une cinquième entrée,
-                          `POSES[i]` serait `undefined` et la planche
-                          tomberait. On laisse alors la colonne vide plutôt
-                          que d'afficher un glyphe faux. */}
-                      {POSES[i] ? (
-                        <GlypheClim pose={POSES[i]} className="mt-0.5 size-9 text-slate" />
-                      ) : (
-                        <span aria-hidden />
-                      )}
-                      <dt className="heading self-center text-[1.02rem] text-ink">
-                        {item.title}
-                      </dt>
-                      <dd className="col-span-2 text-[0.93rem] leading-6 text-slate sm:col-span-1 sm:col-start-3">
-                        {item.body}
-                      </dd>
-                    </div>
-                  </Reveal>
-                ))}
-              </dl>
+              <Reveal delay={0.08}>
+                <p className="mt-6 text-[0.95rem] leading-7 text-slate">
+                  Les quatre coupes ci-dessous montrent ce qui les
+                  distingue : le nombre d’unités intérieures, leur place, et
+                  par où l’air sort.
+                </p>
+              </Reveal>
+
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ═════════════ LES QUATRE COUPES ═════════════
+          Elles étaient quatre lignes de nomenclature dans une colonne de
+          six colonnes sur douze : un glyphe de 36 px, un mot, un
+          paragraphe. Or « gainable » et « cassette » ne veulent rien dire
+          pour un visiteur, et ce qui les sépare est entièrement
+          GÉOMÉTRIQUE — combien d'unités, où elles sont posées, par où
+          l'air sort.
+
+          La nomenclature devient donc une planche, et elle quitte la
+          colonne : à 280 px de large, une coupe de bâtiment n'est plus
+          lisible. Pleine largeur, deux par rangée, chaque coupe fait
+          600 px — la taille à laquelle on VOIT la différence entre un
+          réseau de gaines et une cassette au lieu de la lire.
+
+          Le matériel suit la couleur du texte, seuls les jets d'air sont
+          cyan : la couleur dit le fluide, jamais l'objet. C'est la
+          grammaire de toutes les planches du site. */}
+      <section aria-labelledby="coupes" className="border-t border-line bg-white py-14 lg:py-20">
+        <div className="container-t">
+          <Reveal>
+            <div className="flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:items-baseline sm:justify-between sm:text-[0.74rem]">
+              <h2 id="coupes" className="text-ink">
+                Les quatre poses — coupes de principe
+              </h2>
+              <span className="flex items-center gap-2">
+                <span aria-hidden className="h-px w-6 bg-brand" />
+                Air soufflé
+              </span>
+            </div>
+          </Reveal>
+
+          <ul className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-14 lg:gap-x-12 lg:gap-y-16">
+            {trade.items.map((item, i) => (
+              <Reveal as="li" key={item.title} delay={Math.min(i * 0.05, 0.2)}>
+                <figure className="m-0">
+                  {/* Le cartouche de chaque coupe : désignation à gauche,
+                      rang à droite. Deux chiffres suffisent à dire qu'on
+                      lit une planche et non une grille de cartes. */}
+                  <figcaption className="flex items-baseline justify-between gap-4 border-b border-line pb-2.5 text-[0.74rem] tracking-[0.08em] uppercase">
+                    <span className="text-ink">{item.title}</span>
+                    <span className="text-slate tabular-nums">
+                      {String(i + 1).padStart(2, '0')} / 04
+                    </span>
+                  </figcaption>
+
+                  <div className="mt-5">
+                    {POSES[i] ? <PlanchePose pose={POSES[i]} /> : null}
+                  </div>
+                </figure>
+
+                <p className="mt-5 max-w-[46ch] text-[0.95rem] leading-7 text-slate">
+                  {item.body}
+                </p>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
