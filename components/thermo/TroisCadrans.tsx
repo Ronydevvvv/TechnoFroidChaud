@@ -131,6 +131,9 @@ const AIGUILLE: Record<Etat, number> = {
  */
 const FANTOMES = [-86, -70];
 
+/** Décalage du frémissement, un par cadran. Voir le groupe animé plus bas. */
+const DECALAGE: Record<Etat, number> = { defaut: 0, controle: -4.3, service: -8.6 };
+
 function Cadran({ etat }: { etat: Etat }) {
   const deg = AIGUILLE[etat];
   const [ax, ay] = pt(deg, 33);
@@ -220,17 +223,28 @@ function Cadran({ etat }: { etat: Etat }) {
           );
         })}
 
-      {/* L'aiguille et son moyeu */}
-      <line
-        x1={C}
-        y1={C}
-        x2={f(ax)}
-        y2={f(ay)}
-        stroke={couleurAiguille}
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-      <circle cx={C} cy={C} r="3.4" fill={couleurAiguille} />
+      {/* L'aiguille et son moyeu.
+          Le groupe porte le frémissement : le moyeu tourne avec l'aiguille
+          plutôt que de rester fixe dessous, ce qui est le cas d'un vrai
+          instrument — c'est le même axe. Décalage par cadran pour que les
+          trois ne respirent pas ensemble : trois manomètres synchronisés
+          se lisent comme une animation, trois décalés comme trois
+          instruments. */}
+      <g
+        className="tfc-aiguille"
+        style={{ animationDelay: `${DECALAGE[etat]}s` }}
+      >
+        <line
+          x1={C}
+          y1={C}
+          x2={f(ax)}
+          y2={f(ay)}
+          stroke={couleurAiguille}
+          strokeWidth="2.2"
+          strokeLinecap="round"
+        />
+        <circle cx={C} cy={C} r="3.4" fill={couleurAiguille} />
+      </g>
       <circle cx={C} cy={C} r="1.3" fill="var(--color-paper)" />
     </svg>
   );

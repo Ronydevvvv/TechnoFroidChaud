@@ -97,19 +97,47 @@ export function Systeme() {
               désignation à gauche, code couleur à droite. */}
           <div className="flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:text-[0.74rem] sm:items-baseline sm:justify-between">
             <span className="text-ink">Bâtiment équipé — coupe de principe</span>
-            <span className="flex flex-wrap items-center gap-x-7 gap-y-2">
-              <span className="flex items-center gap-2">
-                <span aria-hidden className="h-px w-6 bg-brand" />
-                Fluide et air froids
-              </span>
-              <span className="flex items-center gap-2">
-                <span aria-hidden className="h-px w-6 bg-alert" />
-                Chaleur
-              </span>
-            </span>
+            {/* Le code couleur a quitté cette ligne : il est porté par l'axe,
+                juste dessous, qui le dit mieux — non plus « cyan = froid »
+                mais « le cyan DEVIENT le rouge ». Le laisser ici en plus
+                aurait écrit « chaleur » deux fois en cinquante pixels.
+
+                « Axe non gradué » et non « sans échelle de température » :
+                la coupe AFFICHE des températures, celles des trois
+                enceintes. C'est l'axe qui ne porte aucune valeur, et la
+                mention doit dire cela exactement — c'est la formule déjà
+                employée sur les autres planches du site. */}
+            <span>Axe non gradué</span>
           </div>
 
-          <div className="mt-6 lg:mt-10">
+          {/* ─── L'AXE DE LA SECTION ───
+              Le cartouche annonçait le froid et la chaleur par deux tirets
+              de six pixels. C'est le code couleur d'une légende — ça dit
+              « cyan = froid », ça ne dit pas que l'un DEVIENT l'autre.
+
+              Or c'est exactement la phrase du titre : « Froid et chaleur,
+              le même raisonnement ». L'axe la dessine — un trait gradué qui
+              part du cyan, passe par le neutre, arrive au rouge, juste
+              au-dessus de la coupe qui montre comment.
+
+              Aucune valeur, aucune unité, aucune graduation chiffrée : la
+              même convention que partout ailleurs sur le site. On dessine
+              ce qu'on sait, on annonce ce qu'on ne sait pas. */}
+          <div aria-hidden className="mt-7 lg:mt-9">
+            <div className="h-1.5 w-full bg-[repeating-linear-gradient(to_right,var(--color-line)_0_1px,transparent_1px_16px)]" />
+            <div className="-mt-px h-[2px] w-full bg-[linear-gradient(to_right,var(--color-brand)_0%,var(--color-slate)_48%,var(--color-alert)_100%)]" />
+            {/* Les intitulés sont ceux de l'ancien code couleur, au mot
+                près : le cyan de la coupe est bien « fluide et air froids »,
+                pas « froid » en général. On ne perd donc rien de ce que la
+                légende disait — on le dit sur un axe au lieu d'une liste. */}
+            <div className="mt-2.5 flex items-baseline justify-between gap-4 text-[0.72rem] tracking-[0.14em] uppercase">
+              <span className="text-brand">Fluide et air froids</span>
+              <span className="hidden text-slate/70 sm:inline">Transfert</span>
+              <span className="text-alert">Chaleur</span>
+            </div>
+          </div>
+
+          <div className="mt-8 lg:mt-12">
             <SystemeThermique />
           </div>
 

@@ -544,6 +544,37 @@ html.lenis body {
    effet : sur la planche de l'accueil, le circuit de chauffage part de la
    chaudière et le circuit frigorifique y revient. Deux sens opposés, deux
    animations. */
+/* ─── L'AIGUILLE DE MANOMÈTRE ─────────────────────────────────────────
+   Une aiguille de manomètre ne tient jamais parfaitement immobile : le
+   compresseur pulse, la pression oscille, l'aiguille suit. C'est ce
+   frémissement qu'on reconnaît sur un instrument en service, et c'est la
+   seule chose qui sépare le dessin d'un manomètre d'un manomètre.
+
+   ±0,9° et treize secondes de cycle : à 120 px de cadran, la pointe se
+   déplace d'environ un pixel et demi. On ne le voit pas bouger — on voit
+   que ce n'est pas figé. Au-delà, l'instrument se met à balayer et la
+   planche devient un jouet.
+
+   `transform-box: fill-box` et l'origine au centre du cadran : sans eux,
+   la rotation se ferait autour de l'origine du SVG et l'aiguille partirait
+   hors du cadre. `prefers-reduced-motion`, défini plus haut, la neutralise
+   comme toutes les autres. */
+@keyframes tfc-aiguille {
+  0%,
+  100% {
+    transform: rotate(-0.9deg);
+  }
+  50% {
+    transform: rotate(0.9deg);
+  }
+}
+
+.tfc-aiguille {
+  transform-box: view-box;
+  transform-origin: 60px 60px;
+  animation: tfc-aiguille 13s ease-in-out infinite;
+}
+
 @keyframes tfc-circule-inverse {
   to {
     stroke-dashoffset: 646;
