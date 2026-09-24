@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { PageHero } from '@/components/sections/PageHero';
 import { CallToAction } from '@/components/sections/CallToAction';
@@ -187,6 +188,63 @@ export default function EntreprisePage() {
                 {company.street}, {company.postalCode} {company.city}
               </p>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═════════════ LA RESPIRATION PHOTOGRAPHIQUE ═════════════
+          La page enchaînait portrait, principes, engagements, territoire :
+          quatre blocs de texte d'affilée, sur près de quatre mille pixels,
+          pour UNE seule photographie — celle du hero. Sur la page censée
+          donner confiance, c'est la page la plus aride du site.
+
+          ─── POURQUOI CETTE IMAGE, ET POURQUOI ICI ───
+          Elle sert déjà l'accueil, en 4/5 dans une colonne, à côté d'un
+          texte. Ici elle prend TOUTE la largeur en 21/9 : ce n'est pas la
+          même image au même endroit, c'est un autre cadrage pour un autre
+          rôle. Là-bas elle illustrait une prestation ; ici elle respire
+          entre deux argumentaires, et c'est le geste — un technicien qui
+          règle — qui porte le « humain » de la page.
+
+          ─── LA RÈGLE N'A PAS BOUGÉ ───
+          Le cartouche dit ce qu'elle est, à la même place que sur les
+          planches techniques et sur /realisations : « Illustration
+          métier ». Ce n'est PAS un chantier de l'entreprise, la page ne le
+          laisse pas entendre, et le crédit est dans
+          `public/photos/CREDITS.md`.
+
+          Aucun texte n'est posé sur l'image. Une phrase en surimpression
+          aurait demandé d'écrire quelque chose de neuf sur une
+          photographie qui ne documente rien — et c'est exactement par là
+          qu'un site se met à raconter ce qu'il n'a pas fait. */}
+      <section aria-label="Le métier en atelier" className="bg-white pb-16 lg:pb-24">
+        <div className="container-t">
+          <Reveal as="figure" className="group/ph m-0">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-steel-800 sm:aspect-[16/9] lg:aspect-[21/9]">
+              <Image
+                src="/photos/installation-mise-en-service.jpg"
+                /* Le hero de cette page porte déjà « Technicien procédant au
+                   réglage d'un module de production de chaleur » : deux
+                   photographies différentes ne peuvent pas partager le même
+                   texte alternatif sur une même page, sinon un lecteur
+                   d'écran annonce deux fois la même image. Celui-ci décrit
+                   ce qui distingue vraiment cette vue — son cadrage large. */
+                alt="Vue large d’un technicien au réglage d’un module de production de chaleur."
+                fill
+                sizes="(min-width:1024px) 82vw, 92vw"
+                className="object-cover object-[50%_42%] transition-transform duration-[1100ms] ease-out group-hover/ph:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover/ph:scale-100"
+              />
+              <span
+                aria-hidden
+                className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,17,24,0.3)_0%,rgba(10,17,24,0.06)_55%,rgba(10,17,24,0)_100%)]"
+              />
+            </div>
+
+            <figcaption className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-line pt-3 text-[0.74rem] tracking-[0.08em] text-slate uppercase">
+              <span className="text-ink">Illustration métier</span>
+              <span aria-hidden className="text-line">—</span>
+              <span>Réglage à la mise en service</span>
+            </figcaption>
           </Reveal>
         </div>
       </section>
