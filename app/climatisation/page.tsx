@@ -245,7 +245,7 @@ export default function ClimatisationPage() {
             </div>
           </Reveal>
 
-          <ul className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:mt-14 lg:gap-x-12 lg:gap-y-16">
+          <ul className="mt-9 grid gap-x-8 gap-y-9 sm:grid-cols-2 sm:gap-y-12 lg:mt-14 lg:gap-x-12 lg:gap-y-16">
             {trade.items.map((item, i) => (
               <Reveal as="li" key={item.title} delay={Math.min(i * 0.05, 0.2)}>
                 <figure className="m-0">
@@ -259,12 +259,12 @@ export default function ClimatisationPage() {
                     </span>
                   </figcaption>
 
-                  <div className="mt-5">
+                  <div className="mt-3.5 sm:mt-5">
                     {POSES[i] ? <PlanchePose pose={POSES[i]} /> : null}
                   </div>
                 </figure>
 
-                <p className="mt-5 max-w-[46ch] text-[0.95rem] leading-7 text-slate">
+                <p className="mt-3.5 max-w-[46ch] text-[0.95rem] leading-7 text-slate sm:mt-5">
                   {item.body}
                 </p>
               </Reveal>
