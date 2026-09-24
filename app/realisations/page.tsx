@@ -80,6 +80,54 @@ export const metadata = pageMetadata({
 const trail = [{ name: 'Nos installations', path: '/realisations' }];
 
 /**
+ * ─── LE RYTHME DE LA GALERIE ─────────────────────────────────────────────
+ * Les cinq entrées avaient la MÊME composition : texte à gauche, image à
+ * droite, toujours six colonnes, toujours en 16/10. Cinq fois de suite, à
+ * taille constante, une page ne se lit plus comme une galerie mais comme
+ * une liste — et les photographies, petites et alignées, finissent par
+ * ressembler à des vignettes de catalogue.
+ *
+ * Ce qui change ici n'est donc pas le côté — un simple zigzag est le
+ * gabarit que tout le monde reconnaît — mais la TAILLE. L'image d'ouverture
+ * prend les douze colonnes, puis les quatre suivantes en prennent 7, 8, 6
+ * et 9, en changeant de bord. Une largeur qui varie de 6 à 12 colonnes se
+ * voit ; un bord qui bascule à largeur constante ne se voit pas.
+ *
+ * Les rapports d'image restent tous en PAYSAGE. Les photographies sources
+ * sont cadrées ainsi : les forcer en portrait pour varier davantage
+ * couperait les sujets, ce qui est cher payé pour un effet de mise en page.
+ *
+ *   i  colonnes image   rapport   bord
+ *   0       12          21 / 9    pleine largeur — l'ouverture
+ *   1        7          16 / 10   droite
+ *   2        8           3 / 2    gauche
+ *   3        6          16 / 10   droite
+ *   4        9          21 / 9    gauche
+ */
+const RYTHME = [
+  {
+    img: 'lg:col-span-12 lg:row-start-1',
+    ratio: 'lg:aspect-[21/9]',
+    /* Douze colonnes de texte feraient des lignes de 110 signes. Sous une
+       image pleine largeur, le texte se compose donc lui-même en deux
+       colonnes : le corps à gauche, les caractéristiques à droite. */
+    txt: 'lg:col-span-12 lg:row-start-2 lg:grid lg:grid-cols-12 lg:gap-x-16',
+    a: 'lg:col-span-5',
+    b: 'lg:col-span-5 lg:col-start-7 lg:mt-0',
+  },
+  { img: 'lg:col-span-7 lg:col-start-6 lg:row-start-1', ratio: 'lg:aspect-[16/10]', txt: 'lg:col-span-4 lg:col-start-1 lg:row-start-1', a: '', b: '' },
+  { img: 'lg:col-span-8 lg:col-start-1 lg:row-start-1', ratio: 'lg:aspect-[3/2]', txt: 'lg:col-span-4 lg:col-start-9 lg:row-start-1', a: '', b: '' },
+  { img: 'lg:col-span-6 lg:col-start-7 lg:row-start-1', ratio: 'lg:aspect-[16/10]', txt: 'lg:col-span-5 lg:col-start-1 lg:row-start-1', a: '', b: '' },
+  {
+    img: 'lg:col-span-10 lg:col-start-1 lg:row-start-1',
+    ratio: 'lg:aspect-[21/9]',
+    txt: 'lg:col-span-12 lg:row-start-2 lg:grid lg:grid-cols-12 lg:gap-x-16',
+    a: 'lg:col-span-5',
+    b: 'lg:col-span-5 lg:col-start-7 lg:mt-0',
+  },
+] as const;
+
+/**
  * Typologies réellement proposées. Aucune n'est datée ni localisée.
  *
  * `img` / `alt` / `legende` : la photographie et son cartouche. `legende`
@@ -174,7 +222,9 @@ export default function RealisationsPage() {
             Les types d’installations que nous réalisons
           </h2>
 
-          {typologies.map((t, i) => (
+          {typologies.map((t, i) => {
+            const r = RYTHME[i % RYTHME.length];
+            return (
             <Reveal key={t.title} delay={Math.min(i * 0.04, 0.16)}>
               <article className="border-t-2 border-ink pt-7 pb-14 lg:pt-9 lg:pb-24">
                 {/* La ligne de tête : le glyphe de la page métier, puis la
@@ -189,7 +239,7 @@ export default function RealisationsPage() {
                   {t.title}
                 </h3>
 
-                <div className="mt-8 lg:mt-11 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-16">
+                <div className="mt-8 lg:mt-11 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-16 lg:gap-y-10">
                   {/* ─── LA PHOTOGRAPHIE ET SON CARTOUCHE ───
                       Première dans le DOM pour que mobile devienne visuel
                       tout de suite ; replacée à droite sur grand écran par
@@ -198,14 +248,18 @@ export default function RealisationsPage() {
                       `figcaption` et non un simple `p` : le navigateur et le
                       lecteur d'écran rattachent alors la phrase à l'image,
                       donc la mise au point vaut aussi hors de l'écran. */}
-                  <figure className="m-0 lg:col-span-6 lg:col-start-7 lg:row-start-1">
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-steel-800">
+                  <figure className={`group/ph m-0 ${r.img}`}>
+                    <div className={`relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-steel-800 ${r.ratio}`}>
                       <Image
                         src={t.img}
                         alt={t.alt}
                         fill
-                        sizes="(min-width:1024px) 46vw, 92vw"
-                        className="object-cover"
+                        sizes="(min-width:1024px) 70vw, 92vw"
+                        /* Zoom de 3 % sur 900 ms. Un survol de photographie
+                           doit se sentir, pas se voir : au-dela de 5 % le
+                           cadrage bouge et le sujet se decentre. La
+                           preference « mouvement reduit » le coupe net. */
+                        className="object-cover transition-transform duration-[900ms] ease-out group-hover/ph:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover/ph:scale-100"
                       />
                       {/* Le même voile que les tuiles de l'accueil : il tient
                           les cinq photographies à la même densité quelles que
@@ -230,9 +284,10 @@ export default function RealisationsPage() {
                       Elles étaient en cyan : trois valeurs colorées par
                       entrée, quinze en tout, faisaient un semis de marqueurs
                       sans aucune fonction. */}
-                  <div className="mt-9 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:mt-0">
-                    <p className="text-[1.02rem] leading-8 text-slate">{t.body}</p>
+                  <div className={`mt-9 lg:mt-0 ${r.txt}`}>
+                    <p className={`text-[1.02rem] leading-8 text-slate ${r.a}`}>{t.body}</p>
 
+                    <div className={r.b}>
                     <ul className="mt-7 border-t border-line">
                       {t.points.map((p) => (
                         <li
@@ -247,11 +302,13 @@ export default function RealisationsPage() {
                     <Link href={t.href} className="link-t mt-6 inline-flex text-[0.97rem] text-ink">
                       Le métier en détail
                     </Link>
+                    </div>
                   </div>
                 </div>
               </article>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </section>
 
