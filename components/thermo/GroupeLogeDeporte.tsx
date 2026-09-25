@@ -80,7 +80,13 @@ function Etat({ x, deporte }: Props) {
           />
           <g transform={`translate(${W - 30} ${SOL - 96})`}>
             <circle r={13} stroke="currentColor" strokeWidth={1} opacity={0.6} />
-            <g className="tfc-helice">
+            {/* `transformBox: fill-box` en style local, comme sur les autres
+                   planches : sans lui la rotation se fait autour de
+                   l'ORIGINE du SVG, et les trois pales décollent du moyeu
+                   pour orbiter hors du cadre. La classe `.tfc-helice` ne
+                   peut pas le porter — elle est partagée, et chaque hélice
+                   a son propre centre. */}
+            <g className="tfc-helice" style={{ transformBox: 'fill-box' }}>
               {[0, 120, 240].map((a) => (
                 <path
                   key={a}
@@ -111,7 +117,13 @@ function Etat({ x, deporte }: Props) {
           <path d={`M56 ${SOL} L56 ${SOL - 30} L118 ${SOL - 30} L118 ${SOL} Z`} stroke="currentColor" strokeWidth={1.3} />
           <g transform={`translate(${87} ${SOL - 15})`}>
             <circle r={9} stroke="currentColor" strokeWidth={0.9} opacity={0.6} />
-            <g className="tfc-helice">
+            {/* `transformBox: fill-box` en style local, comme sur les autres
+                   planches : sans lui la rotation se fait autour de
+                   l'ORIGINE du SVG, et les trois pales décollent du moyeu
+                   pour orbiter hors du cadre. La classe `.tfc-helice` ne
+                   peut pas le porter — elle est partagée, et chaque hélice
+                   a son propre centre. */}
+            <g className="tfc-helice" style={{ transformBox: 'fill-box' }}>
               {[0, 120, 240].map((a) => (
                 <path
                   key={a}
@@ -151,65 +163,125 @@ function Etat({ x, deporte }: Props) {
   );
 }
 
+/** Les deux désignations, au mot près, partagées par les deux compositions. */
+const NOMS: [string, string][] = [
+  ['GROUPE LOGÉ', 'Chaleur et bruit en salle'],
+  ['GROUPE À DISTANCE', 'Chaleur rejetée dehors'],
+];
+
+/** La pointe de flèche rouge. Un seul `marker` pour les deux compositions. */
+function Marqueur() {
+  return (
+    <defs>
+      <marker
+        id="tfc-fl-chaud-2d"
+        viewBox="0 0 10 10"
+        refX="9"
+        refY="5"
+        markerWidth="5"
+        markerHeight="5"
+        orient="auto-start-reverse"
+      >
+        <path d="M0 1 L9 5 L0 9" fill="none" stroke="var(--color-alert)" strokeWidth="1.8" />
+      </marker>
+    </defs>
+  );
+}
+
+/** Le cartouche d'un état : filet, désignation, conséquence. */
+function Nom({ dx, titre, sous }: { dx: number; titre: string; sous: string }) {
+  return (
+    <g transform={`translate(${dx} 0)`}>
+      <path d={`M8 ${SOL + 26} L150 ${SOL + 26}`} stroke="currentColor" strokeWidth={1.4} opacity={0.85} />
+      <text
+        x={8}
+        y={SOL + 46}
+        fontSize={13}
+        letterSpacing={1.4}
+        fill="currentColor"
+        stroke="none"
+        className="font-[family-name:var(--font-sans)]"
+      >
+        {titre}
+      </text>
+      <text
+        x={8}
+        y={SOL + 64}
+        fontSize={12}
+        fill="currentColor"
+        stroke="none"
+        opacity={0.55}
+        className="font-[family-name:var(--font-sans)]"
+      >
+        {sous}
+      </text>
+    </g>
+  );
+}
+
+const CADRE = {
+  fill: 'none',
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+} as const;
+
+/**
+ * ─── DEUX COMPOSITIONS, PAS UNE RÉDUCTION ────────────────────────────────
+ * LARGE  les deux états CÔTE À CÔTE. C'est la seule disposition qui permet
+ *        de comparer : l'œil passe de l'un à l'autre sans rien mémoriser.
+ *
+ * ÉTROIT les deux états EMPILÉS, chacun sur toute la largeur. Côte à côte
+ *        à 375 px, chaque moitié tombait à 160 px et les désignations à
+ *        cinq pixels de haut — la planche devenait un ornement illisible.
+ *        Empilés, le dessin garde sa taille et les intitulés leur corps ;
+ *        on compare de haut en bas au lieu de gauche à droite, ce qui est
+ *        la seule chose qu'on perde.
+ *
+ * Le dessin est le MÊME dans les deux cas : `Etat` est appelé à l'identique,
+ * seul le cadrage change. C'est ce que demande la règle des planches du
+ * site — une géométrie par largeur, jamais un SVG rétréci.
+ */
 export function GroupeLogeDeporte({ className = '' }: { className?: string }) {
   return (
-    <svg
-      viewBox={`0 24 ${W * 2 + 104} ${H - 6}`}
-      aria-hidden
-      focusable="false"
-      className={`w-full text-ink ${className}`}
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <defs>
-        <marker
-          id="tfc-fl-chaud-2d"
-          viewBox="0 0 10 10"
-          refX="9"
-          refY="5"
-          markerWidth="5"
-          markerHeight="5"
-          orient="auto-start-reverse"
-        >
-          <path d="M0 1 L9 5 L0 9" fill="none" stroke="var(--color-alert)" strokeWidth="1.8" />
-        </marker>
-      </defs>
+    <>
+      {/* ═══ CÔTE À CÔTE — au-dessus de 640 px ═══ */}
+      <svg
+        viewBox={`0 24 ${W * 2 + 104} ${H - 6}`}
+        aria-hidden
+        focusable="false"
+        className={`hidden w-full text-ink sm:block ${className}`}
+        {...CADRE}
+      >
+        <Marqueur />
+        <Etat x={0} deporte={false} />
+        <Etat x={W + 60} deporte />
+        {NOMS.map(([t, sc], i) => (
+          <Nom key={t} dx={i * (W + 60)} titre={t} sous={sc} />
+        ))}
+      </svg>
 
-      <Etat x={0} deporte={false} />
-      <Etat x={W + 60} deporte />
-
-      {/* Les deux désignations, sous le sol commun. */}
-      {[
-        [0, 'GROUPE LOGÉ', 'Chaleur et bruit en salle'],
-        [W + 60, 'GROUPE À DISTANCE', 'Chaleur rejetée dehors'],
-      ].map(([dx, titre, sous]) => (
-        <g key={titre as string} transform={`translate(${dx} 0)`}>
-          <path d={`M8 ${SOL + 26} L150 ${SOL + 26}`} stroke="currentColor" strokeWidth={1.4} opacity={0.85} />
-          <text
-            x={8}
-            y={SOL + 46}
-            fontSize={13}
-            letterSpacing={1.4}
-            fill="currentColor"
-            stroke="none"
-            className="font-[family-name:var(--font-sans)]"
+      {/* ═══ EMPILÉS — en dessous de 640 px ═══ */}
+      <div className={`flex flex-col gap-8 sm:hidden ${className}`}>
+        {NOMS.map(([t, sc], i) => (
+          <svg
+            key={t}
+            /* `W + 40` et non `W + 16` : l'état « à distance » pousse son
+               groupe et ses flèches jusqu'à 326 unités, mesuré sur la
+               bbox réelle. Le même cadrage pour les deux planches, sinon
+               elles ne seraient plus à la même échelle et la comparaison
+               deviendrait fausse. */
+            viewBox={`0 24 ${W + 40} ${H - 6}`}
+            aria-hidden
+            focusable="false"
+            className="w-full text-ink"
+            {...CADRE}
           >
-            {titre as string}
-          </text>
-          <text
-            x={8}
-            y={SOL + 64}
-            fontSize={12}
-            fill="currentColor"
-            stroke="none"
-            opacity={0.55}
-            className="font-[family-name:var(--font-sans)]"
-          >
-            {sous as string}
-          </text>
-        </g>
-      ))}
-    </svg>
+            {i === 0 ? <Marqueur /> : null}
+            <Etat x={0} deporte={i === 1} />
+            <Nom dx={0} titre={t} sous={sc} />
+          </svg>
+        ))}
+      </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { CallToAction } from '@/components/sections/CallToAction';
 import { Reveal } from '@/components/ui/Reveal';
 import { ColonneThermique, type Consigne } from '@/components/thermo/ColonneThermique';
 import { ElevationInstallation, type Poste } from '@/components/thermo/ElevationInstallation';
+import { GroupeLogeDeporte } from '@/components/thermo/GroupeLogeDeporte';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, serviceSchema, breadcrumbSchema } from '@/lib/seo';
 import { tradeBySlug } from '@/content/services';
@@ -52,6 +53,23 @@ import { company } from '@/content/company';
  */
 
 const trade = tradeBySlug('refrigeration')!;
+
+/**
+ * L'entrée « Vitrines et meubles réfrigérés » quitte la liste.
+ *
+ * Son texte tient en une phrase — « Groupe logé ou à distance. Le report
+ * du groupe supprime le bruit et la chaleur en salle. » — et cette phrase
+ * est un ARBITRAGE. Un arbitrage se compare : deux états côte à côte, pas
+ * une ligne de nomenclature parmi cinq.
+ *
+ * Elle est donc déplacée, pas dupliquée ni réécrite : `MATERIEL` est la
+ * liste privée de cette entrée, et la section comparative reprend son
+ * titre et son corps AU MOT PRÈS depuis `content/services.ts`. Si le
+ * contenu change là-bas, les deux suivent.
+ */
+const CLE_GROUPE = 'Vitrines et meubles réfrigérés';
+const MATERIEL = trade.items.filter((i) => i.title !== CLE_GROUPE);
+const GROUPE = trade.items.find((i) => i.title === CLE_GROUPE);
 const trail = [{ name: 'Réfrigération', path: '/refrigeration' }];
 
 export const metadata = pageMetadata({
@@ -294,7 +312,7 @@ export default function RefrigerationPage() {
             </Reveal>
 
             <dl className="mt-10">
-              {trade.items.map((it, i) => (
+              {MATERIEL.map((it, i) => (
                 <Reveal key={it.title} delay={Math.min(i * 0.05, 0.18)}>
                   <div className="border-t border-line py-6">
                     <dt className="heading text-[1.12rem] leading-[1.25] text-ink">{it.title}</dt>
@@ -314,6 +332,58 @@ export default function RefrigerationPage() {
           </div>
         </div>
       </section>
+
+      {/* ═════════════ LE GROUPE — LOGÉ OU À DISTANCE ═════════════
+          C'est la pièce maîtresse de la page, et elle manquait.
+
+          La page racontait déjà les consignes (colonne thermique) et
+          l'échange froid/chaleur (élévation). Restait le GROUPE lui-même,
+          qui est pourtant le cœur d'une installation frigorifique — et il
+          était réduit à une ligne de nomenclature.
+
+          La planche existait dans le projet, écrite et documentée, sans
+          aucun appelant. Elle compare deux états en élévation frontale :
+          la projection la plus plate qui soit, et la bonne pour une
+          comparaison — aucune perspective n'avantage l'un des deux.
+
+          C'est le seul rouge de la page, et il n'est là que parce que le
+          dessin parle littéralement de chaleur rejetée en salle. */}
+      {GROUPE ? (
+        <section
+          aria-labelledby="groupe"
+          className="border-t border-line bg-white pb-14 lg:pb-20"
+        >
+          <div className="container-t">
+            <Reveal>
+              <div className="flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:items-baseline sm:justify-between sm:text-[0.74rem]">
+                <h2 id="groupe" className="text-ink">
+                  {GROUPE.title} — comparatif d’implantation
+                </h2>
+                <span className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                  <span className="flex items-center gap-2">
+                    <span aria-hidden className="h-px w-6 bg-brand" />
+                    Liaison frigorifique
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span aria-hidden className="h-px w-6 bg-alert" />
+                    Chaleur rejetée
+                  </span>
+                </span>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.06}>
+              <p className="mt-6 max-w-[52ch] text-[1.02rem] leading-8 text-slate lg:mt-8">
+                {GROUPE.body}
+              </p>
+            </Reveal>
+
+            <Reveal as="figure" className="m-0 mt-8 lg:mt-11" delay={0.1}>
+              <GroupeLogeDeporte />
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       {/* ═════════════ LA PREUVE ═════════════
           Le second pôle de la page. Une phrase tenue en grand — c'est elle
