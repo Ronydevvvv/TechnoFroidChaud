@@ -33,7 +33,19 @@ type Props = {
   deporte: boolean;
 };
 
-const W = 300;
+/**
+ * ─── LARGEUR D'UN ÉTAT, ET POURQUOI 258 ET NON 300 ───────────────────────
+ * Le meuble s'arrête à 150 et le refend — la limite dedans/dehors — était
+ * posé à `W - 58`, donc à 242. Entre les deux : 92 unités de sol vide, soit
+ * 31 % de la largeur de chaque état. C'est là qu'était la sensation de
+ * flottement, pas dans les marges de la page, qui sont normales.
+ *
+ * À 258, le refend tombe à 200 et l'écart passe à 50 unités — assez pour
+ * qu'on voie une pièce, plus assez pour qu'on voie un terrain vague. Tout
+ * ce qui est « dehors » reste ancré sur `W` et suit donc le mur : unité
+ * extérieure, liaison, flèches de chaleur.
+ */
+const W = 258;
 const H = 250;
 /** Niveau du sol, commun aux deux états — sinon la comparaison boite. */
 const SOL = 196;
@@ -246,7 +258,7 @@ export function GroupeLogeDeporte({ className = '' }: { className?: string }) {
     <>
       {/* ═══ CÔTE À CÔTE — au-dessus de 640 px ═══ */}
       <svg
-        viewBox={`0 24 ${W * 2 + 104} ${H - 6}`}
+        viewBox={`0 40 ${W * 2 + 104} ${H - 22}`}
         aria-hidden
         focusable="false"
         className={`hidden w-full text-ink sm:block ${className}`}
@@ -261,7 +273,7 @@ export function GroupeLogeDeporte({ className = '' }: { className?: string }) {
       </svg>
 
       {/* ═══ EMPILÉS — en dessous de 640 px ═══ */}
-      <div className={`flex flex-col gap-8 sm:hidden ${className}`}>
+      <div className={`flex flex-col gap-4 sm:hidden ${className}`}>
         {NOMS.map(([t, sc], i) => (
           <svg
             key={t}
@@ -270,7 +282,7 @@ export function GroupeLogeDeporte({ className = '' }: { className?: string }) {
                bbox réelle. Le même cadrage pour les deux planches, sinon
                elles ne seraient plus à la même échelle et la comparaison
                deviendrait fausse. */
-            viewBox={`0 24 ${W + 40} ${H - 6}`}
+            viewBox={`0 40 ${W + 40} ${H - 22}`}
             aria-hidden
             focusable="false"
             className="w-full text-ink"

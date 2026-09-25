@@ -351,7 +351,7 @@ export default function RefrigerationPage() {
       {GROUPE ? (
         <section
           aria-labelledby="groupe"
-          className="border-t border-line bg-white pb-14 lg:pb-20"
+          className="border-t border-line bg-white pb-12 lg:pb-16"
         >
           <div className="container-t">
             <Reveal>
@@ -378,7 +378,7 @@ export default function RefrigerationPage() {
               </p>
             </Reveal>
 
-            <Reveal as="figure" className="m-0 mt-8 lg:mt-11" delay={0.1}>
+            <Reveal as="figure" className="m-0 mt-6 lg:mt-8" delay={0.1}>
               <GroupeLogeDeporte />
             </Reveal>
           </div>
