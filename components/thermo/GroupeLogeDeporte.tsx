@@ -273,7 +273,13 @@ export function GroupeLogeDeporte({ className = '' }: { className?: string }) {
       </svg>
 
       {/* ═══ EMPILÉS — en dessous de 640 px ═══ */}
-      <div className={`flex flex-col gap-4 sm:hidden ${className}`}>
+      <div /* `gap-3` et non `gap-4` : à l'intérieur d'une planche, le sol
+             et sa désignation sont séparés de 26 px. Entre les deux
+             planches il y avait 29 px — presque la même valeur, donc
+             rien ne disait que l'une finissait. À 25 px l'écart passe
+             SOUS le rythme interne, et les deux états se lisent comme
+             une comparaison plutôt que comme deux illustrations. */
+        className={`flex flex-col gap-3 sm:hidden ${className}`}>
         {NOMS.map(([t, sc], i) => (
           <svg
             key={t}

@@ -359,6 +359,23 @@ export default function RefrigerationPage() {
                 <h2 id="groupe" className="text-ink">
                   {GROUPE.title} — comparatif d’implantation
                 </h2>
+                {/* ─── LE CODE COULEUR RESTE ICI, ET C'EST MESURÉ ───
+                    Je l'avais descendu à la hauteur du paragraphe pour que
+                    le bloc de tête tienne les douze colonnes, comme la
+                    planche : à 1440 px l'énoncé fait 535 px sous 1 150 px
+                    d'encre, et ce déséquilibre horizontal se voit.
+
+                    La mesure a tranché contre l'idée. Sous 1024 px la
+                    rangée s'empile, le code couleur devient un TROISIÈME
+                    bloc entre le texte et le dessin, et l'écart passe de
+                    31 à 97 px sur téléphone — 66 px de vide gagnés là où
+                    la page est la plus étroite, pour un gain nul sur
+                    desktop où l'écart vertical, lui, était déjà juste
+                    (44 px du texte à l'encre). Reverti.
+
+                    Le cartouche est l'endroit d'un code couleur : il y est
+                    compact aux deux largeurs, et c'est la convention de
+                    toutes les autres planches du site. */}
                 <span className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <span className="flex items-center gap-2">
                     <span aria-hidden className="h-px w-6 bg-brand" />
