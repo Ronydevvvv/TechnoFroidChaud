@@ -51,13 +51,13 @@ import type { Pose } from '@/components/thermo/GlypheClim';
  */
 
 /** L'enveloppe commune : dalle haute, sol bas. */
-const CIEL = 28;
-const SOL = 168;
+export const CIEL = 28;
+export const SOL = 168;
 
 /* ───────────────────────────── PRIMITIVES ───────────────────────────── */
 
 /** Un jet d'air : une courbe en tirets, cyan, qui part d'une bouche. */
-function Jet({ d, delai = 0, k = 1 }: { d: string; delai?: number; k?: number }) {
+export function Jet({ d, delai = 0, k = 1 }: { d: string; delai?: number; k?: number }) {
   return (
     <path
       d={d}
@@ -78,7 +78,7 @@ function Jet({ d, delai = 0, k = 1 }: { d: string; delai?: number; k?: number })
  * obliques : c'est la convention d'un matériau coupé sur un plan, et c'est
  * ce qui distingue un MUR d'un simple trait de séparation.
  */
-function Coupe({
+export function Coupe({
   id,
   x,
   y,
@@ -137,7 +137,7 @@ function Coupe({
  * sol dans cette configuration, il est déporté en façade. Sans elles, le
  * caisson flottait.
  */
-function Groupe({ x, y, w = 48, h = 42 }: { x: number; y: number; w?: number; h?: number }) {
+export function Groupe({ x, y, w = 48, h = 42 }: { x: number; y: number; w?: number; h?: number }) {
   const cx = x + w * 0.56;
   const cy = y + h / 2;
   return (
@@ -170,7 +170,7 @@ function Groupe({ x, y, w = 48, h = 42 }: { x: number; y: number; w?: number; h?
 }
 
 /** Deux consoles de façade, du mur jusqu'au caisson. */
-function Consoles({ mur, x, y, h }: { mur: number; x: number; y: number; h: number }) {
+export function Consoles({ mur, x, y, h }: { mur: number; x: number; y: number; h: number }) {
   return (
     <g stroke="currentColor" strokeWidth={1.2} opacity={0.7}>
       <path d={`M${mur} ${y + 5}h${x - mur}`} />
@@ -181,7 +181,7 @@ function Consoles({ mur, x, y, h }: { mur: number; x: number; y: number; h: numb
 }
 
 /** Une unité murale : caisson plat, volet de soufflage, voyant. */
-function Mural({ x, y, w = 54 }: { x: number; y: number; w?: number }) {
+export function Mural({ x, y, w = 54 }: { x: number; y: number; w?: number }) {
   return (
     <g>
       <path d={`M${x} ${y}h${w}v17h-${w}z`} stroke="currentColor" strokeWidth={1.4} />

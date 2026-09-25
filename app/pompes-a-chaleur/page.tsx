@@ -5,6 +5,7 @@ import { BandePhoto } from '@/components/sections/BandePhoto';
 import { Accordion } from '@/components/ui/Accordion';
 import { Reveal } from '@/components/ui/Reveal';
 import { BoucleThermodynamique } from '@/components/thermo/BoucleThermodynamique';
+import { PlanchePac, type Config } from '@/components/thermo/PlanchesPac';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, serviceSchema, breadcrumbSchema, faqSchema } from '@/lib/seo';
 import { tradeBySlug } from '@/content/services';
@@ -55,6 +56,13 @@ import { faq } from '@/content/site';
  */
 
 const trade = tradeBySlug('pompes-a-chaleur')!;
+
+/**
+ * Les quatre coupes, dans l'ordre des `items` de `content/services.ts`.
+ * Si une cinquième entrée apparaissait, `CONFIGS[i]` vaudrait `undefined`
+ * et la case resterait vide plutôt que d'afficher un schéma faux.
+ */
+const CONFIGS: Config[] = ['air-air', 'air-eau', 'releve', 'chauffe-eau'];
 const trail = [{ name: 'Pompes à chaleur', path: '/pompes-a-chaleur' }];
 
 export const metadata = pageMetadata({
@@ -294,20 +302,38 @@ export default function PompesAChaleurPage() {
             </p>
           </Reveal>
 
-          <dl className="mt-11 lg:mt-14">
+          {/* ─── QUATRE COUPES, PAS QUATRE PARAGRAPHES ───
+              « Relève de chaudière » et « chauffe-eau thermodynamique » ne
+              disent rien à un visiteur, et ce qui sépare les quatre est
+              entièrement géométrique : ce qui circule dedans, combien de
+              producteurs, et s'il y a quelque chose dehors.
+
+              Les primitives viennent de `PlanchePoses` — celles de
+              /climatisation. Même `viewBox`, même sol, mêmes murs en coupe
+              hachurée, même épaisseur de trait : c'est une série, pas une
+              ressemblance. */}
+          <ul className="mt-9 grid gap-x-8 gap-y-9 sm:grid-cols-2 sm:gap-y-12 lg:mt-14 lg:gap-x-12 lg:gap-y-16">
             {trade.items.map((it, i) => (
-              <Reveal key={it.title} delay={Math.min(i * 0.05, 0.2)}>
-                <div className="border-t border-line py-7 lg:py-9">
-                  <dt className="heading text-[clamp(1.3rem,2.4vw,1.9rem)] leading-[1.1] text-ink">
-                    {it.title}
-                  </dt>
-                  <dd className="mt-3 max-w-[58ch] text-[1rem] leading-8 text-slate lg:ml-[7%]">
-                    {it.body}
-                  </dd>
-                </div>
+              <Reveal as="li" key={it.title} delay={Math.min(i * 0.05, 0.2)}>
+                <figure className="m-0">
+                  <figcaption className="flex items-baseline justify-between gap-4 border-b border-line pb-2.5 text-[0.74rem] tracking-[0.08em] uppercase">
+                    <span className="text-ink">{it.title}</span>
+                    <span className="text-slate tabular-nums">
+                      {String(i + 1).padStart(2, '0')} / 04
+                    </span>
+                  </figcaption>
+
+                  <div className="mt-3.5 sm:mt-5">
+                    {CONFIGS[i] ? <PlanchePac config={CONFIGS[i]} /> : null}
+                  </div>
+                </figure>
+
+                <p className="mt-3.5 max-w-[46ch] text-[0.95rem] leading-7 text-slate sm:mt-5">
+                  {it.body}
+                </p>
               </Reveal>
             ))}
-          </dl>
+          </ul>
 
           <Reveal delay={0.22}>
             <p className="border-t border-line pt-6 text-[0.9rem] text-slate">
