@@ -1,4 +1,5 @@
 import { PageHero } from '@/components/sections/PageHero';
+import { BandePhoto } from '@/components/sections/BandePhoto';
 import { Accordion } from '@/components/ui/Accordion';
 import { Reveal } from '@/components/ui/Reveal';
 import { LigneDeVie } from '@/components/thermo/LigneDeVie';
@@ -372,6 +373,18 @@ export default function DepannagePage() {
       </section>
 
       {/* ═════════════ AVANT D'APPELER ═════════════ */}
+      {/* Une respiration photographique : la page n'avait que son
+          hero, donc plus aucune matière dès qu'on descendait. Voir
+          `components/sections/BandePhoto.tsx` pour la règle du
+          cartouche — ce n'est PAS un chantier de l'entreprise. */}
+      <BandePhoto
+        src="/photos/metier-depannage.jpg"
+        alt="Frigoriste raccordant un manifold de service sur une installation."
+        legende="Manifold de service en cours de relevé"
+        position="50% 48%"
+        fond="bg-stone"
+      />
+
       <section aria-labelledby="avant" className="bg-white py-16 lg:py-24">
         <div className="container-t">
           <Reveal>

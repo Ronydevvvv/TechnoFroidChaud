@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PageHero } from '@/components/sections/PageHero';
 import { CallToAction } from '@/components/sections/CallToAction';
+import { BandePhoto } from '@/components/sections/BandePhoto';
 import { Accordion } from '@/components/ui/Accordion';
 import { Reveal } from '@/components/ui/Reveal';
 import { BoucleThermodynamique } from '@/components/thermo/BoucleThermodynamique';
@@ -321,6 +322,18 @@ export default function PompesAChaleurPage() {
           lieu d'être posé à côté d'un titre : c'est un document à consulter,
           et sa dernière ligne est celle qui peut coûter de l'argent au
           visiteur — elle reçoit donc le filet épais. */}
+      {/* Une respiration photographique : la page n'avait que son
+          hero, donc plus aucune matière dès qu'on descendait. Voir
+          `components/sections/BandePhoto.tsx` pour la règle du
+          cartouche — ce n'est PAS un chantier de l'entreprise. */}
+      <BandePhoto
+        src="/photos/metier-pompes-a-chaleur.jpg"
+        alt="Pompe à chaleur air/eau installée en pignon d’une maison individuelle."
+        legende="Groupe extérieur en pignon"
+        position="50% 52%"
+        fond="bg-white"
+      />
+
       <section aria-labelledby="aides" className="bg-carbon py-16 text-white lg:py-24">
         <div className="container-t">
           <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">

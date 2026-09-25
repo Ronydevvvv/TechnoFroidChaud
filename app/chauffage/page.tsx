@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PageHero } from '@/components/sections/PageHero';
 import { CallToAction } from '@/components/sections/CallToAction';
+import { BandePhoto } from '@/components/sections/BandePhoto';
 import { Reveal } from '@/components/ui/Reveal';
 import { ReseauChauffage } from '@/components/thermo/ReseauChauffage';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -161,6 +162,18 @@ export default function ChauffagePage() {
           Elle est posée APRÈS la notice : la page dit d'abord ce qu'on fait
           sur une installation, puis montre ce qu'est cette installation,
           et seulement ensuite pose l'arbitrage réparer / remplacer. */}
+      {/* Une respiration photographique : la page n'avait que son
+          hero, donc plus aucune matière dès qu'on descendait. Voir
+          `components/sections/BandePhoto.tsx` pour la règle du
+          cartouche — ce n'est PAS un chantier de l'entreprise. */}
+      <BandePhoto
+        src="/photos/metier-chauffage.jpg"
+        alt="Local technique équipé de ballons tampons et d’une production de chaleur."
+        legende="Local technique et production de chaleur"
+        position="50% 46%"
+        fond="bg-white"
+      />
+
       <section aria-labelledby="reseau" className="border-y border-line bg-stone py-14 sm:py-16 lg:py-24">
         <div className="container-t">
           <Reveal>
