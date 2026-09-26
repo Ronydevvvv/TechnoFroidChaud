@@ -461,12 +461,20 @@ export default function ClimatisationPage() {
             {devis.map((d, i) => (
               <Reveal key={d.q} delay={Math.min(i * 0.06, 0.2)}>
                 <div className="grid gap-x-10 gap-y-3 border-t border-line py-8 lg:grid-cols-12 lg:py-10">
-                  {/* La note de marge. Petit corps, alignée en tête de la
-                      question : elle commente, elle ne répond pas à côté. */}
-                  <p className="text-[0.88rem] leading-6 text-slate lg:col-span-3 lg:pt-2">
+                  {/* ─── L'ORDRE S'INVERSE SOUS 1024 px ───
+                      Sur grand écran la note occupe la colonne de gauche et
+                      la question la colonne de droite : on lit la question
+                      d'abord, la note la commente depuis la marge. Empilées
+                      telles quelles sur téléphone, les deux colonnes se
+                      suivaient dans l'ordre du DOM — et on lisait donc la
+                      RÉPONSE AVANT LA QUESTION, trois fois de suite. La
+                      question remonte par `order`, qui ne change rien à la
+                      grille de bureau ni à l'ordre de lecture d'un lecteur
+                      d'écran sur grand écran. */}
+                  <p className="order-2 text-[0.88rem] leading-6 text-slate lg:order-none lg:col-span-3 lg:pt-2">
                     {d.a}
                   </p>
-                  <h3 className="heading text-[clamp(1.35rem,3vw,2.3rem)] leading-[1.15] text-ink lg:col-span-8 lg:col-start-5">
+                  <h3 className="heading order-1 text-[clamp(1.35rem,3vw,2.3rem)] leading-[1.15] text-ink lg:order-none lg:col-span-8 lg:col-start-5">
                     {d.q}
                   </h3>
                 </div>

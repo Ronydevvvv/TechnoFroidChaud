@@ -114,7 +114,15 @@ export function Footer() {
                 d'autant (`gap-y-2.5` → `gap-y-0.5`) pour que le bloc garde
                 exactement le même encombrement. Rien ne bouge à l'œil ;
                 seule la surface atteignable double. */}
-            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-0.5">
+            {/* ─── UNE SEULE COLONNE SOUS 640 px ───
+                En deux colonnes à 375 px, « Chauffage et chaudières » et
+                « Entretien & Dépannage » passaient sur deux lignes, les
+                deux colonnes cessaient d'avoir la même hauteur de rang, et
+                « Contact » restait seul en bas à gauche : une grille
+                visiblement cassée. Une colonne, neuf liens alignés, chacun
+                sur une ligne — c'est plus haut de cent pixels et
+                infiniment plus propre. */}
+            <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-0.5 sm:grid-cols-2">
               {[...navigation, { label: 'Contact', href: '/contact' }].map((item) => (
                 <li key={item.href}>
                   <Link

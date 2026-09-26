@@ -343,6 +343,23 @@ li {
     transform: scaleX(1);
     transform-origin: left;
   }
+  /* ————— SUR UN APPAREIL TACTILE, LE FILET EST PERMANENT —————
+     Le soulignement ne se déployait qu'au survol. Or un téléphone ne
+     survole rien : sur mobile, TOUS les liens du site — « Le métier en
+     détail », « Les six étapes d'un projet », les liens du pied de page,
+     les liens en ligne dans les paragraphes — s'affichaient exactement
+     comme du texte courant. Rien ne disait qu'on pouvait appuyer dessus.
+
+     `hover: none` vise l'appareil, pas la largeur : une tablette au doigt
+     est concernée, un petit écran de bureau à la souris ne l'est pas. Le
+     filet est simplement déjà déployé ; aucune autre règle ne change, et
+     le comportement au survol est intact partout où le survol existe. */
+  @media (hover: none) {
+    .link-t::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
 
   /* ————— Champs ————— */
   /* ————— Champs de formulaire —————
