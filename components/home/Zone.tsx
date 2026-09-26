@@ -63,15 +63,19 @@ export function Zone() {
                 par le corps et le séparateur, sans déformer les lettres. */}
             <p className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
               {regions.map((r, i) => (
+                /* Le séparateur suit le mot qui PRÉCÈDE, il n'ouvre
+                   jamais celui qui suit : lié au suivant, il partait à la
+                   ligne avec lui et « · Meurthe-et-Moselle » commençait
+                   une ligne par une puce orpheline. */
                 <span key={r} className="flex items-baseline gap-x-4">
-                  {i > 0 ? (
+                  <span className="heading text-[clamp(1.5rem,2.6vw,2.1rem)] text-ink">
+                    {r}
+                  </span>
+                  {i < regions.length - 1 ? (
                     <span aria-hidden className="text-[1.1rem] text-brand">
                       ·
                     </span>
                   ) : null}
-                  <span className="heading text-[clamp(1.5rem,2.6vw,2.1rem)] text-ink">
-                    {r}
-                  </span>
                 </span>
               ))}
             </p>
@@ -118,8 +122,8 @@ export function Zone() {
               <span className="text-ink">
                 Zone d’intervention — {servedTowns.length} communes
               </span>
-              <span className="flex items-center gap-2">
-                <span aria-hidden className="size-1.5 rounded-full bg-brand" />
+              <span className="flex items-start gap-2">
+                <span aria-hidden className="mt-[0.42rem] size-1.5 shrink-0 rounded-full bg-brand" />
                 Rangées par distance au siège, sans échelle géographique
               </span>
             </div>

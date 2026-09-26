@@ -129,9 +129,24 @@ export function PageHero({
           {/* Voile. Latéral sur grand écran — le sujet garde sa moitié
               droite ; vertical sur téléphone, où le sujet passe sous le
               texte. Même bascule que le hero d'accueil. */}
+          {/* ─── LE VOILE MOBILE OUVRE UNE FENÊTRE SUR LA PHOTOGRAPHIE ───
+              Il valait 0,94 en haut et 0,86 jusqu'à 45 % : sur téléphone,
+              la moitié haute de l'image était couverte à 86-94 % et les
+              neuf heros de pages métier montraient un champ noir. Le
+              visiteur arrivait sur une photographie qu'il ne voyait pas.
+
+              Une bande de 150 px s'ouvre désormais sous le fil d'Ariane —
+              c'est `pt-40` qui la dégage — où le voile tombe à 0,34. Le
+              sujet y est lisible. Il remonte ensuite à 0,90 dès 30 %,
+              c'est-à-dire AVANT le sur-titre, donc tout le texte de la
+              page repose sur la même densité qu'avant. On gagne une image
+              sans rien perdre en lisibilité.
+
+              Le voile de tête (`h-32`, plus bas) couvre le fil d'Ariane :
+              c'est lui qui tient les 128 premiers pixels, pas celui-ci. */}
           <span
             aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,17,24,0.94)_0%,rgba(10,17,24,0.86)_45%,rgba(10,17,24,0.55)_100%)] lg:bg-[linear-gradient(to_right,rgba(10,17,24,0.94)_0%,rgba(10,17,24,0.86)_38%,rgba(10,17,24,0.5)_68%,rgba(10,17,24,0.2)_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,17,24,0.46)_0%,rgba(10,17,24,0.32)_9%,rgba(10,17,24,0.93)_15%,rgba(10,17,24,0.95)_60%,rgba(10,17,24,0.9)_100%)] lg:bg-[linear-gradient(to_right,rgba(10,17,24,0.94)_0%,rgba(10,17,24,0.86)_38%,rgba(10,17,24,0.5)_68%,rgba(10,17,24,0.2)_100%)]"
           />
           {/* Voile de tête : l'en-tête est transparent au-dessus du hero
               d'accueil seulement, mais sur les pages intérieures il est
@@ -144,7 +159,12 @@ export function PageHero({
       )}
 
       <div
-        className={`container-t pt-28 ${
+        /* `pt-40` seulement quand il y a une photographie à montrer : ces
+           48 px de plus sont la bande d'image dégagée sous le fil
+           d'Ariane. Sans photographie il n'y a rien à dégager, et le
+           `pt-28` d'origine tient. Inchangé au-delà de 1024 px, où le
+           voile est latéral. */
+        className={`container-t ${enPhoto ? 'pt-40 sm:pt-32' : 'pt-28'} ${
           serreMobile ? 'pb-12 sm:pb-16' : 'pb-16'
         } lg:pb-20 ${enPhoto ? 'relative lg:pt-32' : 'lg:pt-36'}`}
       >

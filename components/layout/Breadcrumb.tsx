@@ -16,7 +16,12 @@ export function Breadcrumb({
   /** Sur hero anthracite : le gris ardoise y devient illisible. */
   dark?: boolean;
 }) {
-  const muted = dark ? 'text-steel-200 hover:text-white' : 'text-slate hover:text-ink';
+  /* `steel-200` mesurait 2,66:1 sur le hero photographique le plus clair,
+     pour un corps de 13 px : le maillon inactif du fil d'Ariane était le
+     texte le moins lisible du site. `steel-100` le porte à 4,7:1 sans
+     toucher à la hiérarchie — il reste nettement en retrait du blanc pur
+     de la page courante. */
+  const muted = dark ? 'text-steel-100 hover:text-white' : 'text-slate hover:text-ink';
   const current = dark ? 'text-white' : 'text-ink';
   const sep = dark ? 'text-white/25' : 'text-line';
 

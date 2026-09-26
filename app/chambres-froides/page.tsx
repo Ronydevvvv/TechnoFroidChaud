@@ -307,9 +307,15 @@ export default function ChambresFroidesPage() {
               <Reveal key={a.organe} delay={Math.min(i * 0.06, 0.2)}>
                 <div className="h-full border-t border-white/30 py-6 lg:py-7">
                   <div className="flex items-center gap-3">
+                    {/* La MÊME pastille que celle posée sur l'axonométrie :
+                        papier plein, lettre à l'encre. Cerclée et claire
+                        d'un côté, pleine et sombre de l'autre, les deux
+                        repères se ressemblaient trop peu pour qu'on les
+                        rapproche d'un coup d'œil — or c'est tout leur
+                        travail. */}
                     <span
                       aria-hidden
-                      className="flex size-7 shrink-0 items-center justify-center rounded-full border border-white/40 text-[0.8rem] text-white/70"
+                      className="flex size-7 shrink-0 items-center justify-center rounded-full bg-paper text-[0.8rem] font-semibold text-ink"
                     >
                       {a.repere}
                     </span>
