@@ -268,7 +268,7 @@ function Coupe({ p }: { p: Plan }) {
                 letterSpacing={0.9}
                 fill="currentColor"
                 stroke="none"
-                opacity={0.5}
+                opacity={0.72}
                 className="font-[family-name:var(--font-sans)]"
               >
                 {f.nom.toUpperCase()}

@@ -120,7 +120,7 @@ function Regle({
                 fontSize={compact ? 11.5 : 11.5}
                 letterSpacing={0.4}
                 fill="currentColor"
-                opacity={0.55}
+                opacity={0.72}
                 className="font-[family-name:var(--font-sans)] tabular-nums"
               >
                 {degre(t)}

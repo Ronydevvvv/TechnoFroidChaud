@@ -209,7 +209,7 @@ export function BoucleThermodynamique() {
         <text x={890} y={268} textAnchor="end" fontSize={11} letterSpacing={1.1} fill="var(--color-alert)" stroke="none" className="font-[family-name:var(--font-sans)]">
           LOGEMENT
         </text>
-        <text x={460} y={490} textAnchor="middle" fontSize={11} letterSpacing={1.1} fill="currentColor" opacity={0.55} stroke="none" className="font-[family-name:var(--font-sans)]">
+        <text x={460} y={490} textAnchor="middle" fontSize={11} letterSpacing={1.1} fill="currentColor" opacity={0.72} stroke="none" className="font-[family-name:var(--font-sans)]">
           ÉLECTRICITÉ
         </text>
       </svg>
@@ -232,7 +232,7 @@ export function BoucleThermodynamique() {
         <text x={388} y={340} textAnchor="end" fontSize={14} letterSpacing={1} fill="var(--color-alert)" stroke="none" className="font-[family-name:var(--font-sans)]">
           LOGEMENT
         </text>
-        <text x={205} y={676} textAnchor="middle" fontSize={14} letterSpacing={1} fill="currentColor" opacity={0.55} stroke="none" className="font-[family-name:var(--font-sans)]">
+        <text x={205} y={676} textAnchor="middle" fontSize={14} letterSpacing={1} fill="currentColor" opacity={0.72} stroke="none" className="font-[family-name:var(--font-sans)]">
           ÉLECTRICITÉ
         </text>
       </svg>

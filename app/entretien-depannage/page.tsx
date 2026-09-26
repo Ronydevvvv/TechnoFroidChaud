@@ -244,7 +244,7 @@ export default function DepannagePage() {
                 <li key={nom} className="flex items-baseline gap-x-4">
                   <span
                     aria-hidden
-                    className="heading w-7 shrink-0 text-[0.92rem] text-slate/60 tabular-nums"
+                    className="heading w-7 shrink-0 text-[0.92rem] text-slate tabular-nums"
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>

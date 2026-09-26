@@ -222,7 +222,7 @@ function Nom({ dx, titre, sous }: { dx: number; titre: string; sous: string }) {
         fontSize={12}
         fill="currentColor"
         stroke="none"
-        opacity={0.55}
+        opacity={0.72}
         className="font-[family-name:var(--font-sans)]"
       >
         {sous}

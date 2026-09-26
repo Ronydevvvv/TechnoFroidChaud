@@ -391,7 +391,7 @@ export default function ClimatisationPage() {
                 ))}
                 <li className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-line pt-4">
                   <span>Unité extérieure</span>
-                  <span className="tracking-normal text-slate/80 normal-case">
+                  <span className="tracking-normal text-slate normal-case">
                     Chaleur rejetée dehors
                   </span>
                 </li>

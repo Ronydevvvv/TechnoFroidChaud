@@ -52,6 +52,25 @@
      clair, `--color-alert` reste seul. */
   --color-alert-clair: #d9614f;
 
+  /* ————— Plancher d'opacité des annotations —————
+     Ce n'est pas une variable — les planches portent leur opacité en
+     attribut SVG — mais la règle se lit ici, avec les deux autres
+     décisions de contraste.
+
+     Le texte d'annotation des planches était dessiné à 0,55 (0,50 sur la
+     coupe d'accueil) : mesuré, 3,80 à 3,91:1, et 3,35:1 — sous le seuil
+     de 4,5:1 pour des intitulés composés entre 11 et 15 px. Le plancher
+     est 0,72, qui vaut 6,6:1 sur la pierre.
+
+     Il ne s'applique QU'AU TEXTE. Traits, arcs, cercles et hachures
+     gardent leur opacité : ce sont des graphiques, et les alourdir
+     changerait le poids des dessins.
+
+     Corollaire sur `--color-slate` (#61656c) : il vaut 5,79:1 sur le
+     papier, donc il n'a aucune marge pour un suffixe d'opacité. /80 le
+     fait tomber à 3,77, /70 à 3,09, /60 à 2,41. Sur du texte, `text-slate`
+     s'emploie plein. Les icônes, elles, ne sont pas du texte. */
+
   /* ————— Famille acier —————
      Ajoutée à la refonte anthracite. Le site reposait sur un sol blanc
      porté par la photographie ; sans photographie, ce sol restait vide.

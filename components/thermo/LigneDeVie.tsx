@@ -148,7 +148,7 @@ function LigneLarge({ className }: { className?: string }) {
           <text x={DES_X[i]} y={408} fontSize={16} letterSpacing={1.4} fill="currentColor" stroke="none" className="font-[family-name:var(--font-sans)]">
             {nom}
           </text>
-          <text x={DES_X[i]} y={430} fontSize={15} fill="currentColor" stroke="none" opacity={0.55} className="font-[family-name:var(--font-sans)]">
+          <text x={DES_X[i]} y={430} fontSize={15} fill="currentColor" stroke="none" opacity={0.72} className="font-[family-name:var(--font-sans)]">
             {sous}
           </text>
         </g>

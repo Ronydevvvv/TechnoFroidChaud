@@ -516,7 +516,7 @@ function CoupeLarge({ className }: { className: string }) {
         letterSpacing={1.2}
         fill="currentColor"
         stroke="none"
-        opacity={0.55}
+        opacity={0.72}
         className="hidden font-[family-name:var(--font-sans)] lg:block"
       >
         VOLUME ISOLÉ

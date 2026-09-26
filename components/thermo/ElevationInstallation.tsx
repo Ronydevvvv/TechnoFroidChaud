@@ -353,7 +353,7 @@ function ElevationLarge({ postes, className }: Props) {
           fontSize={15}
           fill="currentColor"
           stroke="none"
-          opacity={0.55}
+          opacity={0.72}
           className="font-[family-name:var(--font-sans)]"
         >
           Chaleur rejetée dehors

@@ -132,7 +132,7 @@ export function Systeme() {
                 légende disait — on le dit sur un axe au lieu d'une liste. */}
             <div className="mt-2.5 flex items-baseline justify-between gap-4 text-[0.72rem] tracking-[0.14em] uppercase">
               <span className="text-brand">Fluide et air froids</span>
-              <span className="hidden text-slate/70 sm:inline">Transfert</span>
+              <span className="hidden text-slate sm:inline">Transfert</span>
               <span className="text-alert">Chaleur</span>
             </div>
           </div>
