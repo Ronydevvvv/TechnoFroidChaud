@@ -343,21 +343,34 @@ li {
     transform: scaleX(1);
     transform-origin: left;
   }
-  /* ————— SUR UN APPAREIL TACTILE, LE FILET EST PERMANENT —————
-     Le soulignement ne se déployait qu'au survol. Or un téléphone ne
-     survole rien : sur mobile, TOUS les liens du site — « Le métier en
-     détail », « Les six étapes d'un projet », les liens du pied de page,
-     les liens en ligne dans les paragraphes — s'affichaient exactement
-     comme du texte courant. Rien ne disait qu'on pouvait appuyer dessus.
+  /* ————— SUR UN APPAREIL TACTILE, LE LIEN EST SOULIGNÉ —————
+     Le filet ne se déployait qu'au survol. Or un téléphone ne survole
+     rien : sur mobile, TOUS les liens du site — « Le métier en détail »,
+     les liens du pied de page, les liens en ligne dans les paragraphes —
+     s'affichaient exactement comme du texte courant.
 
      `hover: none` vise l'appareil, pas la largeur : une tablette au doigt
-     est concernée, un petit écran de bureau à la souris ne l'est pas. Le
-     filet est simplement déjà déployé ; aucune autre règle ne change, et
-     le comportement au survol est intact partout où le survol existe. */
+     est concernée, un petit écran de bureau à la souris ne l'est pas.
+
+     ─── POURQUOI UN VRAI SOULIGNEMENT, ET PAS LE PSEUDO-ÉLÉMENT ───
+     `::after` est posé à `bottom: -2px`, donc sous la BOÎTE. Dès qu'un
+     lien porte de la fourrure — les liens du pied de page en ont 8 px,
+     pour que le doigt les atteigne — le filet tombait dix pixels sous le
+     texte, à mi-chemin du lien suivant : il se lisait comme un séparateur,
+     pas comme un soulignement. `text-decoration` suit le TEXTE quelle que
+     soit la fourrure, et se coupe correctement quand un lien passe sur
+     deux lignes, ce qu'un pseudo-élément absolu ne sait pas faire.
+
+     Le pseudo-élément est donc retiré ici — et seulement ici. Partout où
+     le survol existe, l'animation d'origine est intacte. */
   @media (hover: none) {
+    .link-t {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
     .link-t::after {
-      transform: scaleX(1);
-      transform-origin: left;
+      content: none;
     }
   }
 
