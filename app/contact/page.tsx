@@ -161,7 +161,13 @@ export default function ContactPage() {
       <section aria-labelledby="joindre" className="bg-white py-14 lg:py-20">
         <div className="container-t lg:grid lg:grid-cols-12 lg:gap-x-16">
           {/* ─── NOUS JOINDRE ─── */}
-          <div className="lg:col-span-5">
+          {/* Quatre colonnes et non cinq : les coordonnées tiennent en
+              huit lignes, le formulaire en onze champs. À 5/6 la colonne
+              de gauche s'arrêtait bien au-dessus du bas du formulaire et
+              laissait un vide sur toute sa hauteur. À 4/7, le vide se
+              resserre et le formulaire — qui est ce qu'on vient faire
+              ici — gagne la place. */}
+          <div className="lg:col-span-4">
             <Reveal>
               <p className="flex items-center gap-3 text-[0.9rem] text-slate">
                 <span aria-hidden className="h-px w-7 bg-brand" />
@@ -191,7 +197,12 @@ export default function ContactPage() {
                   strokeWidth={1.5}
                   className="size-7 shrink-0 origin-center text-brand group-hover:[animation:tfc-sonne_0.55s_ease-in-out] lg:size-8"
                 />
-                <span className="heading text-[clamp(2rem,4.4vw,3rem)] leading-[1.1] text-ink transition-colors duration-300 group-hover:text-brand">
+                {/* `whitespace-nowrap`, et le corps calé sur la largeur de la
+                    COLONNE (`2.9vw`) et non de la fenêtre : en resserrant ce
+                    bloc de cinq à quatre colonnes, le numéro se coupait en
+                    deux lignes. Un numéro de téléphone ne se coupe pas — on
+                    le lit d'un bloc ou on le recopie faux. */}
+                <span className="heading text-[clamp(1.75rem,2.9vw,2.6rem)] leading-[1.1] whitespace-nowrap text-ink transition-colors duration-300 group-hover:text-brand">
                   {company.phone}
                 </span>
               </a>
@@ -240,7 +251,7 @@ export default function ContactPage() {
               dessous, où les colonnes s'empilent. Le formulaire est posé sur
               le même fond que le reste — c'est ce qui le fait paraître à sa
               place plutôt que déposé dans une boîte. */}
-          <div className="mt-12 border-t border-line pt-10 lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-16">
+          <div className="mt-12 border-t border-line pt-10 lg:col-span-7 lg:col-start-6 lg:mt-0 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-16">
             <Reveal delay={0.08}>
               <h2 className="sr-only">Formulaire de demande d’intervention</h2>
               <ContactForm email={company.email} phone={company.phone} />
@@ -336,7 +347,7 @@ export default function ContactPage() {
               </p>
               <h2
                 id="avant"
-                className="heading mt-4 max-w-[18ch] text-[clamp(1.7rem,3.2vw,2.4rem)] leading-[1.08] text-ink"
+                className="heading mt-4 max-w-[24ch] text-[clamp(1.7rem,3.2vw,2.4rem)] leading-[1.08] text-ink"
               >
                 Quelques informations nous font gagner du temps
               </h2>

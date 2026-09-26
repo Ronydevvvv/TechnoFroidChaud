@@ -280,7 +280,16 @@ export default function EntreprisePage() {
               wrapper. `[&>*+*]` vise les wrappers eux-mêmes, qui sont les
               vrais frères. C'est le seul espacement de la section : il n'y a
               aucun filet entre les six positions. */}
-          <div className="mt-14 [&>*+*]:mt-12 lg:mt-20 lg:[&>*+*]:mt-16">
+          {/* DEUX PRINCIPES PAR RANGÉE au lieu d'un seul. Empilés en pleine
+              largeur, les six faisaient trois écrans d'un même bloc répété —
+              la section la plus longue et la plus monotone du site. En deux
+              colonnes, chacun se lit d'un coup d'œil, la section tient sur
+              un écran et demi, et le regard a un rythme au lieu d'une
+              descente.
+
+              `lg:[&>*+*]:mt-0` annule l'espacement vertical hérité : dans
+              une grille, c'est `gap-y` qui commande. */}
+          <div className="mt-14 [&>*+*]:mt-12 lg:mt-20 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-16 lg:[&>*+*]:mt-0">
             {principes.map((p, i) => (
               <Reveal key={p.titre} delay={Math.min(i * 0.04, 0.16)}>
                 {/* Deux colonnes sur grand écran : le titre tient les quatre
@@ -296,11 +305,14 @@ export default function EntreprisePage() {
                     tenue par le seul blanc, et c'est ce qui la rend
                     reconnaissable. La colonne vide entre le titre et le
                     corps fait le travail que ferait un trait ailleurs. */}
-                <div className="lg:grid lg:grid-cols-12 lg:items-baseline lg:gap-x-16">
-                  <h3 className="heading max-w-[22ch] text-[clamp(1.4rem,2.8vw,2.3rem)] leading-[1.1] text-ink lg:col-span-4">
+                {/* Titre au-dessus du corps, et non plus à côté : dans une
+                    demi-largeur, deux sous-colonnes laisseraient au texte
+                    moins de quarante signes par ligne. */}
+                <div>
+                  <h3 className="heading max-w-[22ch] text-[clamp(1.4rem,2.4vw,1.9rem)] leading-[1.12] text-ink">
                     {p.titre}
                   </h3>
-                  <p className="mt-4 max-w-[58ch] text-[1.02rem] leading-8 text-slate lg:col-span-7 lg:col-start-6 lg:mt-0">
+                  <p className="mt-4 max-w-[52ch] text-[1rem] leading-8 text-slate">
                     {p.corps}
                   </p>
                 </div>
