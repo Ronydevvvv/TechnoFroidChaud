@@ -183,7 +183,7 @@ export function Hero() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[88%_50%] lg:object-[62%_50%]"
+            className="object-cover object-[76%_50%] lg:object-[62%_50%]"
           />
 
           {/* ————— LA VIDÉO —————
@@ -217,7 +217,11 @@ export function Hero() {
               cadre partout ; elle n'est agrandie qu'au-delà de ~1155 px
               (1,28 à 1440), et se trouve à l'échelle native ou réduite en
               dessous. */}
-          <HeroVideo src={VIDEO} poster={POSTER} className="object-center" />
+          <HeroVideo
+            src={VIDEO}
+            poster={POSTER}
+            className="object-[70%_50%] lg:object-center"
+          />
         </>
       ) : (
         <>
@@ -240,13 +244,24 @@ export function Hero() {
       )}
 
       {/* ————— LE VOILE —————
-          Il vient de la gauche et s'éteint au milieu : le texte repose sur
-          une surface pleine, l'image garde sa moitié droite lisible.
+          Sur grand écran il vient de la gauche et s'éteint au milieu : le
+          texte repose sur une surface pleine, l'image garde sa moitié
+          droite lisible.
 
-          Sur téléphone, le sujet passe SOUS le texte : le voile devient
-          donc vertical, opaque en haut, dégagé en bas. Sans cette bascule,
-          un voile latéral couvrirait précisément la partie de la photo
-          qu'on veut montrer sur un écran étroit. */}
+          ─── LE TÉLÉPHONE ÉTAIT UN RECTANGLE NOIR, ET C'ÉTAIT ICI ───
+          Le voile mobile partait de 0,94 en haut et descendait à 0,82 à
+          42 % : autrement dit, les deux tiers SUPÉRIEURS de l'image —
+          la seule zone où le sujet pouvait apparaître — étaient couverts
+          à 82-94 %. Le premier écran du téléphone, celui que la majorité
+          des visiteurs voit, ne montrait donc rien : du texte blanc sur du
+          noir, avec une hélice devinée dans un coin.
+
+          Le gradient est retourné. Le haut ne porte plus que 8 à 14 % —
+          de quoi asseoir l'en-tête, pas de quoi effacer l'image — et
+          l'opacité monte à partir de 44 %, là où le texte commence. Le
+          sujet est en haut, le texte en bas, chacun sur ce qu'il lui faut.
+          C'est la composition d'un écran étroit, pas celle d'un écran
+          large rétréci. */}
       {/* Le voile n'existe QUE s'il y a une photographie à voiler.
           Appliqué au champ anthracite, il l'écrasait en noir plat : la
           dérive froide vers chaude disparaissait, et le premier écran
@@ -255,7 +270,7 @@ export function Hero() {
       {PHOTO ? (
         <span
           aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,17,24,0.94)_0%,rgba(10,17,24,0.82)_42%,rgba(10,17,24,0.35)_100%)] lg:bg-[linear-gradient(to_right,rgba(10,17,24,0.95)_0%,rgba(10,17,24,0.88)_34%,rgba(10,17,24,0.45)_62%,rgba(10,17,24,0.12)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,17,24,0.16)_0%,rgba(10,17,24,0.1)_16%,rgba(10,17,24,0.58)_29%,rgba(10,17,24,0.88)_46%,rgba(10,17,24,0.95)_70%,rgba(10,17,24,0.96)_100%)] lg:bg-[linear-gradient(to_right,rgba(10,17,24,0.95)_0%,rgba(10,17,24,0.88)_34%,rgba(10,17,24,0.45)_62%,rgba(10,17,24,0.12)_100%)]"
         />
       ) : null}
 
@@ -332,7 +347,15 @@ export function Hero() {
           une. Sous 1024 px la bande fait 222 à 294 px de haut — l'amputer
           du hero laisserait une image trop basse — donc `min-h-[82svh]`
           tient, et le mobile ne change pas d'un pixel. */}
-      <div className="container-t relative flex min-h-[82svh] items-center pt-28 pb-16 lg:min-h-[calc(100svh-9rem)] lg:pt-32 lg:pb-20 xl:min-h-[calc(100svh-7.5rem)]">
+      {/* ─── SUR TÉLÉPHONE, LE TEXTE EST ANCRÉ EN BAS ───
+          Centré, il occupait la bande médiane et ne laissait aucune zone
+          à l'image : le sujet ne pouvait apparaître nulle part. Poussé en
+          bas, il libère le tiers haut, qui devient la fenêtre sur la
+          photographie — et il se pose sur la partie la plus opaque du
+          voile, donc sur le fond le plus sûr de l'écran.
+          `items-center` revient à partir de 1024 px, où le voile est
+          latéral et où la composition n'a jamais eu ce défaut. */}
+      <div className="container-t relative flex min-h-[90svh] items-end pt-28 pb-14 lg:min-h-[calc(100svh-9rem)] lg:items-center lg:pt-32 lg:pb-20 xl:min-h-[calc(100svh-7.5rem)]">
         <div className="w-full max-w-xl lg:max-w-[38rem]">
           <p className="text-[0.98rem] text-white/70">Frigoriste · Chauffagiste</p>
 

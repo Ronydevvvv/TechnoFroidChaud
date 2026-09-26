@@ -4,6 +4,7 @@ import { CallToAction } from '@/components/sections/CallToAction';
 import { BandePhoto } from '@/components/sections/BandePhoto';
 import { Reveal } from '@/components/ui/Reveal';
 import { ReseauChauffage } from '@/components/thermo/ReseauChauffage';
+import { ListeReperes } from '@/components/thermo/Repere';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, serviceSchema, breadcrumbSchema } from '@/lib/seo';
 import { tradeBySlug } from '@/content/services';
@@ -215,24 +216,28 @@ export default function ChauffagePage() {
               <ReseauChauffage />
             </div>
 
-            {/* ─── LA LÉGENDE MOBILE ───
+            {/* ─── LA NOMENCLATURE MOBILE ───
                 Sous 1024 px, le schéma ne porte aucun texte : une
                 désignation dans le dessin y ferait six pixels de haut. Les
                 cinq désignations sortent donc du SVG et passent en HTML,
                 dans l'ordre où le peigne debout les rencontre — de la
-                chaudière en tête jusqu'au circulateur sur le retour. */}
+                chaudière en tête jusqu'au circulateur sur le retour.
+
+                C'était une simple liste de mots, sans aucun rapport visible
+                avec le dessin : on lisait « Départ » sans savoir lequel des
+                deux troncs c'était. Chaque ligne porte désormais le repère
+                numéroté qui figure sur la planche, à l'endroit de l'élément
+                qu'elle nomme. Les désignations, elles, n'ont pas changé. */}
             <div className="lg:hidden">
-              <ul className="mt-6 grid gap-y-3 border-t border-line pt-5 text-[0.86rem] tracking-[0.05em] text-slate uppercase">
-                {['Chaudière', 'Départ', 'Émetteurs', 'Retour'].map((n) => (
-                  <li key={n}>{n}</li>
-                ))}
-                <li className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-line pt-4">
-                  <span>Circulateur</span>
-                  <span className="tracking-normal text-slate normal-case">
-                    Il met le circuit en mouvement
-                  </span>
-                </li>
-              </ul>
+              <ListeReperes
+                items={[
+                  { nom: 'Chaudière', detail: 'Corps de chauffe et brûleur' },
+                  { nom: 'Départ', detail: 'Tronc et dérivations' },
+                  { nom: 'Émetteurs', detail: 'Radiateurs à équilibrer' },
+                  { nom: 'Retour', detail: 'Vers la chaudière' },
+                  { nom: 'Circulateur', detail: 'Il met le circuit en mouvement' },
+                ]}
+              />
             </div>
           </Reveal>
         </div>

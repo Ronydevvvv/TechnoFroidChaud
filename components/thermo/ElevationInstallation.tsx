@@ -1,3 +1,5 @@
+import { RepereSvg } from '@/components/thermo/Repere';
+
 /**
  * L'installation frigorifique — élévation frontale.
  *
@@ -580,6 +582,18 @@ function ElevationCompacte({ className }: { className?: string }) {
           />
         ))}
       </g>
+
+      {/* ── LES REPÈRES ──
+          Un par poste, dans la gouttière droite, à la hauteur du volume
+          qu'il désigne — puis le groupe, contre la machine, sous le
+          refend. Aucun ne se pose sur un trait de l'élévation. */}
+      <RepereSvg n={1} x={246} y={RANGS[0] + 34} r={14} />
+      <RepereSvg n={2} x={246} y={RANGS[1] + 34} r={14} />
+      {/* Le troisième remonte au-dessus des flèches de rejet de la
+          vitrine : à la hauteur des autres, il tombait au milieu d'elles. */}
+      <RepereSvg n={3} x={246} y={RANGS[2] - 12} r={14} />
+      <RepereSvg n={4} x={246} y={RANGS[3] + 32} r={14} />
+      <RepereSvg n={5} x={168} y={465} r={14} />
     </svg>
   );
 }

@@ -6,6 +6,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { type Pose } from '@/components/thermo/GlypheClim';
 import { PlanchePose } from '@/components/thermo/PlanchePoses';
 import { PlanDiffusion } from '@/components/thermo/PlanDiffusion';
+import { ListeReperes } from '@/components/thermo/Repere';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, serviceSchema, breadcrumbSchema } from '@/lib/seo';
 import { tradeBySlug } from '@/content/services';
@@ -379,23 +380,20 @@ export default function ClimatisationPage() {
                 jusqu'à la chaleur qui sort. Une seule colonne : un
                 `grid-cols-2` se lirait en Z et romprait cette
                 correspondance. */}
+            {/* Chaque ligne porte le repère numéroté qui figure sur le
+                plan, à l'endroit de l'objet qu'elle nomme : une liste de
+                cinq mots sous un dessin muet ne disait pas lequel était
+                l'unité intérieure. Les désignations sont inchangées. */}
             <div className="lg:hidden">
-              <ul className="mt-6 grid gap-y-3 border-t border-line pt-5 text-[0.86rem] tracking-[0.05em] text-slate uppercase">
-                {[
-                  'Zone climatisée',
-                  'Air soufflé',
-                  'Air repris',
-                  'Unité intérieure',
-                ].map((n) => (
-                  <li key={n}>{n}</li>
-                ))}
-                <li className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-line pt-4">
-                  <span>Unité extérieure</span>
-                  <span className="tracking-normal text-slate normal-case">
-                    Chaleur rejetée dehors
-                  </span>
-                </li>
-              </ul>
+              <ListeReperes
+                items={[
+                  { nom: 'Zone climatisée', detail: 'Volume réellement traité' },
+                  { nom: 'Air soufflé', detail: 'Diffusion vers le fond' },
+                  { nom: 'Air repris', detail: 'Retour le long des parois' },
+                  { nom: 'Unité intérieure', detail: 'Contre la façade' },
+                  { nom: 'Unité extérieure', detail: 'Chaleur rejetée dehors' },
+                ]}
+              />
             </div>
           </Reveal>
         </div>

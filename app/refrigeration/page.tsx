@@ -3,6 +3,7 @@ import { CallToAction } from '@/components/sections/CallToAction';
 import { Reveal } from '@/components/ui/Reveal';
 import { ColonneThermique, type Consigne } from '@/components/thermo/ColonneThermique';
 import { ElevationInstallation, type Poste } from '@/components/thermo/ElevationInstallation';
+import { ListeReperes } from '@/components/thermo/Repere';
 import { GroupeLogeDeporte } from '@/components/thermo/GroupeLogeDeporte';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { pageMetadata, serviceSchema, breadcrumbSchema } from '@/lib/seo';
@@ -263,18 +264,16 @@ export default function RefrigerationPage() {
                 associer à ces désignations depuis que les consignes sont
                 revenues à la colonne thermique, et un `<dl>` sans `<dd>`
                 n'est pas une liste de définitions. */}
+            {/* Chaque poste porte le repère numéroté posé sur l'élévation,
+                à la hauteur de son volume. Les désignations sont celles de
+                `postes` — aucune n'a été réécrite. */}
             <div className="lg:hidden">
-              <ul className="mt-6 grid gap-y-3 border-t border-line pt-5 text-[0.86rem] tracking-[0.05em] text-slate uppercase">
-                {postes.map((p) => (
-                  <li key={p.nom}>{p.nom}</li>
-                ))}
-                <li className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-line pt-4">
-                  <span>Groupe</span>
-                  <span className="tracking-normal text-slate normal-case">
-                    Chaleur rejetée dehors
-                  </span>
-                </li>
-              </ul>
+              <ListeReperes
+                items={[
+                  ...postes.map((p) => ({ nom: p.nom })),
+                  { nom: 'Groupe', detail: 'Chaleur rejetée dehors' },
+                ]}
+              />
             </div>
           </Reveal>
         </div>

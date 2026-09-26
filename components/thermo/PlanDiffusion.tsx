@@ -1,3 +1,5 @@
+import { RepereSvg } from '@/components/thermo/Repere';
+
 /**
  * La diffusion d'air — zone climatisée, vue en plan.
  *
@@ -369,6 +371,17 @@ function PlanCompact({ className }: { className?: string }) {
           markerEnd="url(#tfc-cl-chaud-c)"
         />
       ))}
+
+      {/* ── LES REPÈRES ──
+          Ils suivent l'ordre de la nomenclature de la page : le volume, le
+          souffle, la reprise, puis les deux machines. Chacun est posé
+          contre son objet et hors des flux — un numéro sur une flèche en
+          pointillés se lirait comme une graduation. */}
+      <RepereSvg n={1} x={66} y={64} r={14} />
+      <RepereSvg n={2} x={214} y={140} r={14} />
+      <RepereSvg n={3} x={284} y={196} r={14} />
+      <RepereSvg n={4} x={96} y={308} r={14} />
+      <RepereSvg n={5} x={268} y={412} r={14} />
     </svg>
   );
 }

@@ -56,22 +56,28 @@ import { useEffect, useRef, useState } from 'react';
  * Les autres pages du site font 205 à 372 ko. Le même flux partait vers un
  * téléphone en 4G, derrière un texte qui le recouvre.
  *
- *   'lecture'  ≥ 1024 px, mouvement accepté   → la vidéo, 1 000 ko
- *   'fixe'     ≥ 1024 px, mouvement réduit    → le poster seul, 47 ko
- *   'absente'  < 1024 px                      → rien, la photo suffit
+ *   'lecture'  mouvement accepté, débit non restreint  → la vidéo, 1 000 ko
+ *   'fixe'     mouvement réduit OU économiseur de data → le poster, 47 ko
  *
- * Sous 1024 px, la photographie du hero est DÉJÀ chargée en `priority` et
- * déjà cadrée pour l'écran étroit (`object-[88%_50%]`). Poser une vidéo
- * par-dessus n'ajoute aucune information : cela rejoue la même scène, à
- * 1 Mo, sur la connexion qui les compte. Le hero reste un hero
- * photographique — c'est sa composition d'origine.
+ * ─── LE TÉLÉPHONE A RÉCUPÉRÉ LA VIDÉO, ET VOICI POURQUOI ─────────────────
+ * Elle en était exclue pour épargner la 4G. C'était un mauvais calcul : le
+ * premier écran du téléphone est CELUI QUE LA MAJORITÉ DES VISITEURS VOIT,
+ * et il se retrouvait être le seul écran du site sans rien à regarder — une
+ * photographie fixe sous un voile épais. On économisait 1 Mo sur l'écran
+ * qui compte le plus.
  *
- * En mouvement réduit, on garde le `<video>` avec son poster mais SANS
- * `src` : l'image affichée reste exactement la même qu'en lecture, puisque
- * le poster est la première image du fichier. Rien ne bouge, rien ne se
+ * Le fichier fait désormais 1 000 ko (il en faisait 2 756 quand la règle a
+ * été posée), le poster est la première image du flux, et le régime 'fixe'
+ * couvre les deux cas où il faut vraiment s'abstenir : mouvement réduit et
+ * `Save-Data`. Un visiteur en forfait limité ou en mode économie reçoit
+ * 47 ko, exactement comme avant.
+ *
+ * En régime fixe on garde le `<video>` avec son poster mais SANS `src` :
+ * l'image affichée reste exactement la même qu'en lecture, puisque le
+ * poster est la première image du fichier. Rien ne bouge, rien ne se
  * télécharge au-delà de 47 ko.
  */
-type Regime = 'attente' | 'lecture' | 'fixe' | 'absente';
+type Regime = 'attente' | 'lecture' | 'fixe';
 
 export function HeroVideo({
   src,
@@ -92,10 +98,13 @@ export function HeroVideo({
   const [regime, setRegime] = useState<Regime>('attente');
 
   useEffect(() => {
-    if (!window.matchMedia('(min-width: 1024px)').matches) return setRegime('absente');
-    setRegime(
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'fixe' : 'lecture',
-    );
+    const mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* `Save-Data` est la seule déclaration explicite d'un visiteur qui veut
+       qu'on épargne sa connexion. On la respecte partout, pas seulement sur
+       téléphone. Le type n'est pas standard — d'où la lecture prudente. */
+    const nav = navigator as Navigator & { connection?: { saveData?: boolean } };
+    const economie = nav.connection?.saveData === true;
+    setRegime(mouvementReduit || economie ? 'fixe' : 'lecture');
   }, []);
 
   useEffect(() => {
@@ -104,7 +113,7 @@ export function HeroVideo({
     if (regime === 'lecture') void ref.current?.play().catch(() => {});
   }, [regime]);
 
-  if (regime === 'attente' || regime === 'absente') return null;
+  if (regime === 'attente') return null;
 
   return (
     <video

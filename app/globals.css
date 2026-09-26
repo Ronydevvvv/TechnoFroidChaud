@@ -345,34 +345,75 @@ li {
   }
 
   /* ————— Champs ————— */
+  /* ————— Champs de formulaire —————
+     Employés uniquement par `ContactForm`.
+
+     ─── CE QUI A CHANGÉ, ET POURQUOI ───
+     Les champs faisaient 0,8 rem de fourrure verticale, soit 44 px de
+     haut : sous le seuil de 48 px que demande une cible tactile, et
+     surtout le même gabarit que n'importe quel formulaire non travaillé.
+     `min-height` les porte à 3.15 rem (50 px) sans toucher au rayon ni à
+     la couleur.
+
+     Le champ actif ne se contente plus d'un anneau : un FILET de 2 px se
+     pose sur son bord gauche, à l'encre puis au cyan. C'est le même
+     vocabulaire que les filets de survol du site, et c'est ce qui dit
+     « on écrit ICI » d'un coup d'œil sur un écran de téléphone. Il est
+     dessiné par `box-shadow`, donc il ne déplace rien. */
   .field {
     width: 100%;
+    min-height: 3.15rem;
     border-radius: 0.375rem;
     border: 1px solid var(--color-line);
     background: var(--color-paper);
-    padding: 0.8rem 0.95rem;
+    padding: 0.85rem 1rem;
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--color-ink);
+    box-shadow: inset 2px 0 0 transparent;
     transition:
-      border-color 0.3s var(--ease-out-soft),
-      box-shadow 0.3s var(--ease-out-soft);
+      border-color 0.25s var(--ease-out-soft),
+      box-shadow 0.25s var(--ease-out-soft);
   }
   .field::placeholder {
     color: #9a9ea6;
   }
+  .field:hover:not(:focus) {
+    border-color: #cfccc5;
+  }
   .field:focus {
     outline: none;
     border-color: var(--color-brand);
-    box-shadow: 0 0 0 3px rgba(20, 101, 127, 0.12);
+    box-shadow:
+      inset 2px 0 0 var(--color-brand),
+      0 0 0 3px rgba(20, 101, 127, 0.12);
   }
   textarea.field {
     resize: vertical;
-    line-height: 1.6;
+    line-height: 1.65;
+    min-height: 8.5rem;
   }
+  /* Le chevron du menu déroulant.
+     `appearance: none` retirait la flèche native SANS en redessiner une :
+     le champ « Objet de la demande » avait donc l'apparence exacte d'une
+     zone de saisie libre, et rien n'indiquait qu'il s'ouvrait. Le chevron
+     est un SVG en fond — aucune balise, donc rien à aligner. */
   select.field {
     appearance: none;
     cursor: pointer;
+    padding-right: 2.9rem;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'><path d='M1 1L7 7L13 1' stroke='%2361656c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 1.05rem center;
+  }
+  select.field:focus {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'><path d='M1 1L7 7L13 1' stroke='%2314657f' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  }
+  /* Tant que rien n'est choisi, l'intitulé est une invite, pas une
+     valeur : il prend la couleur des textes de substitution. */
+  select.field:invalid,
+  select.field option[value=''] {
+    color: #9a9ea6;
   }
 }
 

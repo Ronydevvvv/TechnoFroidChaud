@@ -134,7 +134,7 @@ const FANTOMES = [-86, -70];
 /** Décalage du frémissement, un par cadran. Voir le groupe animé plus bas. */
 const DECALAGE: Record<Etat, number> = { defaut: 0, controle: -4.3, service: -8.6 };
 
-function Cadran({ etat }: { etat: Etat }) {
+function Cadran({ etat, className = '' }: { etat: Etat; className?: string }) {
   const deg = AIGUILLE[etat];
   const [ax, ay] = pt(deg, 33);
 
@@ -166,7 +166,11 @@ function Cadran({ etat }: { etat: Etat }) {
       role="img"
       aria-hidden
       focusable="false"
-      className="block h-auto w-full max-w-[13.5rem]"
+      /* `max-w` seul laissait le cadran collé à gauche d'une colonne plus
+         large que lui, avec un vide à droite : d'où l'impression, sur
+         téléphone, de cercles mal centrés. Le gabarit vient désormais du
+         parent, qui sait ce qu'il en fait. */
+      className={`block h-auto ${className}`}
     >
       {/* ─── LE RACCORD ───
           Un manomètre se visse : il a une tige et un écrou sous le boîtier.
@@ -270,12 +274,36 @@ export function TroisCadrans() {
   ];
 
   return (
-    <ol className="grid gap-x-12 gap-y-10 sm:grid-cols-3 sm:gap-y-0">
+    /* ─── SUR TÉLÉPHONE, LE CADRAN SE MET À CÔTÉ DE SON TEXTE ───
+       Empilés, les trois manomètres faisaient 216 px de diamètre chacun et
+       la section 1 619 px : un écran entier par cadran, le texte repoussé
+       si loin sous le dessin qu'on ne les lisait plus ensemble. Or ces
+       trois cadrans ne valent QUE comparés — c'est la position de
+       l'aiguille de l'un par rapport à l'autre qui dit quelque chose.
+
+       Posé à gauche de son intitulé, à 88 px, chaque cadran reste
+       parfaitement lisible (l'aiguille et la plage sont les seuls traits
+       qui portent du sens) et la section tombe sous les 600 px : les trois
+       états tiennent alors dans un même regard. À partir de 640 px la
+       composition d'origine reprend, en trois colonnes. */
+    <ol className="grid gap-x-12 gap-y-7 sm:grid-cols-3 sm:gap-y-0">
       {temps.map((t) => (
-        <li key={t.nom} className="border-t border-line pt-7">
-          <Cadran etat={t.etat} />
-          <p className="heading mt-6 text-[1.05rem] leading-[1.25] text-ink">{t.nom}</p>
-          <p className="mt-2 max-w-[34ch] text-[0.92rem] leading-7 text-slate">{t.sous}</p>
+        <li
+          key={t.nom}
+          className="flex items-start gap-x-5 border-t border-line pt-6 sm:block sm:pt-7"
+        >
+          <Cadran
+            etat={t.etat}
+            className="w-[5.5rem] shrink-0 sm:w-full sm:max-w-[13.5rem]"
+          />
+          <div className="min-w-0 flex-1">
+            <p className="heading text-[1.05rem] leading-[1.25] text-ink sm:mt-6">
+              {t.nom}
+            </p>
+            <p className="mt-2 max-w-[34ch] text-[0.92rem] leading-7 text-slate">
+              {t.sous}
+            </p>
+          </div>
         </li>
       ))}
     </ol>

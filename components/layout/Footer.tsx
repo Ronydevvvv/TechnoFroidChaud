@@ -107,12 +107,19 @@ export function Footer() {
               neuf liens : elle cesse de se lire comme un plan de site. */}
           <nav aria-label="Navigation de pied de page" className="lg:col-span-3 lg:col-start-7">
             <p className="label text-white/45">Navigation</p>
-            <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5">
+            {/* ─── LES CIBLES TACTILES DU PIED DE PAGE ───
+                Ces liens faisaient 28 px de haut sur téléphone : on les
+                manquait, et ils tombaient sous le gabarit d'une cible au
+                doigt. `py-2` les porte à 44 px, et l'interligne se resserre
+                d'autant (`gap-y-2.5` → `gap-y-0.5`) pour que le bloc garde
+                exactement le même encombrement. Rien ne bouge à l'œil ;
+                seule la surface atteignable double. */}
+            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-0.5">
               {[...navigation, { label: 'Contact', href: '/contact' }].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="link-t inline-block py-0.5 text-[0.95rem] text-mist hover:text-white"
+                    className="link-t inline-block py-2 text-[0.95rem] text-mist hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -123,7 +130,7 @@ export function Footer() {
 
           <div className="lg:col-span-3 lg:col-start-10">
             <p className="label text-white/45">Nous joindre</p>
-            <ul className="mt-5 space-y-4 text-[0.95rem]">
+            <ul className="mt-5 space-y-3 text-[0.95rem]">
               <li>
                 <a
                   href={company.phoneHref}
@@ -138,7 +145,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${company.email}`}
-                  className="link-t flex items-start gap-2.5 break-all text-mist hover:text-white"
+                  className="link-t flex items-start gap-2.5 py-1.5 break-all text-mist hover:text-white"
                 >
                   <Mail aria-hidden strokeWidth={1.6} className="mt-1 h-4 w-4 shrink-0 text-brand" />
                   {company.email}
@@ -193,12 +200,12 @@ export function Footer() {
               déplacé les liens légaux au centre — le bandeau bas serait à
               refaire pour une ligne de huit mots. */}
           <div className="flex flex-wrap items-center gap-x-7 gap-y-2">
-            <ul className="flex flex-wrap items-center gap-x-7 gap-y-2">
+            <ul className="flex flex-wrap items-center gap-x-7">
               {legal.map((l) => (
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="link-t inline-block py-0.5 text-[0.8rem] text-white/55 hover:text-white/80"
+                    className="link-t inline-block py-2 text-[0.8rem] text-white/55 hover:text-white/80"
                   >
                     {l.label}
                   </Link>

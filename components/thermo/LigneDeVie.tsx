@@ -1,3 +1,5 @@
+import { RepereSvg } from '@/components/thermo/Repere';
+
 /**
  * La ligne de vie — état d'une installation, du service au retour en service.
  *
@@ -221,6 +223,21 @@ function LigneDebout({ className }: { className?: string }) {
       <Repere cx={A_LARRET} cy={208} r={12} couleur="currentColor" />
       <Repere cx={A_LARRET} cy={288} r={12} couleur="var(--color-alert)" />
       <Repere cx={EN_SERVICE} cy={404} r={10} couleur="var(--color-brand)" plein />
+
+      {/* ── LES NUMÉROS DE LA NOMENCLATURE ──
+          La séquence portait cinq marqueurs muets et la page, dessous, une
+          liste de cinq étapes numérotées : rien ne disait que le point
+          cyan du haut était l'étape 01. Chaque marqueur reçoit son numéro,
+          posé à côté — jamais dessus, un marqueur qui porte une forme (la
+          croix du défaut, l'anneau du contrôle) doit rester lisible.
+          Numéros à gauche pour la colonne de droite, à droite pour la
+          colonne de gauche : ils tombent toujours vers l'intérieur, donc
+          jamais hors du cadre. */}
+      <RepereSvg n={1} x={EN_SERVICE + 32} y={60} r={12} />
+      <RepereSvg n={2} x={208} y={110} r={12} />
+      <RepereSvg n={3} x={A_LARRET - 32} y={208} r={12} />
+      <RepereSvg n={4} x={A_LARRET - 32} y={288} r={12} />
+      <RepereSvg n={5} x={EN_SERVICE + 32} y={404} r={12} />
     </svg>
   );
 }

@@ -240,53 +240,195 @@ function Eventail() {
    haut. Les noms sortent donc en HTML, à côté de l'axe — c'est la même
    solution que la coupe de l'accueil et la ligne de vie du dépannage. */
 
+/* ═══════════════════════════════════════════════════════════════════════
+   L'ÉVENTAIL DEBOUT — sous 1024 px
+   ───────────────────────────────────────────────────────────────────────
+   ─── CE QUI ÉTAIT LÀ, ET POURQUOI IL FALLAIT LE REFAIRE ───
+   L'éventail large est `hidden lg:block` : sur téléphone, la CARTE
+   DISPARAISSAIT PUREMENT ET SIMPLEMENT et il ne restait qu'une colonne de
+   quinze noms le long d'un filet gris. Tous les points y avaient le même
+   diamètre, à la même abscisse : plus d'anneaux, plus de distance, plus de
+   rangement par proximité. Autrement dit, la seule information que la
+   planche porte — Cocheren est plus près que Sarreguemines — n'existait
+   plus. Sur `/contact` et `/entreprise`, la page n'avait plus aucune pièce
+   graphique du tout.
+
+   ─── CE QUE FAIT CELLE-CI ───
+   C'est le MÊME éventail, basculé d'un quart de tour. Le siège est en
+   tête, l'axe descend, et chaque commune se pose à une ABSCISSE qui est
+   son anneau : quatre bandes de distance, de la plus proche à la plus
+   lointaine. Quatre courbes relient les communes d'un même anneau — ce
+   sont les arcs de l'éventail large, redressés.
+
+   ─── POURQUOI LE DESSIN EST DANS LA GOUTTIÈRE ET LES NOMS EN HTML ───
+   Quatorze noms comme « Freyming-Merlebach » dans un SVG de 340 unités se
+   chevaucheraient quel que soit l'agencement. Ils restent donc en HTML, au
+   corps du site — mais chacun est sur LA MÊME LIGNE que son point, à
+   quelques pixels de lui. Ce n'est plus un dessin d'un côté et une légende
+   de l'autre : c'est une seule pièce.
+
+   ─── L'ALIGNEMENT EST EXACT, ET C'EST POURQUOI TOUT EST EN PIXELS ───
+   Le viewBox fait 132 × 532 et le SVG est rendu à 132 px de large : une
+   unité vaut donc un pixel, et les ordonnées du dessin sont littéralement
+   celles des lignes de la liste. Aucun réglage approximatif, aucune dérive
+   possible quand un nom passe sur deux lignes — la hauteur de ligne est
+   fixe et partagée par les deux.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/** Hauteur d'une ligne de commune, en pixels. Partagée par le dessin. */
+const LIGNE = 34;
+/** Hauteur du bloc du siège, en tête. */
+const TETE = 56;
+/** Largeur de la gouttière dessinée. */
+const GOUT = 132;
+/** Abscisse de l'axe, et des quatre anneaux. */
+const AXE_X = 15;
+const ANNEAU_X = [48, 74, 100, 121];
+
+/** Le même découpage que l'éventail large : 3 · 4 · 4 · 3. */
+const RANGS_DEBOUT = [3, 4, 4, 3];
+
+const DEBOUT = (() => {
+  const out: { nom: string; x: number; y: number; anneau: number }[] = [];
+  let i = 0;
+  RANGS_DEBOUT.forEach((n, anneau) => {
+    for (let k = 0; k < n && i < AUTRES.length; k++, i++) {
+      out.push({
+        nom: AUTRES[i],
+        x: ANNEAU_X[anneau],
+        y: TETE + LIGNE / 2 + i * LIGNE,
+        anneau,
+      });
+    }
+  });
+  return out;
+})();
+
+const HAUT = TETE + AUTRES.length * LIGNE;
+
+/** La courbe qui relie les communes d'un même anneau, légèrement bombée. */
+function arcAnneau(pts: { x: number; y: number }[]) {
+  if (pts.length < 2) return '';
+  const d = [`M${pts[0].x} ${pts[0].y}`];
+  for (let i = 1; i < pts.length; i++) {
+    const a = pts[i - 1];
+    const b = pts[i];
+    d.push(`Q${a.x + 7} ${(a.y + b.y) / 2} ${b.x} ${b.y}`);
+  }
+  return d.join(' ');
+}
+
+function EventailDebout() {
+  return (
+    <svg
+      viewBox={`0 0 ${GOUT} ${HAUT}`}
+      width={GOUT}
+      height={HAUT}
+      aria-hidden
+      focusable="false"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="pointer-events-none absolute top-0 left-0 text-ink"
+    >
+      {/* Les quatre arcs de distance, du plus proche au plus lointain.
+          Ils s'effacent avec l'éloignement, exactement comme les arcs de
+          guidage de l'éventail large. */}
+      {RANGS_DEBOUT.map((_, anneau) => (
+        <path
+          key={anneau}
+          d={arcAnneau(DEBOUT.filter((p) => p.anneau === anneau))}
+          stroke="currentColor"
+          strokeWidth={0.9}
+          opacity={0.2 - anneau * 0.03}
+        />
+      ))}
+
+      {/* L'axe, du siège jusqu'à la dernière commune */}
+      <path
+        d={`M${AXE_X} ${TETE / 2} L${AXE_X} ${HAUT - LIGNE / 2}`}
+        stroke="currentColor"
+        strokeWidth={1}
+        opacity={0.22}
+      />
+
+      {/* Les rayons : de l'axe vers chaque commune. Leur LONGUEUR est la
+          distance — c'est elle qui range les quinze communes, et c'est
+          exactement ce que la colonne précédente avait perdu. */}
+      {DEBOUT.map((p) => (
+        <path
+          key={p.nom}
+          d={`M${AXE_X} ${p.y} L${p.x - 5} ${p.y}`}
+          stroke="currentColor"
+          strokeWidth={0.9}
+          opacity={0.34 - p.anneau * 0.05}
+        />
+      ))}
+
+      {/* Les communes */}
+      {DEBOUT.map((p) => (
+        <circle
+          key={p.nom}
+          cx={p.x}
+          cy={p.y}
+          r={3.4 - p.anneau * 0.45}
+          fill="currentColor"
+          opacity={0.72 - p.anneau * 0.11}
+        />
+      ))}
+
+      {/* ─── LE SIÈGE ───
+          Le seul élément cyan, et le seul cerclé : il n'est pas « plus
+          important », il est l'ORIGINE — ce par rapport à quoi les quatre
+          anneaux sont comptés. Même réticule que l'éventail large. */}
+      {[-1, 1].map((s) => (
+        <path
+          key={s}
+          d={`M${AXE_X + s * 9} ${TETE / 2} L${AXE_X + s * 14} ${TETE / 2}`}
+          stroke="var(--color-brand)"
+          strokeWidth={1}
+          opacity={0.5}
+        />
+      ))}
+      <circle cx={AXE_X} cy={TETE / 2} r={7.5} stroke="var(--color-brand)" strokeWidth={1} opacity={0.5} />
+      <circle cx={AXE_X} cy={TETE / 2} r={3.6} fill="var(--color-brand)" />
+    </svg>
+  );
+}
+
 export function ZoneIntervention() {
   return (
     <>
       <Eventail />
 
-      <ol className="lg:hidden">
-        {servedTowns.map((t, i) => {
-          const siege = i === 0;
-          return (
-            <li key={t} className="flex items-stretch gap-4">
-              {/* L'axe : un segment par commune, avec son point. Le premier
-                  n'a pas de segment au-dessus, le dernier pas en dessous —
-                  sans quoi l'axe flotterait au-delà de son contenu. */}
-              <span aria-hidden className="relative flex w-3 shrink-0 justify-center">
-                <span
-                  className={`w-px bg-line ${siege ? 'mt-3.5' : ''} ${
-                    i === servedTowns.length - 1 ? 'mb-3.5 grow-0 h-3.5' : 'grow'
-                  }`}
-                />
-                <span
-                  className={`absolute top-2.5 ${
-                    siege
-                      ? 'size-2.5 rounded-full bg-brand'
-                      : 'size-1.5 rounded-full bg-slate/45'
-                  }`}
-                />
-              </span>
-              <span className={`block py-1 ${siege ? 'pb-2.5' : ''}`}>
-                <span
-                  className={
-                    siege
-                      ? 'heading text-[1.15rem] text-ink'
-                      : 'text-[0.98rem] leading-6 text-slate'
-                  }
-                >
-                  {t}
-                </span>
-                {siege && (
-                  <span className="mt-0.5 block text-[0.76rem] tracking-[0.1em] text-brand uppercase">
-                    Siège
-                  </span>
-                )}
-              </span>
+      {/* La planche debout. `LIGNE` et `TETE` sont imposés en pixels aux
+          deux moitiés : c'est ce qui garantit qu'un nom reste sur la ligne
+          de son point. */}
+      <div className="relative lg:hidden" style={{ minHeight: HAUT }}>
+        <EventailDebout />
+
+        <p
+          className="flex flex-col justify-center"
+          style={{ height: TETE, paddingLeft: ANNEAU_X[0] + 10 }}
+        >
+          <span className="heading text-[1.15rem] leading-[1.2] text-ink">{SIEGE}</span>
+          <span className="mt-0.5 text-[0.74rem] tracking-[0.12em] text-brand uppercase">
+            Siège
+          </span>
+        </p>
+
+        <ol>
+          {DEBOUT.map((p) => (
+            <li
+              key={p.nom}
+              className="flex items-center text-[0.95rem] text-slate"
+              style={{ height: LIGNE, paddingLeft: p.x + 10 }}
+            >
+              {p.nom}
             </li>
-          );
-        })}
-      </ol>
+          ))}
+        </ol>
+      </div>
     </>
   );
 }

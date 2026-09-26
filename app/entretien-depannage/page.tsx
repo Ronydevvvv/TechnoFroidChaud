@@ -242,11 +242,15 @@ export default function DepannagePage() {
                 ['Remise en service', 'Rapport d’intervention'],
               ].map(([nom, sous], i) => (
                 <li key={nom} className="flex items-baseline gap-x-4">
+                  {/* La pastille de la nomenclature, identique à celle
+                      posée sur la séquence : c'est cette répétition qui
+                      fait le lien. Un simple « 01 » typographique ne le
+                      faisait pas — et il ne tenait pas le contraste. */}
                   <span
                     aria-hidden
-                    className="heading w-7 shrink-0 text-[0.92rem] text-slate tabular-nums"
+                    className="flex size-[1.55rem] shrink-0 translate-y-[0.2rem] items-center justify-center rounded-full bg-ink text-[0.82rem] font-semibold text-paper tabular-nums"
                   >
-                    {String(i + 1).padStart(2, '0')}
+                    {i + 1}
                   </span>
                   <span>
                     <span className="heading block text-[1.02rem] leading-[1.25] text-ink">

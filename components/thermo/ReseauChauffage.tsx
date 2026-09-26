@@ -1,3 +1,5 @@
+import { RepereSvg } from '@/components/thermo/Repere';
+
 /**
  * Le réseau de chauffage — schéma de distribution.
  *
@@ -276,6 +278,17 @@ function ReseauCompact({ className }: { className?: string }) {
         <path d="M-6 -8 L8 0 L-6 8 Z" stroke="currentColor" strokeWidth={1.8} opacity={0.75} />
       </g>
 
+      {/* ── LES REPÈRES ──
+          Chaque pastille est posée CONTRE l'élément qu'elle désigne, jamais
+          dessus : à droite de la chaudière, sur la colonne de départ entre
+          deux dérivations, contre l'émetteur du milieu, sur la colonne de
+          retour, et au-dessus du circulateur. Elles reprennent l'ordre de
+          la nomenclature de la page, qui est celui du parcours du fluide. */}
+      <RepereSvg n={1} x={250} y={40} />
+      <RepereSvg n={2} x={DEP_X} y={128} />
+      <RepereSvg n={3} x={70} y={306} />
+      <RepereSvg n={4} x={RET_X} y={430} />
+      <RepereSvg n={5} x={RET_X} y={96} />
     </svg>
   );
 }
