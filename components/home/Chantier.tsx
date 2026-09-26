@@ -81,7 +81,7 @@ export function Chantier() {
   return (
     <section
       aria-labelledby="installations-titre"
-      className="bg-white py-14 sm:py-16 lg:py-24"
+      className="bg-white py-14 sm:py-12 lg:py-24"
     >
       {/* ─── POURQUOI PLUS DE `items-center` ───
           La colonne éditoriale est plus courte que la photographie. Centrée,

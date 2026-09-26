@@ -49,7 +49,7 @@ export function Methode() {
     /* `id` : cible du lien « Le détail de chaque étape » que portent les
        cinq pages métier, où la méthode n'est rappelée qu'en noms d'étapes.
        Sans lui, ces cinq liens tombaient en haut de l'accueil. */
-    <section id="methode" className="scroll-mt-24 bg-steel-900 py-14 text-white sm:py-16 lg:py-24">
+    <section id="methode" className="scroll-mt-24 bg-steel-900 py-14 text-white sm:py-12 lg:py-24">
       <div className="container-t">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-14">
           <Reveal>

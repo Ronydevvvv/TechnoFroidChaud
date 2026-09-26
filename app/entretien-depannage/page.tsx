@@ -135,7 +135,7 @@ export default function DepannagePage() {
           grand, et la situation qui le qualifie. L'inverse — situation en
           gros, délai en petit — obligerait à lire trois paragraphes pour
           savoir quand quelqu'un vient. */}
-      <section aria-labelledby="ordre" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="ordre" className="bg-white py-12 lg:py-24">
         <div className="container-t">
           <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
             <h2
@@ -187,7 +187,7 @@ export default function DepannagePage() {
           Elle est posée entre l'ordre de passage et les formules : la page
           dit d'abord QUI passe devant, puis COMMENT se déroule une
           intervention, et seulement ensuite ce que chaque formule contient. */}
-      <section aria-labelledby="sequence" className="bg-stone py-14 sm:py-16 lg:py-24">
+      <section aria-labelledby="sequence" className="bg-stone py-14 sm:py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
@@ -286,7 +286,7 @@ export default function DepannagePage() {
           les pressions dépendent du fluide et de la machine, aucune n'est
           documentée ici, et en graduer un serait inventer une donnée
           technique. Voir l'en-tête de `components/thermo/TroisCadrans.tsx`. */}
-      <section aria-labelledby="releve" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="releve" className="bg-white py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
@@ -340,7 +340,7 @@ export default function DepannagePage() {
           pierre, la forme même que cette refonte supprime. Les puces cyan
           sont devenues des lignes sur filet : quatre points ne se lisent pas
           mieux parce qu'un rond les précède. */}
-      <section aria-labelledby="formules" className="border-y border-line bg-stone py-16 lg:py-24">
+      <section aria-labelledby="formules" className="border-y border-line bg-stone py-12 lg:py-24">
         <div className="container-t">
           <h2 id="formules" className="sr-only">
             Entretien : contrat annuel ou passage ponctuel
@@ -389,7 +389,7 @@ export default function DepannagePage() {
         fond="bg-stone"
       />
 
-      <section aria-labelledby="avant" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="avant" className="bg-white py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <h2

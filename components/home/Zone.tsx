@@ -44,7 +44,7 @@ export function Zone() {
   const derniere = servedTowns[servedTowns.length - 1];
 
   return (
-    <section aria-labelledby="zone-titre" className="bg-stone py-14 sm:py-16 lg:py-24">
+    <section aria-labelledby="zone-titre" className="bg-stone py-14 sm:py-12 lg:py-24">
       <div className="container-t grid gap-10 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-4">
           <Reveal>

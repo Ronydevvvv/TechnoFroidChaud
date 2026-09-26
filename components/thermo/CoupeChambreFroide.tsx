@@ -1,3 +1,5 @@
+import { RepereSvg } from '@/components/thermo/Repere';
+
 /**
  * La coupe — chambre froide en axonométrie éclatée. V2 : planche légendée.
  *
@@ -193,6 +195,20 @@ function CoupeCompacte() {
         const b2 = isoC(7.5, -1.1 + i * 0.5, 1.0 + i * 0.32);
         return <path key={i} d={d([a, b2], false)} stroke="var(--color-alert)" strokeWidth={1.5 * k} opacity={0.85} markerEnd="url(#tfc-fl-chaud-c)" />;
       })}
+
+      {/* ── LES TROIS ORGANES, REPÉRÉS ──
+          La page décrit l'enveloppe, l'évaporateur et le groupe sous les
+          lettres a · b · c — mais l'axonométrie ne portait AUCUNE lettre :
+          on lisait trois paragraphes sans savoir lequel des trois volumes
+          dessinés ils désignaient. Les pastilles sont claires, le fond de
+          cette section étant sombre. */}
+      {([
+        ['a', isoC(0, 1.5, 3.6)],
+        ['b', isoC(2.15, 0.2, 2.62)],
+        ['c', isoC(5.0, -1.2, 2.0)],
+      ] as [string, [number, number]][]).map(([lettre, [x, y]]) => (
+        <RepereSvg key={lettre} n={lettre} x={x} y={y} r={13} clair />
+      ))}
     </>
   );
 }

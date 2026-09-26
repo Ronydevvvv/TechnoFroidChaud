@@ -65,7 +65,7 @@ export function PartenaireLocal() {
   return (
     <section
       aria-labelledby="partenaire"
-      className="border-t border-line bg-stone py-16 lg:py-24"
+      className="border-t border-line bg-stone py-12 lg:py-24"
     >
       <div className="container-t">
         <Reveal>

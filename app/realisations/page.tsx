@@ -216,7 +216,7 @@ export default function RealisationsPage() {
           le cartouche dit ce qu'elle est — dans cet ordre, et jamais
           l'inverse : si l'image passait devant le titre, la page
           ressemblerait à une galerie de réalisations, ce qu'elle n'est pas. */}
-      <section aria-labelledby="sommaire" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="sommaire" className="bg-white py-12 lg:py-24">
         <div className="container-t">
           <h2 id="sommaire" className="sr-only">
             Les types d’installations que nous réalisons

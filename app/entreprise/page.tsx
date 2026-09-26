@@ -131,7 +131,7 @@ export default function EntreprisePage() {
           Une déclaration, deux paragraphes, une signature. Le texte est
           large (jusqu'à 1,3 rem) parce que c'est la page où il doit être lu,
           pas parcouru. */}
-      <section aria-labelledby="portrait" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="portrait" className="bg-white py-12 lg:py-24">
         {/* ─── DEUX COLONNES À PARTIR DE 1024 px ───
             Le bloc empilait titre, chapeau, corps et signature dans une seule
             colonne large de 50 à 62 caractères : sur un écran de 1 440 px, la
@@ -253,7 +253,7 @@ export default function EntreprisePage() {
           Aucun filet. C'est la seule section du site tenue par le seul blanc :
           partout ailleurs, c'est un filet qui sépare. Six positions, chacune
           un titre et un paragraphe, séparées par de l'espace et rien d'autre. */}
-      <section aria-labelledby="principes" className="border-y border-line bg-stone py-16 lg:py-24">
+      <section aria-labelledby="principes" className="border-y border-line bg-stone py-12 lg:py-24">
         <div className="container-t">
           {/* Titre à gauche, énoncé à droite : la composition de la planche
               d'accueil, reprise ici pour la même raison. Empilés, les deux
@@ -382,7 +382,7 @@ export default function EntreprisePage() {
           Quinze noms de communes, en grand. Ni carte, ni photographie, ni
           encadré gris : la liste EST l'image, et c'est la seule preuve
           d'ancrage qu'on puisse donner sans rien inventer. */}
-      <section aria-labelledby="territoire" className="border-t border-line bg-white py-16 lg:py-24">
+      <section aria-labelledby="territoire" className="border-t border-line bg-white py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">

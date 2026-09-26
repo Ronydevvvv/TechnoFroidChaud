@@ -232,7 +232,7 @@ export default function ClimatisationPage() {
           Le matériel suit la couleur du texte, seuls les jets d'air sont
           cyan : la couleur dit le fluide, jamais l'objet. C'est la
           grammaire de toutes les planches du site. */}
-      <section aria-labelledby="coupes" className="border-t border-line bg-white py-14 lg:py-20">
+      <section aria-labelledby="coupes" className="border-t border-line bg-white py-11 lg:py-20">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-y-3 border-t-2 border-ink pt-4 text-[0.8rem] tracking-[0.08em] text-slate uppercase sm:flex-row sm:items-baseline sm:justify-between sm:text-[0.74rem]">
@@ -331,7 +331,7 @@ export default function ClimatisationPage() {
           d'abord quelles poses existent, puis ce qui décide de la
           puissance, et seulement ensuite ce que l'air fait réellement dans
           la pièce. */}
-      <section aria-labelledby="diffusion" className="bg-white py-14 sm:py-16 lg:py-24">
+      <section aria-labelledby="diffusion" className="bg-white py-14 sm:py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
@@ -444,7 +444,7 @@ export default function ClimatisationPage() {
           exception ni comparaison : la page ne prétend pas que les devis
           des autres sont incomplets, elle donne au lecteur de quoi lire
           n'importe lequel — y compris celui de l'entreprise. */}
-      <section className="bg-white py-16 lg:py-24">
+      <section className="bg-white py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="border-t-2 border-ink pt-8 lg:pt-10">

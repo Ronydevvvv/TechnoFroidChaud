@@ -90,7 +90,7 @@ export function Metiers() {
   return (
     <section
       aria-labelledby="metiers-titre"
-      className="bg-steel-900 py-14 text-white sm:py-16 lg:py-24"
+      className="bg-steel-900 py-14 text-white sm:py-12 lg:py-24"
     >
       <div className="container-t">
         <Reveal>
@@ -119,7 +119,15 @@ export function Metiers() {
                     c'est l'image qui bouge à l'intérieur d'un cadre fixe.
                     Si la tuile entière grandissait, elle pousserait ses
                     voisines et la grille respirerait à chaque survol. */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-steel-800">
+                {/* ─── SUR TÉLÉPHONE, LA VIGNETTE SE COUCHE ───
+                    En 16/10 les six photographies faisaient 209 px
+                    chacune et la section 2 402 px, soit trois écrans
+                    pour six liens. En 2/1 elles en font 167 : on en voit
+                    deux d'un coup, et le cadrage reste celui d'une
+                    installation vue de face. Le 16/10 revient dès 640 px,
+                    où la grille passe à deux puis trois colonnes et où la
+                    hauteur cumulée cesse d'être le sujet. */}
+                <div className="relative aspect-[2/1] w-full overflow-hidden rounded-sm bg-steel-800 sm:aspect-[16/10]">
                   <Image
                     src={m.img}
                     alt={m.alt}

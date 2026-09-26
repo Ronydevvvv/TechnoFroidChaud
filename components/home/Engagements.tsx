@@ -65,7 +65,7 @@ const engagements = [
 
 export function Engagements() {
   return (
-    <section aria-labelledby="engagements-titre" className="bg-white py-14 sm:py-16 lg:py-24">
+    <section aria-labelledby="engagements-titre" className="bg-white py-14 sm:py-12 lg:py-24">
       <div className="container-t">
         <Reveal>
           <div className="flex flex-col gap-4 lg:flex-row lg:items-baseline lg:justify-between lg:gap-14">

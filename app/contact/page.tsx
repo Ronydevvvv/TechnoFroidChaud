@@ -158,7 +158,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section aria-labelledby="joindre" className="bg-white py-14 lg:py-20">
+      <section aria-labelledby="joindre" className="bg-white py-11 lg:py-20">
         <div className="container-t lg:grid lg:grid-cols-12 lg:gap-x-16">
           {/* ─── NOUS JOINDRE ─── */}
           {/* Quatre colonnes et non cinq : les coordonnées tiennent en
@@ -268,7 +268,7 @@ export default function ContactPage() {
           Les quatre entrées ne sont pas inventées : ce sont les valeurs du
           champ « Objet de la demande » du formulaire ci-dessus, rendues
           visibles avant qu'on n'ouvre la liste déroulante. */}
-      <section aria-labelledby="besoin" className="border-t border-line bg-stone py-14 lg:py-20">
+      <section aria-labelledby="besoin" className="border-t border-line bg-stone py-11 lg:py-20">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
@@ -343,7 +343,7 @@ export default function ContactPage() {
           Les quatre entrées sortent MOT POUR MOT de l'invite du champ
           « Votre situation » du formulaire. Rien n'a été ajouté — on rend
           simplement visible ce qui y était caché. */}
-      <section aria-labelledby="avant" className="bg-white py-14 lg:py-20">
+      <section aria-labelledby="avant" className="bg-white py-11 lg:py-20">
         <div className="container-t lg:grid lg:grid-cols-12 lg:gap-x-16">
           <div className="lg:col-span-5">
             <Reveal>
@@ -399,7 +399,7 @@ export default function ContactPage() {
           Sous 1024 px elle se déroule en axe vertical, donc les quinze noms
           restent du vrai texte — rien n'est perdu pour un lecteur d'écran
           ni pour un moteur. */}
-      <section aria-labelledby="ou" className="border-y border-line bg-stone py-14 lg:py-20">
+      <section aria-labelledby="ou" className="border-y border-line bg-stone py-11 lg:py-20">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
@@ -437,7 +437,7 @@ export default function ContactPage() {
           Les quatre questions de `content/site.ts` qui concernent une prise
           de contact. Même composant que les autres pages : toutes fermées
           au chargement, ligne entière cliquable, « + » qui pivote. */}
-      <section aria-labelledby="questions" className="bg-white py-14 lg:py-20">
+      <section aria-labelledby="questions" className="bg-white py-11 lg:py-20">
         <div className="container-t">
           <Reveal>
             <h2

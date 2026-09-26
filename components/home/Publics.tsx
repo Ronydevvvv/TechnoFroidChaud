@@ -60,7 +60,7 @@ const publics = [
 
 export function Publics() {
   return (
-    <section aria-labelledby="publics-titre" className="bg-stone py-14 sm:py-16 lg:py-24">
+    <section aria-labelledby="publics-titre" className="bg-stone py-14 sm:py-12 lg:py-24">
       <div className="container-t">
         <h2 id="publics-titre" className="sr-only">
           Nos deux publics

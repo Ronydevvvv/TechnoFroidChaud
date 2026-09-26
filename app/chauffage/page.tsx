@@ -117,7 +117,7 @@ export default function ChauffagePage() {
           pas en quatre cases de hauteur égale. C'est ce qui empêche la
           section de redevenir une grille quel que soit le soin apporté au
           reste. `break-inside-avoid` garde chaque intervention entière. */}
-      <section className="bg-white py-14 lg:py-20">
+      <section className="bg-white py-11 lg:py-20">
         <div className="container-t">
           <Reveal>
             <h2 className="heading max-w-[20ch] text-[clamp(1.9rem,4vw,3.1rem)] leading-[1.06] text-ink">
@@ -175,7 +175,7 @@ export default function ChauffagePage() {
         fond="bg-white"
       />
 
-      <section aria-labelledby="reseau" className="border-y border-line bg-stone py-14 sm:py-16 lg:py-24">
+      <section aria-labelledby="reseau" className="border-y border-line bg-stone py-14 sm:py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">

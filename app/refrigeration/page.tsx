@@ -159,7 +159,7 @@ export default function RefrigerationPage() {
           désormais ÉTAGÉES à leur hauteur réelle, et l'écart de vingt-deux
           degrés entre un laboratoire et un surgelé se voit au lieu de se
           lire. */}
-      <section aria-labelledby="consignes" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="consignes" className="bg-white py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
@@ -209,7 +209,7 @@ export default function RefrigerationPage() {
           bâtiment, et elle montre déjà trois de ces consignes. Ici, pas de
           murs, pas d'étages, pas de pièces — une ligne de sol, un refend,
           et des machines. */}
-      <section aria-labelledby="chaleur" className="border-y border-line bg-stone py-14 sm:py-16 lg:py-24">
+      <section aria-labelledby="chaleur" className="border-y border-line bg-stone py-14 sm:py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
@@ -284,7 +284,7 @@ export default function RefrigerationPage() {
           la moitié droite. La marge de gauche n'est pas un vide décoratif,
           c'est ce qui empêche cette section de peser autant que le registre
           qui la précède — elle vient après lui, et cela doit se voir. */}
-      <section aria-labelledby="materiel" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="materiel" className="bg-white py-12 lg:py-24">
         <div className="container-t lg:grid lg:grid-cols-12 lg:gap-x-16">
           {/* La colonne est portée par ce `div`, pas par le `h2` : `Reveal`
               produit son propre `div`, qui serait alors l'élément de grille —

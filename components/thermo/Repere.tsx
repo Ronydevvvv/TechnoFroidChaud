@@ -51,18 +51,25 @@ export function RepereSvg({
   x,
   y,
   r = 13,
+  clair = false,
 }: {
-  n: number;
+  /** Un chiffre, ou une lettre quand la page numérote déjà en a · b · c. */
+  n: number | string;
   x: number;
   y: number;
   r?: number;
+  /** Sur fond sombre : la pastille s'inverse, encre sur papier. */
+  clair?: boolean;
 }) {
+  const fond = clair ? 'var(--color-paper)' : 'var(--color-ink)';
+  const encre = clair ? 'var(--color-ink)' : 'var(--color-paper)';
+  const liseré = clair ? 'var(--color-steel-900)' : 'var(--color-paper)';
   return (
     <g>
       {/* Le liseré de papier détache la pastille du trait qu'elle touche :
           sans lui, un repère posé sur une conduite semble en faire partie. */}
-      <circle cx={x} cy={y} r={r + 2.4} fill="var(--color-paper)" stroke="none" />
-      <circle cx={x} cy={y} r={r} fill="var(--color-ink)" stroke="none" />
+      <circle cx={x} cy={y} r={r + 2.4} fill={liseré} stroke="none" />
+      <circle cx={x} cy={y} r={r} fill={fond} stroke="none" />
       <text
         x={x}
         y={y}
@@ -70,7 +77,7 @@ export function RepereSvg({
         dominantBaseline="central"
         fontSize={r * 1.16}
         fontWeight={600}
-        fill="var(--color-paper)"
+        fill={encre}
         stroke="none"
         className="font-[family-name:var(--font-sans)]"
       >

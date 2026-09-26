@@ -160,7 +160,7 @@ export default function PompesAChaleurPage() {
           Les quatre textes d'étape sont conservés mot pour mot, sous le
           dessin, en bande calme : le schéma porte le regard, le texte porte
           le détail. */}
-      <section aria-labelledby="cycle" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="cycle" className="bg-white py-12 lg:py-24">
         <div className="container-t">
           {/* Titre à gauche, énoncé à droite, sur une seule ligne — la même
               composition que la planche d'accueil. Empilés, ils laissaient
@@ -287,7 +287,7 @@ export default function PompesAChaleurPage() {
           description rentre dessous. Aucun encadré, aucune colonne de titres,
           aucune case de hauteur égale — donc rien qui puisse se lire comme
           une grille de cartes. */}
-      <section aria-labelledby="solutions" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="solutions" className="bg-white py-12 lg:py-24">
         <div className="container-t">
           <Reveal className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
             <h2
@@ -425,7 +425,7 @@ export default function PompesAChaleurPage() {
           La méthode est repliée au pied de cette section, en une ligne. Le
           visiteur d'une page métier ne vient pas l'apprendre : il vérifie
           qu'elle existe. */}
-      <section aria-labelledby="questions" className="bg-white py-16 lg:py-24">
+      <section aria-labelledby="questions" className="bg-white py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <h2

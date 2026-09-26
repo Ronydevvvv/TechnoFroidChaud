@@ -209,7 +209,7 @@ export default function ChambresFroidesPage() {
       />
 
       {/* ═════════════ L'ÉCHELLE THERMIQUE ═════════════ */}
-      <section aria-labelledby="usages" className="bg-white py-14 sm:py-16 lg:py-24">
+      <section aria-labelledby="usages" className="bg-white py-14 sm:py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-6 lg:flex-row lg:items-end lg:justify-between">
@@ -243,7 +243,7 @@ export default function ChambresFroidesPage() {
           Le cartouche d'en-tête — désignation à gauche, code couleur à
           droite — est la convention d'un document technique, et il remplit
           une zone qui était vide. */}
-      <section aria-labelledby="anatomie" className="bg-carbon py-14 text-white sm:py-16 lg:py-24">
+      <section aria-labelledby="anatomie" className="bg-carbon py-14 text-white sm:py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <h2
@@ -414,7 +414,7 @@ export default function ChambresFroidesPage() {
       </section>
 
       {/* ═════════════ LES POINTS DE VIGILANCE ═════════════ */}
-      <section aria-labelledby="vigilance" className="border-y border-line bg-stone py-14 sm:py-16 lg:py-24">
+      <section aria-labelledby="vigilance" className="border-y border-line bg-stone py-14 sm:py-12 lg:py-24">
         <div className="container-t">
           <Reveal>
             <div className="flex flex-col gap-x-16 gap-y-5 lg:flex-row lg:items-end lg:justify-between">
@@ -459,7 +459,7 @@ export default function ChambresFroidesPage() {
       {/* ═════════════ LA CONCLUSION ═════════════ */}
       <section
         aria-labelledby="devis"
-        className="relative isolate overflow-hidden bg-steel-900 py-14 text-white sm:py-16 lg:py-24"
+        className="relative isolate overflow-hidden bg-steel-900 py-14 text-white sm:py-12 lg:py-24"
       >
         {/* Le motif revient, une seule fois, et plus discret qu'au hero :
             il ferme la page comme il l'a ouverte. */}
