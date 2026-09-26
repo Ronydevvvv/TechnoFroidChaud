@@ -153,18 +153,28 @@ function Eventail() {
            rangeait donc par distance sans que cela se VOIE. Le point et
            l'étiquette s'allègent maintenant d'un anneau au suivant. On lit
            l'éloignement avant de lire les noms, et le siège cesse d'être
-           un point parmi quinze. */
+           un point parmi quinze.
+
+           ─── L'ÉCART EST CONSERVÉ, LE PLANCHER EST REMONTÉ ───
+           La dégressivité partait de 0,66 et descendait à 0,52 : mesuré,
+           cela donnait 4,00:1 sur l'anneau moyen et 3,47:1 sur le dernier,
+           pour des noms composés à 12–13 px. Sous le seuil de 4,5:1 — donc
+           des communes que personne ne lit mal ne lit plus. L'ÉCART de 0,14
+           entre le premier et le dernier anneau est gardé tel quel, c'est
+           lui qui porte l'information ; seul le plancher remonte, à 0,68,
+           qui vaut 5,8:1. La hiérarchie se voit toujours, elle ne se paie
+           plus en lisibilité. */
         const k = p.anneau / (ANNEAUX.length - 1);
         return (
           <g key={p.nom}>
-            <circle cx={p.x} cy={p.y} r={f(3.2 - k * 0.9)} fill="currentColor" opacity={0.62 - k * 0.18} />
+            <circle cx={p.x} cy={p.y} r={f(3.2 - k * 0.9)} fill="currentColor" opacity={0.72 - k * 0.18} />
             <text
               x={p.x + 10}
               y={p.y + 4.2}
               fontSize={f(13.5 - k * 1.2)}
               fill="currentColor"
               stroke="none"
-              opacity={0.66 - k * 0.14}
+              opacity={0.82 - k * 0.14}
               className="font-[family-name:var(--font-sans)]"
             >
               {p.nom}

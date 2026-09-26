@@ -65,14 +65,24 @@ export function CallToAction({
             mots, un dégradé, aucune valeur.
 
             Deux éléments superposés plutôt qu'un seul : un dégradé CSS ne
-            sait pas porter à la fois un trait continu et des graduations. */}
+            sait pas porter à la fois un trait continu et des graduations.
+
+            ─── LES DEUX ACCENTS SONT ICI DANS LEUR VERSION CLAIRE ───
+            Mesuré sur `steel-900` : `--color-brand` tombe à 2,67:1 et
+            `--color-alert` à 3,22:1, pour deux mots composés à 11 px. Les
+            accents du papier ne tiennent pas sur l'acier — c'est
+            précisément pourquoi `--color-brand-clair` existe, et cette
+            bande est le seul endroit du site où les DEUX se retrouvent sur
+            fond sombre. Le filet prend les mêmes valeurs que les mots
+            qu'il relie : un trait d'un pixel à 2,7:1 ne se voyait pas
+            davantage que le texte. */}
         {axe ? (
           <div aria-hidden className="mb-7 lg:mb-9">
             <div className="h-1.5 w-full bg-[repeating-linear-gradient(to_right,rgba(255,255,255,0.22)_0_1px,transparent_1px_18px)]" />
-            <div className="-mt-[1px] h-px w-full bg-[linear-gradient(to_right,var(--color-brand)_0%,rgba(255,255,255,0.25)_46%,var(--color-alert)_100%)]" />
+            <div className="-mt-[1px] h-px w-full bg-[linear-gradient(to_right,var(--color-brand-clair)_0%,rgba(255,255,255,0.25)_46%,var(--color-alert-clair)_100%)]" />
             <div className="mt-2.5 flex justify-between text-[0.7rem] tracking-[0.14em] uppercase">
-              <span className="text-brand">Froid</span>
-              <span className="text-alert">Chaleur</span>
+              <span className="text-brand-clair">Froid</span>
+              <span className="text-alert-clair">Chaleur</span>
             </div>
           </div>
         ) : null}

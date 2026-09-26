@@ -45,6 +45,12 @@
   /* ————— Signal d'urgence — rouge du logo —————
      Un seul emploi sur tout le site : la page Dépannage. */
   --color-alert: #c0392b;
+  /* Même règle que `--color-brand-clair`, et pour la même raison mesurée :
+     `--color-alert` sur l'acier donne 3,2:1 — sous le seuil — alors qu'il
+     tient 4,9:1 sur la pierre. La teinte est conservée (7° contre 6°) ;
+     seule la luminosité monte, jusqu'à 4,8:1 sur `steel-900`. Sur fond
+     clair, `--color-alert` reste seul. */
+  --color-alert-clair: #d9614f;
 
   /* ————— Famille acier —————
      Ajoutée à la refonte anthracite. Le site reposait sur un sol blanc

@@ -296,10 +296,16 @@ export default function ContactPage() {
                     {/* Le filet actif, comme sur les lignes de l'accueil :
                         il s'ouvre depuis son centre. `scale-y` plutôt qu'une
                         hauteur animée — une transformation ne déclenche
-                        aucun recalcul de mise en page. */}
+                        aucun recalcul de mise en page.
+
+                        `left-0` en dessous de 640 px : le lien porte `-mx-3`,
+                        donc `-left-3` plaçait ce filet à −4 px du bord de
+                        l'écran à 375 px — hors cadre, invisible même au
+                        survol. Il se cale alors sur le bord du lien, où il
+                        garde ses 12 px de marge devant le texte. */}
                     <span
                       aria-hidden
-                      className="absolute inset-y-2 -left-3 w-px origin-center scale-y-0 bg-brand transition-transform duration-[250ms] ease-out group-hover:scale-y-100"
+                      className="absolute inset-y-2 left-0 w-px origin-center scale-y-0 bg-brand transition-transform duration-[250ms] ease-out group-hover:scale-y-100 sm:-left-3"
                     />
                     <span className="flex min-w-0 items-baseline gap-4">
                       <GlypheDemande
