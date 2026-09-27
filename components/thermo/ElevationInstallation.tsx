@@ -589,14 +589,18 @@ function ElevationCompacte({ className }: { className?: string }) {
           refend. Aucun ne se pose sur un trait de l'élévation. */}
       <RepereSvg n={1} x={246} y={RANGS[0] + 34} r={14} />
       <RepereSvg n={2} x={246} y={RANGS[1] + 34} r={14} />
-      {/* Le troisième remonte au-dessus des flèches de rejet de la
-          vitrine : à la hauteur des autres, il tombait au milieu d'elles.
-          Douze unités ne suffisaient pas — les POINTES de flèche se
-          dessinent au-delà de l'extrémité du tracé, d'environ neuf unités
-          vers le haut, et venaient toucher le bas de la pastille. */}
-      <RepereSvg n={3} x={246} y={RANGS[2] - 30} r={14} />
+      {/* Le troisième se loge entre deux contraintes, et il n'y a qu'une
+          fente pour lui : le repère 2 s'arrête à 176, les pointes des
+          flèches de rejet de la vitrine montent jusqu'à 221. Une pastille
+          fait 33 unités, liseré compris — elle ne tient qu'entre 182 et
+          214. À −30 elle remontait trop et venait coller le repère 2 ; à
+          −12 elle descendait dans les flèches. −24 la pose au milieu de
+          la fente, à cinq unités de chaque voisin. */}
+      <RepereSvg n={3} x={246} y={RANGS[2] - 24} r={14} />
       <RepereSvg n={4} x={246} y={RANGS[3] + 32} r={14} />
-      <RepereSvg n={5} x={168} y={452} r={14} />
+      {/* Le cinquième passe à GAUCHE du groupe : posé dessus, son
+          liseré mordait l'arête supérieure du coffret. */}
+      <RepereSvg n={5} x={124} y={452} r={14} />
     </svg>
   );
 }

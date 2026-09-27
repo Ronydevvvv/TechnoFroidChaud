@@ -561,8 +561,14 @@ export function CoupeChambreFroide({ className = '' }: { className?: string }) {
   return (
     <>
       <CoupeLarge className={className} />
+      {/* 366 et non 359 : la plus longue flèche de rejet s'arrête à 403,
+          mais sa POINTE se dessine au-delà — markerWidth 5 multiplié par
+          un trait de 2,7 — et atteignait 417 pour un cadre qui finissait
+          à 414. Elle était donc tranchée par le bord droit. Sept unités
+          de plus lui laissent quatre unités d'air ; le dessin rétrécit de
+          1,9 %, ce qui ne se voit pas. */}
       <svg
-        viewBox="55 97 359 291"
+        viewBox="55 97 366 291"
         aria-hidden
         focusable="false"
         className={`w-full text-white lg:hidden ${className}`}
