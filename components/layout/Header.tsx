@@ -368,14 +368,30 @@ export function Header() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-expanded={menuOpen}
             aria-controls="menu-mobile"
-            className="-mr-2 cursor-pointer p-2 lg:hidden"
+            className="tactile -mr-2 cursor-pointer p-2 lg:hidden"
           >
             <span className="sr-only">{menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}</span>
-            {menuOpen ? (
-              <X aria-hidden strokeWidth={1.6} className="h-5 w-5" />
-            ) : (
-              <Menu aria-hidden strokeWidth={1.6} className="h-5 w-5" />
-            )}
+            {/* Les deux glyphes occupent la MÊME case et se relaient par
+                rotation et opacité : superposés en grille plutôt que
+                remplacés, il n'y a plus le saut d'un caractère qui
+                disparaît avant que l'autre n'arrive. Un quart de tour de
+                45°, pas davantage — c'est ce qui suffit à lire le passage
+                de la barre au X. La préférence « mouvement réduit »
+                neutralise la transition plus haut dans la feuille. */}
+            <span aria-hidden className="grid h-5 w-5 place-items-center">
+              <Menu
+                strokeWidth={1.6}
+                className={`col-start-1 row-start-1 h-5 w-5 transition-[opacity,transform] duration-200 ease-out ${
+                  menuOpen ? 'rotate-45 opacity-0' : 'rotate-0 opacity-100'
+                }`}
+              />
+              <X
+                strokeWidth={1.6}
+                className={`col-start-1 row-start-1 h-5 w-5 transition-[opacity,transform] duration-200 ease-out ${
+                  menuOpen ? 'rotate-0 opacity-100' : '-rotate-45 opacity-0'
+                }`}
+              />
+            </span>
           </button>
         </div>
       </div>
@@ -401,7 +417,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
-                className={`heading flex items-center justify-between border-b py-5 text-[1.2rem] ${
+                className={`heading tactile flex items-center justify-between border-b py-5 text-[1.2rem] ${
                   onDark ? 'border-white/10' : 'border-line'
                 } ${
                   active

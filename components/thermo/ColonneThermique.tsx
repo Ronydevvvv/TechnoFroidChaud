@@ -161,17 +161,32 @@ function Regle({
 }
 
 export function ColonneThermique({ consignes }: { consignes: readonly Consigne[] }) {
-  const n = consignes.length;
+  /**
+   * ─── LES RANGÉES SUIVENT L'AXE, PAS LA LISTE ─────────────────────────
+   * Les consignes arrivaient dans l'ordre de leur déclaration — positive,
+   * négative, vitrine, laboratoire — alors que la règle, elle, est
+   * GRADUÉE : elle descend de +14 à −26. Les rappels reliaient donc la
+   * première rangée à une bande du haut, la deuxième à une bande du bas,
+   * la troisième au milieu : quatre traits qui se croisaient en X, et le
+   * laboratoire à +12 °C posé tout en bas d'un axe qui finit à −20.
+   *
+   * Le tri se fait ICI et non dans la page : c'est le composant qui
+   * connaît le sens de sa règle, et la garantie vaut alors pour n'importe
+   * quel jeu de consignes qu'on lui passera plus tard. Du plus chaud au
+   * plus froid, comme l'axe. Aucune consigne n'est ajoutée ni retirée.
+   */
+  const rangees = [...consignes].sort((a, b) => (b.de + b.a) / 2 - (a.de + a.a) / 2);
+  const n = rangees.length;
 
   return (
     <div className="relative">
       {/* La règle, en deux tailles. Un seul SVG redimensionné aurait donné
           des graduations de 4 px de haut sur téléphone. */}
       <div className="pointer-events-none absolute top-0 left-0 lg:hidden">
-        <Regle consignes={consignes} h={624} largeur={74} xRegle={44} compact />
+        <Regle consignes={rangees} h={624} largeur={74} xRegle={44} compact />
       </div>
       <div className="pointer-events-none absolute top-0 left-0 hidden lg:block">
-        <Regle consignes={consignes} h={768} largeur={186} xRegle={62} compact={false} />
+        <Regle consignes={rangees} h={768} largeur={186} xRegle={62} compact={false} />
       </div>
 
       {/* Les rangées, à intervalle régulier. Leur hauteur est celle qui sert
@@ -180,7 +195,7 @@ export function ColonneThermique({ consignes }: { consignes: readonly Consigne[]
         className="grid h-[624px] pl-[86px] lg:h-[768px] lg:pl-[210px]"
         style={{ gridTemplateRows: `repeat(${n}, minmax(0, 1fr))` }}
       >
-        {consignes.map((c, i) => {
+        {rangees.map((c, i) => {
           const froid = c.a <= 0;
           return (
             <Reveal key={c.use} delay={Math.min(i * 0.06, 0.2)}>

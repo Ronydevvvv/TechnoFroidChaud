@@ -590,10 +590,13 @@ function ElevationCompacte({ className }: { className?: string }) {
       <RepereSvg n={1} x={246} y={RANGS[0] + 34} r={14} />
       <RepereSvg n={2} x={246} y={RANGS[1] + 34} r={14} />
       {/* Le troisième remonte au-dessus des flèches de rejet de la
-          vitrine : à la hauteur des autres, il tombait au milieu d'elles. */}
-      <RepereSvg n={3} x={246} y={RANGS[2] - 12} r={14} />
+          vitrine : à la hauteur des autres, il tombait au milieu d'elles.
+          Douze unités ne suffisaient pas — les POINTES de flèche se
+          dessinent au-delà de l'extrémité du tracé, d'environ neuf unités
+          vers le haut, et venaient toucher le bas de la pastille. */}
+      <RepereSvg n={3} x={246} y={RANGS[2] - 30} r={14} />
       <RepereSvg n={4} x={246} y={RANGS[3] + 32} r={14} />
-      <RepereSvg n={5} x={168} y={465} r={14} />
+      <RepereSvg n={5} x={168} y={452} r={14} />
     </svg>
   );
 }

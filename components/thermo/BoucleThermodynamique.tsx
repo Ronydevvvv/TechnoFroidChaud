@@ -82,7 +82,14 @@ function Circuit({ b, vertical, fond }: { b: Boite; vertical: boolean; fond: str
        Un intitulé qui traverse une conduite, sur une planche, se lit comme
        un raccord. */
     { p: [x1, cy], nom: 'Évaporation', ancre: 'end', dx: -14, dy: corps + 18 },
-    { p: [cx, y2], nom: 'Compression', ancre: 'middle', dx: 0, dy: corps + 22 },
+    /* ─── « COMPRESSION » S'ÉCARTE DE L'AXE ───
+       Centré sous le compresseur, l'intitulé était traversé de part en
+       part par le trait d'énergie électrique, qui monte du bas vers ce
+       même nœud et passe donc exactement par `cx` : le mot se lisait
+       coupé en deux. Il se cale à gauche de l'axe, comme « Évaporation »
+       le fait déjà de son côté — l'électricité garde son tracé droit,
+       qui est ce qui dit qu'elle entre AU compresseur. */
+    { p: [cx, y2], nom: 'Compression', ancre: 'end', dx: -16, dy: corps + 22 },
     /* Sur la boucle debout, les deux intitulés latéraux ne sont éloignés que
        de 164 px et se rejoignaient presque au milieu. Le second descend d'une
        ligne : ils ne se disputent plus le même couloir. */

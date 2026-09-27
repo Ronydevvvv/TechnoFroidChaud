@@ -513,7 +513,91 @@ html.lenis body {
   scroll-behavior: auto !important;
 }
 
+/* ————— RETOUR AU TOUCHER —————
+   Sur un écran tactile il n'y a pas de survol : entre le moment où le
+   doigt se pose et celui où la page suivante arrive, rien ne confirmait
+   que l'appui avait été pris. Le navigateur peint bien un rectangle gris
+   par défaut, mais il est carré, il déborde de la forme du bouton, et il
+   arrive avec 100 ms de retard.
+
+   On le remplace donc par un enfoncement : la cible recule de 2 à 4 %
+   pendant 90 ms. C'est le geste d'un bouton physique, il est immédiat, et
+   il n'ajoute ni couleur, ni ombre, ni rebond. La durée est courte
+   volontairement — au-delà de 150 ms l'effet se voit au lieu de se
+   sentir.
+
+   `:active` et non un état JavaScript : le navigateur le pose dès le
+   `touchstart` et le retire au relâchement, sans un octet de script. */
+.tactile {
+  transition:
+    transform 0.09s var(--ease-out-soft),
+    opacity 0.09s var(--ease-out-soft);
+}
+.tactile:active {
+  transform: scale(0.94);
+  opacity: 0.72;
+}
+.btn:active {
+  transform: scale(0.975);
+  transition-duration: 0.09s;
+}
+.link-t:active {
+  opacity: 0.6;
+  transition:
+    opacity 0.09s var(--ease-out-soft),
+    color 0.3s var(--ease-out-soft);
+}
+@media (hover: none) {
+  /* Le halo gris natif ferait double emploi avec l'enfoncement, et il ne
+     suit pas la forme des boutons. */
+  a,
+  button,
+  summary,
+  label,
+  [role='button'] {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ————— OUVERTURE DU MENU MOBILE —————
+   Le panneau apparaissait et disparaissait d'un coup : l'attribut
+   `hidden` bascule `display`, qui n'est pas une propriété qu'on anime.
+   `allow-discrete` la rend transitionnable — elle commute alors à la FIN
+   de la durée à la fermeture, et au DÉBUT à l'ouverture — ce qui laisse
+   l'opacité et le décalage se jouer de part et d'autre.
+
+   Six pixels de glissement, pas davantage : le panneau descend de sous
+   l'en-tête, il ne surgit pas. Un navigateur qui ne connaît pas
+   `allow-discrete` ignore la règle et retrouve le comportement instantané
+   d'avant — rien ne casse. */
+#menu-mobile {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.22s var(--ease-out-soft),
+    transform 0.22s var(--ease-out-soft),
+    display 0.22s allow-discrete;
+}
+#menu-mobile[hidden] {
+  display: none;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+@starting-style {
+  #menu-mobile {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  /* Le mouvement disparaît, le retour reste : l'opacité seule suffit à
+     dire que l'appui a été pris, et elle ne déplace rien. */
+  .tactile:active,
+  .btn:active {
+    transform: none;
+  }
+
   .reveal {
     opacity: 1;
   }
