@@ -111,7 +111,21 @@ export async function POST(req: Request) {
   const destinataire = process.env.CONTACT_TO || company.email;
 
   if (!cle || !expediteur) {
-    // Le formulaire n'est pas branché : on le dit, on ne le cache pas.
+    /* Le formulaire n'est pas branché : on le dit, on ne le cache pas.
+       Le visiteur reçoit une phrase sans jargon, et le formulaire lui
+       rappelle le téléphone juste en dessous.
+
+       Le JOURNAL, lui, nomme la variable manquante : sans cela, un 503
+       oblige à deviner laquelle des deux fait défaut. Seul le NOM part
+       dans les journaux du serveur, jamais une valeur, et rien de tout
+       ceci n'atteint le navigateur. */
+    const manquantes = [!cle && 'RESEND_API_KEY', !expediteur && 'CONTACT_FROM']
+      .filter(Boolean)
+      .join(', ');
+    console.error(
+      `[contact] envoi impossible — variable(s) d’environnement absente(s) : ${manquantes}`,
+    );
+
     return NextResponse.json(
       {
         erreur:

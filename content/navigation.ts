@@ -39,4 +39,28 @@ export const navigation: NavItem[] = [
   { label: 'Entretien & Dépannage', navLabel: 'Dépannage', href: '/entretien-depannage' },
 ];
 
-export const SITE_URL = 'https://www.techno-froid-chaud.fr';
+/**
+ * L'URL canonique du site. Source unique.
+ *
+ * Elle alimente `metadataBase`, les canoniques de chaque page, l'Open
+ * Graph, la carte Twitter, le sitemap, le robots.txt et toutes les données
+ * structurées. Une seule ligne à changer le jour d'une bascule.
+ *
+ * ─── POURQUOI L'APEX, ET PAS `www.` ──────────────────────────────────────
+ * Elle valait `https://www.techno-froid-chaud.fr`. Or ce nom N'EXISTE PAS :
+ * la résolution DNS renvoie NXDOMAIN, sans enregistrement A, AAAA ni CNAME.
+ * Le site déclarait donc à Google, sur chacune de ses douze pages et dans
+ * son sitemap, que la version faisant autorité se trouvait à une adresse
+ * injoignable.
+ *
+ * L'apex, lui, résout — vers 83.229.19.73, qui n'est pas Vercel et sert
+ * encore l'ancien site. C'est aussi le domaine officiel retenu. Le pointer
+ * ici est donc à la fois la correction d'un défaut et l'alignement sur la
+ * cible : il ne restera plus qu'à faire pointer le DNS vers Vercel pour que
+ * déclaration et réalité coïncident.
+ *
+ * ─── CE QUI RESTE À FAIRE, ET QUI N'EST PAS DU CODE ──────────────────────
+ * Le domaine n'est attaché à AUCUN projet Vercel à ce jour (`vercel domains
+ * ls` en renvoie zéro). Voir le pas-à-pas dans `.env.example`.
+ */
+export const SITE_URL = 'https://techno-froid-chaud.fr';
