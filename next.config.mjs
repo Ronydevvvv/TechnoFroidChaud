@@ -20,10 +20,15 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // Les sondes d'éclairage ne changent jamais : elles sont
-        // versionnées par leur nom. Un an de cache immuable évite de les
-        // retélécharger à chaque visite.
-        source: '/hdri/:file*',
+        // La règle de cache des sondes d'éclairage a été retirée avec la
+        // scène 3D : `public/hdri/` n'existe plus, elle ne s'appliquait
+        // donc à rien.
+        //
+        // La vidéo du hero, elle, existe et ne change pas : elle est
+        // versionnée par son nom et pèse un mégaoctet. Un an de cache
+        // immuable évite de la retélécharger à chaque visite — c'est le
+        // plus gros fichier que sert le site.
+        source: '/video/:file*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],

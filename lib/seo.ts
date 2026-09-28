@@ -152,9 +152,13 @@ export function businessSchema() {
       addressCountry: company.country,
     },
     areaServed: servedTowns.map((t) => ({ '@type': 'City', name: t })),
-    // `openingHours` retiré : les horaires ne figurent pas sur le site de
-    // l'entreprise. Les déclarer en données structurées les rend lisibles
-    // par Google et sa fiche établissement — à rétablir une fois confirmés.
+    // `openingHours` retiré, et le commentaire d'origine était inexact :
+    // les horaires FIGURENT bien au pied de page, mais `content/company.ts`
+    // les porte sous la mention « À CONFIRMER ». Les déclarer ici les rend
+    // lisibles par Google et sa fiche établissement — c'est-à-dire les
+    // publier une seconde fois, avec plus de portée. `openingHoursSchema`
+    // est déjà écrit et prêt : une ligne à rétablir le jour où l'entreprise
+    // confirme, pas avant.
     // `hasCredential` a été retiré : aucune qualification n'est confirmée.
     // Déclarer une certification en données structurées la rend lisible par
     // Google et par les comparateurs — c'est une affirmation publique, au

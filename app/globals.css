@@ -484,10 +484,22 @@ a:hover .img-zoom {
    en mouvement réduit, le contenu reste visible. */
 .reveal {
   opacity: 0;
+  transform: translateY(8px);
+  /* Mêmes valeurs que celles que portait la bibliothèque : 0,7 s et la
+     courbe (0.22, 1, 0.36, 1). Le délai en cascade arrive en style en
+     ligne, là où il est propre à chaque élément. */
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-vu {
+  opacity: 1;
+  transform: none;
 }
 @media (scripting: none) {
   .reveal {
     opacity: 1;
+    transform: none;
   }
 }
 
@@ -600,6 +612,7 @@ html.lenis body {
 
   .reveal {
     opacity: 1;
+    transform: none;
   }
   *,
   *::before,
